@@ -53,7 +53,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/manongguai/react-vite-admin"
+        link: "https://github.com/manongguai/carol-ui.git"
       }
     ],
     footer: {

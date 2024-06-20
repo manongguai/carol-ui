@@ -1,26 +1,25 @@
-# cl-design
-* 文档地址：
+# 快速开始
 
+* 文档地址：[http://carol.kirk.wang](http://carol.kirk.wang)
 
-## Project setup
-```
-npm install @kirk/carol-ui
-```
+### npm 安装
 
-### Compiles and hot-reloads for development
-```
-import { ClButton } from '@kirk/carol-ui
-import '@kirk/carol-ui/styles.css'
+推荐使用 npm 的方式安装
 
-```
+::: tip >>>
+npm i @kirkw/carol-ui
+:::
 
-### Compiles and minifies for production
-```
-<ClButton>点我</ClButton>
-```
+### 全局加载
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+::: tip >>>
+import CarolUI from '@kirkw/carol-ui';
+
+import '@kirkw/carol-ui/style.css';
+
+Vue.use(CarolUI);
+:::
+
 
 
 

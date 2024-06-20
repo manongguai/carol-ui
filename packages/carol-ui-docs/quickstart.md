@@ -1,5 +1,6 @@
 # 快速开始
 
+* 文档地址：[http://carol.kirk.wang](http://carol.kirk.wang)
 
 ### npm 安装
 

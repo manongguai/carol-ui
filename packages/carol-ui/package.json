@@ -92,6 +92,11 @@
     "dist",
     "README.md"
   ],
+  "repository": {  
+    "type": "git",  
+    "url": "https://github.com/manongguai/carol-ui.git"  
+  },  
+  "homepage": "http://carol.kirk.wang/",  
   "publishConfig": {},
   "browserslist": [
     "> 1%",
