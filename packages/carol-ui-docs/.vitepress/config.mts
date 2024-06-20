@@ -21,35 +21,50 @@ export default defineConfig({
     }
   },
   themeConfig: {
+    logo: "/favicon.ico",
     // https://vitepress.dev/reference/default-theme-config
-    nav: [{ text: "快速开始", link: "/quickstart" },{ text: "组件", link: "/components/button.html" }],
-
-    sidebar: [
-      {
-        text: "通用组件",
-        items: baseComponents
-      },
-      {
-        text: "布局",
-        items: layoutComponents
-      },
-      {
-        text: "数据录入",
-        items: dataInputComponents
-      },
-      {
-        text: "数据展示",
-        items: dataDisplayComponents
-      },
-      {
-        text: "反馈",
-        items: noticeComponents
-      },
-      {
-        text: "其他",
-        items: otherComponents
-      }
+    nav: [
+      { text: "指南", link: "/quickstart/install" },
+      { text: "组件", link: "/components/button.html" }
     ],
+
+    sidebar: {
+      "/quickstart": [
+        {
+          text: "指南",
+          items: [
+            { text: "安装", link: "/quickstart/install" },
+            { text: "快速开始", link: "/quickstart/quickstart" }
+          ]
+        }
+      ],
+      "/components": [
+        {
+          text: "通用组件",
+          items: baseComponents
+        },
+        {
+          text: "布局",
+          items: layoutComponents
+        },
+        {
+          text: "数据录入",
+          items: dataInputComponents
+        },
+        {
+          text: "数据展示",
+          items: dataDisplayComponents
+        },
+        {
+          text: "反馈",
+          items: noticeComponents
+        },
+        {
+          text: "其他",
+          items: otherComponents
+        }
+      ]
+    },
     socialLinks: [
       {
         icon: "github",
