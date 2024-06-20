@@ -1,0 +1,30 @@
+@use '../../../styles/mixins/utils' as *;
+
+.cl-icon {
+  color: var(--cl-color);
+
+  & .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+  @include when(loading) {
+    transition: all ease-in 0.2s;
+    cursor: not-allowed;
+
+    animation: loading 2s linear infinite;
+  }
+}

@@ -1,0 +1,92 @@
+
+@use '../../../styles/mixins/utils' as *;
+
+.cl-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--cl-font-weight);
+    font-size: var(--cl-font-size);
+    line-height: 1;
+    padding: var(--cl-padding);
+    height: var(--cl-height);
+    border-radius: var(--cl-border-radius);
+    color: var(--cl-text-color);
+    background-color: var(--cl-color);
+    // border: var(--cl-border);
+    border: none;
+    width: var(--cl-width);
+    min-width: var(--cl-min-width);
+    // overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    transition: all ease-in 0.2s;
+    & .cl-icon,
+    & [class*='iconfont'] {
+        font-size: 14px;
+    }
+    @include when(disabled) {
+        &,
+        &:hover{
+            cursor: not-allowed;
+            background-color: var(--cl-color-disabled);
+            color: var(--cl-text-color-disabled);
+            border: var(--cl-border-disabled);
+        }
+    }
+    @include when(loading) {
+        cursor: wait;
+    }
+    @include when(block) {
+        display: flex;
+        width: 100%;
+    }
+    .cl-icon {
+        margin-right: 4px;
+    }
+    
+    &.cl-button--underlined-type {
+        & > span {
+            text-decoration: underline;
+        }
+    }
+    &.cl-button--link-type:hover,
+    &.cl-button--test-type:hover {
+        &:not(.is-loading):not(.is-disabled) {
+            & > span {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    
+    .cl-button_border, .cl-button_state-border {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: inherit;
+        transition: border-color .3s var(--n-bezier);
+        pointer-events: none;
+    }
+    .cl-button_border {
+        border: var(--cl-border);
+    }
+    &:hover {
+        background-color: var(--cl-color-hover);
+        color: var(--cl-text-color-hover);
+        .cl-button_state-border  {
+            border: var(--cl-border-hover);
+        }
+    }
+    .cl-button_state-border {
+        border: var(--cl-border);
+        border-color: #0000;
+        z-index: 1;
+    }
+}

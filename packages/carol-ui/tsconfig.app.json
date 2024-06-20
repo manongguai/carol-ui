@@ -1,0 +1,22 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": [
+    "env.d.ts",
+    "packages/**/*",
+    "src/**/*.vue",
+    "src/**/*.ts",
+    "src/**/*",
+    "packages/**/*.vue",
+    "packages/fonts",
+    "../../types/**/*.d.ts"
+  ],
+  "exclude": ["src/**/__tests__/*"],
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./packages/*"]
+    }
+  }
+}

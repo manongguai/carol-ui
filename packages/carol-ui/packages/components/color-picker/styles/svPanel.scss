@@ -1,0 +1,50 @@
+.cl-color-picker-panel-hsv {
+  width: 0;
+  flex: 1;
+  height: 134px;
+  background: #d8d8d8;
+  border-radius: 2px;
+  position: relative;
+  margin-right: 4px;
+  user-select: none;
+
+  .panel_position {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__white {
+    background:
+      -webkit-gradient(linear,
+        left top,
+        right top,
+        from(#fff),
+        to(hsla(0deg, 0%, 100%, 0)));
+    background: linear-gradient(90deg, #fff, hsla(0deg, 0%, 100%, 0));
+  }
+
+  &__black {
+    background: -webkit-gradient(linear, left bottom, left top, from(#000), to(transparent));
+    background: linear-gradient(0deg, #000, transparent);
+  }
+
+  &__cursor {
+    position: absolute;
+    cursor: pointer;
+    display: block;
+
+    >div {
+      width: 4px;
+      height: 4px;
+      box-shadow:
+        0 0 0 1.5px #fff,
+        inset 0 0 1px 1px rgba(0, 0, 0, 0.3),
+        0 0 1px 2px rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@use '../../../styles/mixins/utils' as *;
+
+.cl-pop-confirm {
+    .cl-pop-confirm__icon {
+        margin-right: var(--cl-pop-confirm-title-icon-space);
+    }
+
+    .cl-icon-close {
+        cursor: pointer;
+        color: #8d95a9;
+        position: absolute;
+        right: 0;
+    }
+
+    .cl-pop-confirm__title {
+        display: flex;
+        align-items: center;
+        font-weight: var(--cl-pop-confirm-title-font-weight);
+        color: var(--cl-pop-confirm-title-color);
+        font-size: var(--cl-pop-confirm-title-font-size);
+        line-height: 22px;
+        margin-bottom: var(--cl-pop-confirm-title-margin-bottom);
+        position: relative;
+        padding-right: 30px;
+    }
+
+    .cl-pop-confirm__content.simple-content {
+        color: var(--cl-pop-confirm-content-color);
+        line-height: 20px;
+        margin-bottom: var(--cl-pop-confirm-content-margin-bottom);
+        padding: var(--cl-pop-confirm-content-padding);
+    }
+
+    .cl-pop-confirm_action {
+        margin-top: var(--cl-pop-confirm-action-margin-top);
+        text-align: right;
+
+        .btn-cancel {
+            cursor: pointer;
+
+            &:hover {
+                color: #000;
+            }
+        }
+
+        .btn-confirm {
+            cursor: pointer;
+            margin-left: 16px;
+
+            &:hover {
+                color: #ff5e56;
+            }
+        }
+    }
+}

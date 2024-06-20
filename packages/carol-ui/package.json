@@ -1,0 +1,100 @@
+{
+  "name": "@kirkw/carol-ui",
+  "version": "0.0.10",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "description": "A Vue 3 Component Library.",
+  "exports": {
+    ".": {
+      "main": "./lib/index.js",
+      "module": "./es/index.js",
+      "types": "./es/index.d.ts"
+    },
+    "./style.css": {
+      "main": "./lib/style.css",
+      "module": "./es/style.css"
+    },
+    "./dist": {
+      "browser": "./dist/index.umd.js",
+      "umd": "./dist/index.umd.js"
+    }
+  },
+  "keywords": [
+    "carol-ui",
+    "component library",
+    "ui framework",
+    "ui",
+    "vue3"
+  ],
+  "scripts": {
+    "dev": "vite --host",
+    "preview": "vite preview",
+    "build": "vite build",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "publish_lib": "node scripts/publish.js",
+    "pub": "npm run build && npm publish_lib",
+    "register": "node scripts/updateRegister.js",
+    "new": "node scripts/generateComponent.js",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "consola": "^3.2.3",
+    "seemly": "^0.3.6",
+    "uppercamelcase": "^3.0.0",
+    "vue": "3.3.2"
+  },
+  "devDependencies": {
+    "@kirkw/tsconfig": "workspace:*",
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@testing-library/vue": "^8.1.0",
+    "@tsconfig/node18": "^2.0.1",
+    "@types/node": "^18.16.8",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitest/coverage-v8": "^1.6.0",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "@vue/eslint-config-typescript": "^11.0.3",
+    "@vue/tsconfig": "^0.4.0",
+    "eslint-plugin-vue": "^9.11.0",
+    "jsdom": "^24.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.8.8",
+    "sass": "1.49.7",
+    "typescript": "~5.0.4",
+    "vite": "^5.2.12",
+    "vite-plugin-dts": "^2.3.0",
+    "vite-plugin-style-import": "^2.0.0",
+    "vitest": "^1.6.0",
+    "vue-tsc": "^1.6.4"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.vue": [
+      "prettier --parser=vue --write",
+      "eslint --fix"
+    ],
+    "*.css": [
+      "prettier --write"
+    ]
+  },
+  "files": [
+    "es",
+    "lib",
+    "dist",
+    "README.md"
+  ],
+  "publishConfig": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

@@ -1,0 +1,9 @@
+@use '../../../styles/mixins/utils' as *;
+
+.cl-steps {
+  display: inline-flex;
+  padding: var(--cl-steps-padding);
+  width: inherit;
+  box-sizing: border-box;
+  width: 100%;
+}

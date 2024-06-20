@@ -1,0 +1,14 @@
+{
+  "name": "@kirkw/tsconfig",
+  "version": "1.0.1",
+  "description": "",
+  "main": "index.js",
+  "types": "global.d.ts",
+  "files": [
+    "global.d.ts"
+  ],
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

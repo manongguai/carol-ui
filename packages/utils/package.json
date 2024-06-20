@@ -1,0 +1,13 @@
+{
+  "name": "@kirkw/utils",
+  "version": "1.0.1",
+  "description": "",
+  "type": "module",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@kirkw/tsconfig": "workspace:*"
+  }
+}

@@ -1,0 +1,41 @@
+@use 'config' as *;
+
+@mixin when($state) {
+    @at-root {
+      &.#{$state-prefix + $state} {
+        @content;
+      }
+    }
+}
+@mixin b($block) {
+  $B: $namespace + "-" + $block !global;
+  .#{$B} {
+    @content;
+  }
+}
+// 定义element 通过__连接符将父级选择器和传入的子元素拼接起来
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &;
+  $currentSelector: "";
+
+  @each $unit in $element { // $element传入的值可以单个，也可以是列表
+    $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit + ","};
+  }
+
+  @if hitAllSpecialNestRule($selector) {
+    @at-root {
+      #{$selector} {
+        #{$currentSelector} {
+          @content;
+        }
+      }
+    }
+  } @else {
+    @at-root {
+      #{$currentSelector} {
+        @content;
+      }
+    }
+  }
+}
