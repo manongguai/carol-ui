@@ -1,5 +1,11 @@
 # @kirkw/carol-ui
 
+## 0.0.11
+
+### Patch Changes
+
+- 修复colorPicker展示bug & 更新文档
+
 ## 0.0.10
 
 ### Patch Changes
