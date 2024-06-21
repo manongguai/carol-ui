@@ -8,7 +8,12 @@ export const baseComponents = [
     link: "/components/button"
   }
 ];
-export const layoutComponents = [];
+export const layoutComponents = [
+  {
+    text: "布局(Layout)",
+    link: "/components/layout"
+  }
+];
 export const dataInputComponents = [
   {
     text: "输入框(Input)",
