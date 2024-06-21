@@ -33,7 +33,7 @@ import {
 } from 'vue'
 import { type Placement } from './drawer'
 import useLockHtmlScroll, { getScrollDom } from '@/hooks/use-lock-html-scroll'
-import { onMove, getDom } from '@/utils'
+import { onMove, getDom } from '@kirkw/utils'
 export default defineComponent({
   name: 'DrawerContentWrapper',
   inheritAttrs: false,

@@ -1,14 +1,27 @@
 @use 'config' as *;
+@use 'function' as *;
+
+// Break-points
+@mixin res($key, $map: $breakpoints) {
+  // loop breakpoint Map, return if present
+  @if map-has-key($map, $key) {
+    @media only screen and #{unquote(map-get($map, $key))} {
+      @content;
+    }
+  } @else {
+    @warn "Undefined points: `#{$map}`";
+  }
+}
 
 @mixin when($state) {
-    @at-root {
-      &.#{$state-prefix + $state} {
-        @content;
-      }
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
     }
+  }
 }
 @mixin b($block) {
-  $B: $namespace + "-" + $block !global;
+  $B: $namespace + '-' + $block !global;
   .#{$B} {
     @content;
   }
@@ -17,10 +30,11 @@
 @mixin e($element) {
   $E: $element !global;
   $selector: &;
-  $currentSelector: "";
+  $currentSelector: '';
 
-  @each $unit in $element { // $element传入的值可以单个，也可以是列表
-    $currentSelector: #{$currentSelector + "." + $B + $element-separator + $unit + ","};
+  @each $unit in $element {
+    // $element传入的值可以单个，也可以是列表
+    $currentSelector: #{$currentSelector + '.' + $B + $element-separator + $unit + ','};
   }
 
   @if hitAllSpecialNestRule($selector) {

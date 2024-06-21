@@ -37,7 +37,7 @@ import { popupProps, popupEmits } from './popup'
 import { usePopper } from './hook'
 import useTheme from '@/hooks/use-theme'
 import { popupLight } from '../styles/light'
-import { createKey } from '@/utils'
+import { createKey } from '@kirkw/utils'
 import OnlyChildSlot from '@/components/only-child-slot'
 defineOptions({
   name: 'ClPopup'

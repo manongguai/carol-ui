@@ -1,5 +1,5 @@
 import { onBeforeUnmount, onMounted, type WatchStopHandle, type Ref, watch } from 'vue'
-import { getDom } from '@/utils'
+import { getDom } from '@kirkw/utils'
 
 let lockCount = 0
 let originalMarginRight: string = ''

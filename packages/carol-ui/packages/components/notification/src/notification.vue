@@ -49,8 +49,7 @@ import { type CSSProperties, computed, onMounted, defineComponent, ref, type Ref
 import { notificationEmits, notificationProps } from './notification'
 import useTheme from '@/hooks/use-theme'
 import ClIcon from '@/components/icon'
-import { createKey } from '@/utils'
-import { nextZIndex } from '@/utils/zIndex'
+import { createKey, nextZIndex } from '@kirkw/utils'
 import { notificationLight } from '../styles/light'
 
 export default defineComponent({
@@ -131,7 +130,7 @@ export default defineComponent({
 
     const startTimer = () => {
       if (props.duration > 0) {
-        timer = setTimeout(() => {
+        timer = window.setTimeout(() => {
           close()
         }, props.duration)
       }

@@ -41,6 +41,7 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@kirkw/utils": "workspace:*",
     "consola": "^3.2.3",
     "seemly": "^0.3.6",
     "uppercamelcase": "^3.0.0",

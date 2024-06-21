@@ -2,7 +2,7 @@ import { ref, nextTick } from 'vue'
 import type { ComponentPublicInstance, Ref } from 'vue'
 import type { PopupProps } from './popup'
 import { Popper } from './popper'
-import { nextZIndex } from '@/utils/zIndex'
+import { nextZIndex } from '@kirkw/utils'
 export function usePopper(
   popRef: Ref<HTMLElement | undefined>,
   referenceSlotEl: Ref<HTMLElement | null>,
