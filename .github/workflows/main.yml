@@ -26,7 +26,7 @@ jobs:
         run: pnpm install
 
       - name: Build
-        run: pnpm run build:docs
+        run: pnpm run docs:build
 
       - name: Deploy to Hosting Service
         if: github.ref == 'refs/heads/main' #对分支进行检测
