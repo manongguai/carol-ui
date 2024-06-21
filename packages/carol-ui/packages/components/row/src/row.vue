@@ -1,32 +1,42 @@
 <template>
-  <div></div>
+  <component :is="tag" :class="rowKls" :style="(cssVars as CSSProperties)" ref="rowRef">
+    <slot />
+  </component>
 </template>
 
 <script lang="ts">
-import { type CSSProperties, computed, defineComponent, ref, type Ref } from 'vue'
+import { type CSSProperties, computed, defineComponent, ref, provide, type Ref } from 'vue'
 import { rowEmits, rowProps } from './row'
-import useTheme from '@/hooks/use-theme'
-import { rowLight } from '../styles/light'
-
+import { createIsClassName } from '@/utils'
+import { rowInjectionKey } from './context'
 export default defineComponent({
   name: 'ClRow',
   props: rowProps,
   emits: rowEmits,
   setup(props, { emit }) {
     const rowRef: Ref<HTMLElement | undefined> = ref<HTMLElement | undefined>()
-
-    const themeRef = useTheme('row', rowLight)
-
+    const gutter = computed(() => props.gutter)
     const cssVarsRef = computed<CSSProperties>(() => {
-      const theme = themeRef.value
-      const { self } = theme
-
-      return {}
+      const styles: CSSProperties = {}
+      if (!props.gutter) {
+        return styles
+      }
+      styles.marginRight = styles.marginLeft = `-${props.gutter / 2}px`
+      return styles
     })
+    const rowKls = computed(() => [
+      'cl-row',
+      createIsClassName(`justify-${props.justify}`, props.justify !== 'start'),
+      createIsClassName(`align-${props.align}`, props.align !== 'top')
+    ])
 
+    provide(rowInjectionKey, {
+      gutter
+    })
     return {
       cssVars: cssVarsRef,
-      rowRef
+      rowRef,
+      rowKls
     }
   }
 })

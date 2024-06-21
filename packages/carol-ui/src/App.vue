@@ -1,10 +1,9 @@
-<script setup lang="ts">
-import { rgba, composite } from 'seemly'
-import { ref } from 'vue'
-</script>
+<script setup lang="ts"></script>
 <template>
   <div>
-    <cl-button>点我</cl-button>
+    <cl-row :gutter="10" justify="end">
+      <span>123</span>
+    </cl-row>
   </div>
 </template>
 
