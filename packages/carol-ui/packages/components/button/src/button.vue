@@ -33,7 +33,7 @@ import { buttonProps, buttonEmits } from './button'
 import { buttonGroupInjectionKey } from '../../button-group/src/context'
 import { buttonLight } from '../styles/light'
 import useTheme from '@/hooks/use-theme'
-import { createHoverColor, createKey } from '@/utils'
+import { createHoverColor, createKey } from '@kirkw/utils'
 import ClIcon from '@/components/icon'
 
 export default defineComponent({

@@ -22,7 +22,7 @@
 import { type CSSProperties, computed, defineComponent, ref, type Ref, onMounted } from 'vue'
 import { drawerEmits, drawerProps } from './drawer'
 import useTheme from '@/hooks/use-theme'
-import { nextZIndex } from '@/utils/zIndex'
+import { nextZIndex } from '@kirkw/utils'
 import { drawerLight } from '../styles/light'
 import DrawerContentWrapper from './drawerContentWrapper.vue'
 

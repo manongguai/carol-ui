@@ -1,6 +1,8 @@
 /**
  * @description: Check if a value is of a certain type.
  */
+import type { VNode } from "vue";
+
 export function is(val: unknown, type: string) {
   return Object.prototype.toString.call(val) === `[object ${type}]`;
 }
@@ -45,6 +47,14 @@ export function isDate(val: unknown): val is Date {
  */
 export function isNumber(val: unknown): val is number {
   return is(val, "Number");
+}
+
+export const isNil = (val: unknown): val is string => {
+  return val === null || val === undefined;
+};
+
+export function isVNode(node: any): node is VNode {
+  return node && typeof node === "object" && Object.prototype.hasOwnProperty.call(node, "type");
 }
 
 /**

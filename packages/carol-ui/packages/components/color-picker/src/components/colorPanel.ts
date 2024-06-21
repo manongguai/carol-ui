@@ -1,4 +1,4 @@
-import { isString } from '@/utils/common'
+import { isString } from '@kirkw/utils'
 import type { ExtractPropTypes, PropType } from 'vue'
 
 export const colorPanelProps = {

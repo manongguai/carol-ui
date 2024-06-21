@@ -1,5 +1,5 @@
 import type { ExtractPropTypes, PropType } from 'vue'
-import { isString } from '@/utils/common'
+import { isString } from '@kirkw/utils'
 export type Type = 'text' | 'password' | 'phone'
 export const inputProps = {
   maxlength: Number,

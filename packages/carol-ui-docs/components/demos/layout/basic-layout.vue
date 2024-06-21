@@ -26,7 +26,6 @@
     <cl-col :span="4"><div class="grid-content ep-bg-purple-light" /></cl-col>
   </cl-row>
 </template>
-
 <style lang="scss">
 .cl-row {
   margin-bottom: 20px;
@@ -41,11 +40,5 @@
 .grid-content {
   border-radius: 4px;
   min-height: 36px;
-}
-.ep-bg-purple {
-  background: #000;
-}
-.ep-bg-purple-light {
-  background-color: #ccc;
 }
 </style>

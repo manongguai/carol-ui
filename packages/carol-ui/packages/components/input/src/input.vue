@@ -59,7 +59,7 @@ import { inputProps, inputEmits } from './input'
 import { inputLight } from '../styles/input-light'
 import useTheme from '@/hooks/use-theme'
 import ClIcon from '@/components/icon'
-// import { createHoverColor, createKey } from '@/utils'
+// import { createHoverColor, createKey } from '@kirkw/utils'
 export default defineComponent({
   name: 'ClInput',
   props: inputProps,

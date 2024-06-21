@@ -1,4 +1,4 @@
-import { isNumber } from '@/utils/common'
+import { isNumber } from '@kirkw/utils'
 import type { ExtractPropTypes } from 'vue'
 
 export const hueSliderProps = {

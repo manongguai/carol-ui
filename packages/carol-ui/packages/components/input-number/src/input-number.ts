@@ -1,5 +1,5 @@
 import type { ExtractPropTypes, PropType } from 'vue'
-import { isNumber, isNil } from '@/utils/common'
+import { isNumber, isNil } from '@kirkw/utils'
 export const inputNumberProps = {
   max: {
     type: Number,

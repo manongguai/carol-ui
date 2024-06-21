@@ -73,7 +73,7 @@ import {
 import { inputNumberProps, inputNumberEmits } from './input-number'
 import useTheme from '@/hooks/use-theme'
 import ClIcon from '@/components/icon'
-import { isNumber } from '@/utils/common'
+import { isNumber } from '@kirkw/utils'
 import { inputNumberLight } from '../../input/styles/input-light'
 export default defineComponent({
   name: 'ClInputNumber',

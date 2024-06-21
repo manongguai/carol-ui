@@ -1,7 +1,7 @@
 import { createVNode, render } from 'vue'
 import Notification from './notification.vue'
 import { notificationTypes } from './notification'
-import { isVNode } from '@/utils/common'
+import { isVNode } from '@kirkw/utils'
 import type { NotificationProps, NotificationQueue } from './notification'
 
 let seed = 1

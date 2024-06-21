@@ -7,7 +7,7 @@
 <script lang="ts">
 import { type CSSProperties, computed, defineComponent, ref, provide, type Ref } from 'vue'
 import { rowEmits, rowProps } from './row'
-import { createIsClassName } from '@/utils'
+import { createIsClassName } from '@kirkw/utils'
 import { rowInjectionKey } from './context'
 export default defineComponent({
   name: 'ClRow',
