@@ -131,7 +131,7 @@ export default defineComponent({
 
     const startTimer = () => {
       if (props.duration > 0) {
-        timer = setTimeout(() => {
+        timer = window.setTimeout(() => {
           close()
         }, props.duration)
       }
