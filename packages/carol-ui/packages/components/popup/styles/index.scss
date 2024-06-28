@@ -1,0 +1,99 @@
+.cl-popup {
+  min-width: 10px;
+  padding: var(--cl-popup-padding);
+  font-size: var(--cl-popup-font-size);
+  font-weight: var(--cl-popup-font-weight);
+  line-height: var(--cl-popup-line-height);
+  text-align: justify;
+  word-break: break-all;
+  border-radius: var(--cl-popup-border-radius);
+  z-index: 2000;
+  position: relative;
+  opacity: var(--cl-popup-opacity);
+  color: var(--cl-popup-color);
+  background: var(--cl-popup-background-color);
+  box-shadow: var(--cl-popup-box-shadow);
+  border: var(--cl-popup-border);
+
+  .popper__arrow {
+    background: var(--cl-popup-arrow-background-color);
+    border-color: var(--cl-popup-arrow-border-color);
+    width: var(--cl-popup-arrow-width);
+    height: var(--cl-popup-arrow-height);
+    position: absolute;
+    border-width: 1px 1px 0 0;
+    border-style: solid;
+  }
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #666;
+  }
+}
+
+.cl-popup-visible-transition {
+  animation: visible 0.5s;
+
+  @keyframes visible {
+
+    /* 开始 */
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+// 由于popper.js在泡子出现在不同方向时，它不负责改变箭头方向，只设置跟随位置
+// 故在不同方向展现时，改变箭头方向
+.cl-popup[x-placement^="top"] {
+  margin-bottom: 10px;
+
+  .popper__arrow {
+    bottom: var(--cl-popup-arrow-space);
+    transform: rotate(135deg);
+  }
+}
+
+.cl-popup[x-placement^="bottom"] {
+  margin-top: 10px;
+
+  .popper__arrow {
+    top: var(--cl-popup-arrow-space);
+    transform: rotate(-45deg);
+  }
+}
+
+.cl-popup[x-placement^="right"] {
+  margin-left: 10px;
+
+  .popper__arrow {
+    left: var(--cl-popup-arrow-space);
+    transform: rotate(-135deg);
+  }
+}
+
+.cl-popup[x-placement^="left"] {
+  margin-right: 10px;
+
+  .popper__arrow {
+    right: var(--cl-popup-arrow-space);
+    transform: rotate(45deg);
+  }
+}
+
+.cl-popup-txt-over-line {
+  word-wrap: break-word;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  display: -moz-box;
+}

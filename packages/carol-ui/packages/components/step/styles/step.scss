@@ -1,0 +1,120 @@
+@use '../../../styles/mixins/utils' as *;
+
+.cl-step {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+
+  .is-arrow {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .is-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex-wrap: wrap;
+  }
+  .is-center {
+    text-align: center;
+  }
+
+  .is-title {
+    font-size: var(--cl-step-title-size);
+    font-weight: var(--cl-step-font-weight);
+  }
+
+  .is-description {
+    font-size: var(--cl-step-description-size);
+    flex-grow: 1;
+  }
+
+  .cl-icon-arrow-right {
+    font-size: 20px;
+  }
+
+  .cl-step-icon {
+    font-size: 32px;
+    margin-right: 8px;
+  }
+}
+
+.cl-step-process {
+  .cl-step-icon {
+    color: var(--cl-step-color);
+    font-size: var(--cl-step-icon-size);
+  }
+
+  .is-title {
+    color: var(--cl-step-color);
+  }
+
+  .is-description {
+    color: var(--cl-step-color);
+  }
+
+  .cl-icon-arrow-right {
+    color: var(--cl-step-color);
+  }
+}
+
+.cl-step-finish {
+  .is-title {
+    color: var(--cl-step-description-color);
+  }
+
+  .is-description {
+    color: var(--cl-step-description-color);
+  }
+
+  .cl-step-icon {
+    font-size: var(--cl-step-icon-size);
+    color: var(--cl-step-color);
+  }
+
+  .cl-icon-arrow-right {
+    color: var(--cl-step-icon-color);
+  }
+}
+
+.cl-step-wait {
+  .is-title {
+    color: var(--cl-step-icon-color);
+  }
+
+  .is-description {
+    color: var(--cl-step-icon-color);
+  }
+
+  .cl-icon-arrow-right {
+    color: var(--cl-step-icon-color);
+  }
+
+  .cl-step-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::before {
+      color: var(--cl-step-icon-color);
+      counter-reset: index var(--index);
+      content: counter(index);
+      border: 1px solid var(--cl-step-icon-color);
+      display: inline-block;
+      text-align: center;
+      width: var(--cl-step-icon-index-width);
+      height: var(--cl-step-icon-index-hight);
+      line-height: var(--cl-step-icon-index-width);
+      border-radius: var(--cl-step-icon-index-raduis);
+      font-size: var(--cl-step-icon-index-size);
+      font-weight: var(--cl-step-font-weight);
+    }
+  }
+}
+.cl-step:last-of-type {
+  flex-basis: auto !important;
+  flex-shrink: 0;
+  flex-grow: 0;
+}

@@ -1,0 +1,40 @@
+.cl-color-picker-panel {
+  width: 100%;
+
+  .cl-color-picker-panel-content {
+    height: 134px;
+    display: flex;
+  }
+
+  .cl-color-picker-panel-form {
+    margin-top: 4px;
+    height: 24px;
+
+    .cl-color-picker-panel-input {
+      float: left;
+      width: 86px;
+
+      ::v-deep .cl-input {
+        height: 24px;
+        line-height: 24px;
+        font-size: 12px;
+        width: 100%;
+      }
+    }
+
+    .cl-color-picker-panel-button {
+      float: right;
+      vertical-align: middle;
+      height: 24px;
+    }
+  }
+}
+
+.cl-color-picker-popup {
+  width: 228px;
+  background-color: #fff;
+  box-shadow: 0 2px 6px 0 #d4d7dc;
+  border-radius: 2px;
+  padding: 4px;
+  box-sizing: border-box;
+}

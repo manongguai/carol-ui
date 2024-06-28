@@ -1,0 +1,116 @@
+@use '../../../styles/mixins/utils' as *;
+
+.cl-textarea {
+  width: var(--cl-input-width);
+  display: inline-flex;
+  resize: both; /*resize生效条件*/
+  overflow: auto;
+  max-width: 100%; /*防止水平方向拖出外部盒子*/
+  background: var(--cl-input-background-color);
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 1px;
+  border-color:var(--cl-input-border-color);
+  border-radius: var(--cl-input-border-radius);
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: var(--cl-input-padding-horizontal);
+  padding-right: var(--cl-input-padding-horizontal);
+  height: var(--cl-box-height);
+  min-height: var(--cl-box-min-height);
+  max-height: var(--cl-box-max-height);
+
+  &:hover,
+  &:focus {
+    border-color: var(--cl-input-border-hover-color);
+    .cl-input-clear {
+      visibility: visible;
+    }
+  }
+
+  .cl-textarea-inner-wrap {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    min-height: 100%;
+    display: flex;
+  }
+
+  .cl-textarea-bottom-right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    // height: 16px;
+    line-height: 16px;
+    > *:first-child {
+      padding-left: 8px;
+    }
+  }
+
+  .cl-textarea-inner {
+    width: 100%;
+    color: var(--cl-input-color);
+    font-size: var(--cl-input-font-size);
+    font-weight: var(--cl-input-font-weight);
+    line-height: 16px;
+    background: inherit;
+    caret-color: var(--cl-input-caret-color); /*光标蓝色*/
+    box-sizing: border-box;
+    word-break: break-all;
+    resize: none; /* 隐藏原生属性 */
+    border: 0;
+    outline: none;
+    padding: 0;
+    white-space: break-spaces; /* 行尾输入多个自动换行 */
+
+    &:hover,
+    &:focus {
+      outline: none;
+    }
+
+    &::-webkit-scrollbar {
+      /*隐藏滚动条*/
+      width: 0;
+    }
+
+    &::placeholder {
+      color: var(--cl-input-placeholder-color);
+      font-weight: var(--cl-input-font-weight);
+    }
+  }
+
+  .cl-input-count {
+    font-size: var(--cl-input-count-font-size);
+    color: var(--cl-input-count-color);
+    padding-right: var(--cl-input-padding-horizontal);
+    font-weight: var(--cl-input-font-weight);
+    line-height: 16px;
+    padding-left: 5px;
+  }
+
+   @include when(readonly) {
+    &:hover {
+      border-color: var(--cl-input-readonly-border-color);
+    }
+  }
+
+   @include when(disabled) {
+    background-color: var(--cl-input-disabled-background-color);
+    &:hover {
+      border-color: var(--cl-input-disabled-border-color);
+    }
+    .cl-textarea-inner {
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* 输入框（form-item中的元素在反映form校验失败时，都是通过css来控制）*/
+/* 由于目前没有form，所以先放置在这里 */
+.el-form-item.is-error .cl-textarea,
+.el-form-item.is-error .cl-textarea:focus,
+.el-form-item.is-error .cl-textarea:hover {
+  z-index: 9;
+  border-color: var(--cl-input-error-border-color);
+}

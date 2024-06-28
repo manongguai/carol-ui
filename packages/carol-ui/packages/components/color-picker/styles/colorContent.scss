@@ -1,0 +1,132 @@
+$L2_COLOR: #d4d7dc;
+$B2_COLOR: #507afd;
+$F3_FONT: 14px;
+$F4_FONT: 12px;
+$T4_COLOR: #54607c;
+
+.cl-color-picker-conent {
+  display: flex;
+  align-items: center;
+
+  .cl-color-picker-disk {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    border: 1px solid $L2_COLOR;
+    border-radius: 2px;
+    cursor: pointer;
+
+    .cl-color-picker-disk-content {
+      height: 100%;
+      width: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+
+      &__disabled {
+        cursor: no-drop;
+      }
+
+      &-empty {
+        width: 46px;
+        box-sizing: border-box;
+        border: 1px solid rgba(151, 153, 156, 1);
+        background: linear-gradient(to top right,
+            rgba(151, 153, 156, 0) 0%,
+            rgba(151, 153, 156, 0) calc(50% - 1.5px),
+            rgba(151, 153, 156, 1) 50%,
+            rgba(151, 153, 156, 0) calc(50% + 1.5px),
+            rgba(151, 153, 156, 0) 100%);
+      }
+    }
+
+    .cl-color-picker-disk-icon {
+      width: 32px;
+      height: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      background: #f7f7f7;
+      color: #707070;
+      border-left: 1px solid $L2_COLOR;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background: rgba(231, 243, 254, 1);
+        color: $B2_COLOR;
+      }
+
+      &__disabled:hover {
+        color: #707070;
+        background: #f7f7f7;
+        cursor: no-drop;
+      }
+    }
+  }
+
+  .cl-color-picker-input {
+    width: 96px;
+    margin-left: 4px;
+
+    .cl-input {
+      width: 100%;
+    }
+  }
+
+  .cl-color-picker-reset {
+    margin-left: 9px;
+    font-size: $F3_FONT;
+    font-weight: 500;
+    color: $T4_COLOR;
+
+    .reset-cion {
+      font-size: 12px;
+    }
+
+    &:hover {
+      color: $B2_COLOR;
+      cursor: pointer;
+    }
+  }
+}
+
+.cl-color-picker-content-size-default {
+  .cl-color-picker-disk {
+    height: 32px;
+    line-height: 32px;
+
+    .cl-color-picker-disk-icon {
+      line-height: 32px;
+    }
+
+    .cl-color-picker-disk-content-empty {
+      height: 28px;
+    }
+  }
+}
+
+.cl-color-picker-content-size-small {
+  .cl-color-picker-disk {
+    height: 24px;
+    line-height: 24px;
+
+    .cl-color-picker-disk-icon {
+      line-height: 24px;
+    }
+
+    .cl-color-picker-disk-content-empty {
+      height: 20px;
+      width: 43px;
+    }
+  }
+
+  .cl-color-picker-input {
+    ::v-deep .cl-input {
+      height: 24px;
+      line-height: 24px;
+      font-size: $F4_FONT;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDotEnv": [".env"],
+  "pipeline": {
+    "@kirkw/carol-ui-docs#docs:dev": {
+      "cache": false,
+      "persistent": true,
+      "dependsOn": ["@kirkw/carol-ui#build"]
+    },
+    "@kirkw/carol-ui#build": {
+      "dependsOn": [],
+      "cache": false,
+      "outputs": ["dist/**", "es/**", "lib/**"]
+    },
+    "@kirkw/carol-ui#type-check": {
+      "dependsOn": []
+    },
+    "@kirkw/carol-ui-docs#docs:build": {
+      "dependsOn": ["@kirkw/carol-ui#build"],
+      "outputs": ["dist/**"]
+    },
+    "@kirkw/viteConfig#build": {
+      "dependsOn": [],
+      "outputs": ["dist/**", "es/**", "lib/**"]
+    },
+    "test": {
+      "dependsOn": ["^test"],
+      "dotEnv": [".env.test.local", ".env.test", ".env.local", ".env"]
+    },
+    "lint": {
+      "dependsOn": []
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true,
+      "dotEnv": [".env.development.local", ".env.development", ".env.local", ".env"]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"],
+      "dotEnv": [".env.production.local", ".env.production", ".env.local", ".env"]
+    }
+  }
+}

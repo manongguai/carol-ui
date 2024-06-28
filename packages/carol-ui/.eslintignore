@@ -1,0 +1,4 @@
+commitlint.config.js
+srcipts/updateReadme.js
+srcipts/publish.js
+packages/fonts/*

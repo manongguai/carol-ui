@@ -1,0 +1,41 @@
+.cl-color-picker-pannel-slider {
+  width: 16px;
+  height: 134px;
+  border-radius: 2px;
+  background: blue;
+  position: relative;
+  user-select: none;
+  background-image:
+    linear-gradient(
+      180deg,
+      red,
+      rgb(255, 255, 0) 16.66%,
+      rgb(0, 255, 0) 33.33%,
+      rgb(0, 255, 255) 50%,
+      rgb(0, 0, 255) 66.66%,
+      rgb(255, 0, 255) 83.33%,
+      red
+    );
+
+  &-container {
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+  }
+
+  &-pointer {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+  }
+
+  &-picker {
+    width: 16px;
+    cursor: pointer;
+    border-radius: 1px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    background: #fff;
+  }
+}

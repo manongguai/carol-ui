@@ -1,0 +1,11 @@
+@use '../../../styles/mixins/utils' as *;
+
+.cl-color-picker {
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.cl-color-picker-custom—popup {
+    padding: 0 !important;
+}

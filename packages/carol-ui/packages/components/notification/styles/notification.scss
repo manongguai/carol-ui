@@ -1,0 +1,95 @@
+@use '../../../styles/mixins/utils' as *;
+
+@include b(notification)  {
+  display: flex;
+  width: var(--cl-notification-width);
+  padding: var(--cl-notification-padding);
+  border-radius: var(--cl-notification-border-radius);
+  box-sizing: border-box;
+  border: 1px solid var(--cl-notification-border-color);
+  position: fixed;
+  background-color: var(--cl-notification-background-color);
+  box-shadow: var(--cl-notification-box-shadow);
+  transition: opacity 0.3s, transform 0.3s, left 0.3s, right 0.3s, top 0.4s, bottom 0.3s;
+  overflow: hidden;
+  @include when(right) {
+    right: var(--cl-notification-position);
+  }
+
+  @include when(left) {
+    left: var(--cl-notification-position);
+  }
+  @include e(group) {
+    width: 100%;
+    margin-left: 8px;
+  }
+
+  @include e(title) {
+    display: flex;
+    font-size: var(--cl-notification-title-size);
+    font-weight: 500;
+    color: var(--cl-notification-title-color);
+    margin: 0;
+    border-bottom: 0;
+  }
+
+  @include e(content) {
+    font-size: var(--cl-notification-content-size);
+    padding: var(--cl-notification-content-padding);
+    text-align: justify;
+    font-weight: 500;
+    color: var(--cl-notification-content-color);
+    line-height: 16px;
+    overflow: auto;
+
+    &.is-no-title {
+      padding: 0 44px 0 0;
+      margin-top: 2px;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  @include e(footer) {
+    text-align: right;
+    margin-top: 16px;
+  }
+
+  @include e(closeBtn) {
+    position: absolute;
+    top: 14px;
+    right: 15px;
+    cursor: pointer;
+    color: var(--cl-notification-close-color);
+    font-size: 18px;
+
+    &:hover {
+      color: var(--cl-notification-close-hover-color)
+    }
+  }
+
+  @include e(icon) {
+    height: 12px;
+    width: 12px;
+    font-size: 16px;
+    margin-top: 4px;
+  }
+}
+
+.cl-notification-fade-enter {
+  &.is-right {
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  &.is-left {
+    left: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.cl-notification-fade-leave-active {
+  opacity: 0;
+}

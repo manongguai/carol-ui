@@ -1,0 +1,33 @@
+@use '../../../styles/mixins/utils' as *;
+
+.cl-title {
+  font-size: var(--cl-title-size);
+  color: var(--cl-title-color);
+  font-weight: var(--cl-font-weight);
+  position: relative;
+  &.cl-title--row {
+    padding-left: var(--cl-font-title-padding);
+  }
+  &.cl-title--col {
+    padding-bottom: var(--cl-title-row-paddding);
+  }
+  &.cl-title--col::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 0;
+    border-bottom: 1px solid var(--cl-font-row-color);
+    left: 0;
+    bottom: 0;
+  }
+  &.cl-title--row::after {
+    content: '';
+    position: absolute;
+    width: var(--cl-title-row-width);
+    height: var(--cl-title-row-height);
+    top: var(--cl-title-row-top);
+    transform: translateY(-50%);
+    background-color: var(--cl-font-col-color);
+    left: 0;
+  }
+}

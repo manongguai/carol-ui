@@ -1,0 +1,40 @@
+@use '../../../styles/mixins/utils' as *;
+
+.cl-input-group {
+  display: inline-flex;
+  align-items: center;
+  color: var(--cl-input-color);
+  font-size: var(--cl-input-font-size);
+  > * {
+    min-width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    box-sizing: border-box;
+    border: var(--cl-input-border);
+    border-radius: var(--cl-input-border-radius);
+    position: relative;
+    &:not(:last-child) {
+      margin-right: -1px;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &:hover {
+      z-index: 9;
+    }
+  }
+}
+
+
+// 输入框（form-item中的元素在反映form校验失败时，都是通过css来控制）
+// 由于目前没有form，所以先放置在这里
+.el-form-item.is-error .cl-input-group {
+  .cl-input,
+  .cl-input-number {
+    z-index: 9;
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "@kirkw/utils",
+  "version": "0.0.14",
+  "description": "",
+  "type": "module",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "3.3.2",
+    "seemly": "^0.3.6",
+    "uppercamelcase": "^3.0.0"
+  },
+  "devDependencies": {
+    "@kirkw/tsconfig": "workspace:*"
+  }
+}
