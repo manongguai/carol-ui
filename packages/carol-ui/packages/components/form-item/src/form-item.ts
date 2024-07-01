@@ -65,8 +65,7 @@ export const formItemProps = {
    * @description Control the size of components in this form-item.
    */
   size: {
-    type: String as PropType<ComponentSize>,
-    default: 'default'
+    type: String as PropType<ComponentSize>
   }
 }
 export type FormItemProps = ExtractPropTypes<typeof formItemProps>

@@ -1,21 +1,17 @@
 <template>
-  <div
-    :class="{
-      formItemKls
-    }"
-  >
+  <div :class="formItemKls" :style="cssVars">
     <div
       class="cl-form-item__label"
       v-if="!!label"
       :style="{
-        width: labelWidth || '90px'
+        width: labelWidth || 'auto'
       }"
     >
       {{ label }}
     </div>
     <div class="cl-form-item__content">
       <slot />
-      <transition-group :name="`cl-form-item-zoom-in-top`">
+      <transition-group :name="`cl-zoom-in-top`">
         <slot v-if="shouldShowError" name="error" :error="validateMessage">
           <div class="cl-form-item__error-message" v-if="validateMessage">
             {{ validateMessage }}
@@ -70,6 +66,9 @@ export default defineComponent({
     const themeRef = useTheme('formItem', formItemLight)
     const formContext = inject(formInjectionKey)
     const parentFormItemContext = inject(formItemInjectionKey)
+    const mergeSize = computed(() => {
+      return ''
+    })
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
       const { self } = theme
@@ -77,7 +76,9 @@ export default defineComponent({
       return {}
     })
     const formItemKls = computed(() => ['cl-form-item'])
-
+    const labelWidth = computed(() => {
+      return 'auto'
+    })
     const validateMessage = ref('')
     const shouldShowError = ref(false)
     return {
@@ -85,7 +86,8 @@ export default defineComponent({
       formItemRef,
       formItemKls,
       validateMessage,
-      shouldShowError
+      shouldShowError,
+      labelWidth
     }
   }
 })
