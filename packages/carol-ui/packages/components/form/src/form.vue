@@ -1,16 +1,16 @@
 <template>
-  <form :class="rowKls">
+  <form :class="formKls">
     <slot />
   </form>
 </template>
 
 <script lang="ts">
-import { type CSSProperties, computed, defineComponent, ref, type Ref } from 'vue'
+import { type CSSProperties, computed, defineComponent, ref, type Ref, provide } from 'vue'
 import { formEmits, formProps } from './form'
 import useTheme from '@/hooks/use-theme'
 import { formLight } from '../styles/light'
 import type { ValidateFieldsError } from 'async-validator'
-
+import { formInjectionKey } from './context'
 export default defineComponent({
   name: 'ClForm',
   props: formProps,
@@ -26,11 +26,19 @@ export default defineComponent({
 
       return {}
     })
-    const rowKls = computed(() => ['cl-form'])
+    const formKls = computed(() => ['cl-form'])
+    const validate = async function (callback: (valid: boolean) => void) {
+      console.log(111)
+    }
+    // 重置表单
+    const resetFields = () => {}
+    provide(formInjectionKey, {})
     return {
       cssVars: cssVarsRef,
       formRef,
-      rowKls
+      formKls,
+      validate,
+      resetFields
     }
   }
 })

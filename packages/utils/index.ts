@@ -8,3 +8,4 @@ export { createHoverColor } from "./color";
 export * from "./zIndex";
 export { createIsClassName } from "./create-is-classname";
 export * from "./handleMouseMove";
+export * from "./typescript";

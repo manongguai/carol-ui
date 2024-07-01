@@ -1,51 +1,33 @@
 <template>
-  <cl-row>
-    <cl-col :span="24"><div class="grid-content ep-bg-purple-dark" /></cl-col>
-  </cl-row>
-  <cl-row>
-    <cl-col :span="12"><div class="grid-content ep-bg-purple" /></cl-col>
-    <cl-col :span="12"><div class="grid-content ep-bg-purple-light" /></cl-col>
-  </cl-row>
-  <cl-row>
-    <cl-col :span="8"><div class="grid-content ep-bg-purple" /></cl-col>
-    <cl-col :span="8"><div class="grid-content ep-bg-purple-light" /></cl-col>
-    <cl-col :span="8"><div class="grid-content ep-bg-purple" /></cl-col>
-  </cl-row>
-  <cl-row>
-    <cl-col :span="6"><div class="grid-content ep-bg-purple" /></cl-col>
-    <cl-col :span="6"><div class="grid-content ep-bg-purple-light" /></cl-col>
-    <cl-col :span="6"><div class="grid-content ep-bg-purple" /></cl-col>
-    <cl-col :span="6"><div class="grid-content ep-bg-purple-light" /></cl-col>
-  </cl-row>
-  <cl-row>
-    <cl-col :span="4"><div class="grid-content ep-bg-purple" /></cl-col>
-    <cl-col :span="4"><div class="grid-content ep-bg-purple-light" /></cl-col>
-    <cl-col :span="4"><div class="grid-content ep-bg-purple" /></cl-col>
-    <cl-col :span="4"><div class="grid-content ep-bg-purple-light" /></cl-col>
-    <cl-col :span="4"><div class="grid-content ep-bg-purple" /></cl-col>
-    <cl-col :span="4"><div class="grid-content ep-bg-purple-light" /></cl-col>
-  </cl-row>
+  <cl-form ref="formRef" :model="{ form }">
+    <cl-form-item label="名称">
+      <cl-input v-model="form.name"></cl-input>
+    </cl-form-item>
+    <cl-form-item>
+      <div>
+        <cl-button type="primary" @click="submitForm">提交</cl-button>
+        <cl-button @click="resetForm">重置</cl-button>
+      </div>
+    </cl-form-item>
+  </cl-form>
 </template>
 
-<style lang="scss">
-.cl-row {
-  margin-bottom: 20px;
-}
-.cl-row:last-child {
-  margin-bottom: 0;
-}
-.cl-col {
-  border-radius: 4px;
-}
+<script lang="ts" setup>
+import { ref } from 'vue'
+import { type ClFormInstance } from '@/components/form/src/form'
+const formRef = ref<ClFormInstance>()
+const form = ref({
+  name: ''
+})
 
-.grid-content {
-  border-radius: 4px;
-  min-height: 36px;
+const submitForm = () => {
+  formRef.value!.validate((valid) => {
+    console.log(valid)
+  })
 }
-.ep-bg-purple {
-  background: #000;
+const resetForm = () => {
+  formRef.value!.resetFields()
 }
-.ep-bg-purple-light {
-  background-color: #ccc;
-}
-</style>
+</script>
+
+<style scoped lang="scss"></style>

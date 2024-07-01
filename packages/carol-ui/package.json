@@ -40,6 +40,8 @@
   },
   "dependencies": {
     "@kirkw/utils": "workspace:*",
+    "@vueuse/core": "^10.11.0",
+    "async-validator": "^4.2.5",
     "consola": "^3.2.3",
     "seemly": "^0.3.6",
     "uppercamelcase": "^3.0.0",

@@ -10,6 +10,7 @@
       color && `cl-button--color`,
       loading && `is-loading`
     ]"
+    :type="nativeType"
     :style="(cssVars as CSSProperties)"
     @click="handleClick"
   >

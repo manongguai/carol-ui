@@ -6,7 +6,6 @@
     "esbenp.prettier-vscode",
     "editorconfig.editorconfig",
     "streetsidesoftware.code-spell-checker",
-    "mikestead.dotenv",
-    "ms-ceintl.vscode-language-pack-zh-hans"
+    "mikestead.dotenv"
   ]
 }

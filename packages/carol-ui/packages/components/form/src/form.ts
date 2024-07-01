@@ -1,7 +1,15 @@
-import { componentSizes, type ComponentSize } from '@/constants/size'
-import type { ExtractPropTypes, PropType } from 'vue'
+import { type ComponentSize } from '@/constants/size'
+import form from './form.vue'
+import type { ExtractPropTypes, PropType, UnwrapRef, SetupContext } from 'vue'
 import type { Rules } from 'async-validator'
 import type { FormLabelPosition, RequireAsteriskPosition } from '@/constants/form'
+import type { FormItemProp } from '@/components/form-item/src/form-item'
+import { isArray, isBoolean, isString, type Arrayable } from '@kirkw/utils'
+import type {
+  FormItemContext,
+  FormValidateCallback,
+  FormValidationResult
+} from '../../../types/form'
 export const formProps = {
   size: {
     type: String as PropType<ComponentSize>,
@@ -83,9 +91,24 @@ export const formProps = {
 }
 export type FormProps = ExtractPropTypes<typeof formProps>
 export const formEmits = {
-  // validate: (prop: FormItemProp, isValid: boolean, message: string) =>
-  //   (isArray(prop) || isString(prop)) &&
-  //   isBoolean(isValid) &&
-  //   isString(message),
+  validate: (prop: FormItemProp, isValid: boolean, message: string) =>
+    (isArray(prop) || isString(prop)) && isBoolean(isValid) && isString(message)
 }
 export type FormEmits = typeof formEmits
+
+export type FormContext = FormProps & {
+  emit: SetupContext<FormEmits>['emit']
+  // expose
+  addField: (field: FormItemContext) => void
+  removeField: (field: FormItemContext) => void
+  resetFields: (props?: Arrayable<FormItemProp>) => void
+  clearValidate: (props?: Arrayable<FormItemProp>) => void
+  validateField: (
+    props?: Arrayable<FormItemProp>,
+    callback?: FormValidateCallback
+  ) => FormValidationResult
+}
+
+export type FormInjection = {}
+
+export type ClFormInstance = InstanceType<typeof form>

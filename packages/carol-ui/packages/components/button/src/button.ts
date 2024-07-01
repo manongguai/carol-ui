@@ -32,7 +32,7 @@ export const buttonProps = {
     type: String as PropType<Type>,
     default: 'default'
   },
-  attrType: {
+  nativeType: {
     type: String as PropType<'button' | 'submit' | 'reset'>,
     default: 'button'
   }
