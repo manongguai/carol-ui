@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <form :class="rowKls">
+    <slot />
+  </form>
 </template>
 
 <script lang="ts">
@@ -7,6 +9,7 @@ import { type CSSProperties, computed, defineComponent, ref, type Ref } from 'vu
 import { formEmits, formProps } from './form'
 import useTheme from '@/hooks/use-theme'
 import { formLight } from '../styles/light'
+import type { ValidateFieldsError } from 'async-validator'
 
 export default defineComponent({
   name: 'ClForm',
@@ -23,10 +26,11 @@ export default defineComponent({
 
       return {}
     })
-
+    const rowKls = computed(() => ['cl-form'])
     return {
       cssVars: cssVarsRef,
-      formRef
+      formRef,
+      rowKls
     }
   }
 })
