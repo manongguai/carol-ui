@@ -71,5 +71,3 @@ export const formItemProps = {
 export type FormItemProps = ExtractPropTypes<typeof formItemProps>
 
 export const formItemEmits = {}
-
-export type FormItemInjection = {}

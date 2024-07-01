@@ -1,4 +1,4 @@
 import { createInjectionKey } from '@kirkw/utils'
-import type { FormInjection } from './form'
+import type { FormContext } from './form'
 
-export const formInjectionKey = createInjectionKey<FormInjection>('cl-form')
+export const formInjectionKey = createInjectionKey<FormContext>('cl-form')
