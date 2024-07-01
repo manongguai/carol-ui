@@ -1,4 +1,4 @@
-import type { SetupContext, UnwrapRef } from 'vue'
+import type { Ref, SetupContext, ToRefs, UnwrapRef } from 'vue'
 import type { RuleItem, ValidateError, ValidateFieldsError } from 'async-validator'
 import { type ComponentSize } from '@/constants/size'
 import type { Arrayable } from '@kirkw/utils'
@@ -9,10 +9,9 @@ import type {
   FormItemValidateState
 } from '@/components/form-item/src/form-item'
 import type { FormEmits, FormProps } from '../components/form/src/form'
+import type { useFormLabelWidth } from '@/components/form-item/src/utils'
 
-// import type { useFormLabelWidth } from './utils'
-
-// export type FormLabelWidthContext = ReturnType<typeof useFormLabelWidth>
+export type FormLabelWidthContext = ReturnType<typeof useFormLabelWidth>
 export interface FormItemRule extends RuleItem {
   trigger?: Arrayable<string>
 }
@@ -96,20 +95,18 @@ export interface FormValidateFailure {
   fields: ValidateFieldsError
 }
 
-// export type FormContext = FormProps &
-//   UnwrapRef<FormLabelWidthContext> & {
-//     emit: SetupContext<FormEmits>['emit']
-
-//     // expose
-//     addField: (field: FormItemContext) => void
-//     removeField: (field: FormItemContext) => void
-//     resetFields: (props?: Arrayable<FormItemProp>) => void
-//     clearValidate: (props?: Arrayable<FormItemProp>) => void
-//     validateField: (
-//       props?: Arrayable<FormItemProp>,
-//       callback?: FormValidateCallback
-//     ) => FormValidationResult
-//   }
+export type FormContext = FormProps & {
+  emit: SetupContext<FormEmits>['emit']
+  // expose
+  addField: (field: FormItemContext) => void
+  removeField: (field: FormItemContext) => void
+  resetFields: (props?: Arrayable<FormItemProp>) => void
+  clearValidate: (props?: Arrayable<FormItemProp>) => void
+  validateField: (
+    props?: Arrayable<FormItemProp>,
+    callback?: FormValidateCallback
+  ) => FormValidationResult
+}
 
 export interface FormItemContext extends FormItemProps {
   $el: HTMLDivElement | undefined

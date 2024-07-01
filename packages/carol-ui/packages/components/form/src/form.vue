@@ -5,12 +5,23 @@
 </template>
 
 <script lang="ts">
-import { type CSSProperties, computed, defineComponent, ref, type Ref, provide } from 'vue'
+import {
+  type CSSProperties,
+  computed,
+  defineComponent,
+  ref,
+  type Ref,
+  provide,
+  reactive,
+  toRefs
+} from 'vue'
 import { formEmits, formProps } from './form'
 import useTheme from '@/hooks/use-theme'
 import { formLight } from '../styles/light'
 import type { ValidateFieldsError } from 'async-validator'
 import { formInjectionKey } from './context'
+import type { FormContext, FormItemContext, FormValidationResult } from '@/types/form'
+import { useFormLabelWidth } from '@/components/form-item/src/utils'
 export default defineComponent({
   name: 'ClForm',
   props: formProps,
@@ -30,9 +41,25 @@ export default defineComponent({
     const validate = async function (callback: (valid: boolean) => void) {
       console.log(111)
     }
+
+    const clearValidate: FormContext['clearValidate'] = (props = []) => {}
+    const validateField: FormContext['validateField'] = async (modelProps = []) => {
+      return Promise.resolve(false)
+    }
+    const addField = (field: FormItemContext) => {}
+    const removeField = (field: FormItemContext) => {}
     // 重置表单
     const resetFields = () => {}
-    provide(formInjectionKey, {})
+    provide(formInjectionKey, {
+      ...props,
+      emit,
+      resetFields,
+      clearValidate,
+      validateField,
+      addField,
+      removeField,
+      ...useFormLabelWidth()
+    })
     return {
       cssVars: cssVarsRef,
       formRef,

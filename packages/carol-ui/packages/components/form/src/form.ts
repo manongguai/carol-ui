@@ -96,19 +96,6 @@ export const formEmits = {
 }
 export type FormEmits = typeof formEmits
 
-export type FormContext = FormProps & {
-  emit: SetupContext<FormEmits>['emit']
-  // expose
-  addField: (field: FormItemContext) => void
-  removeField: (field: FormItemContext) => void
-  resetFields: (props?: Arrayable<FormItemProp>) => void
-  clearValidate: (props?: Arrayable<FormItemProp>) => void
-  validateField: (
-    props?: Arrayable<FormItemProp>,
-    callback?: FormValidateCallback
-  ) => FormValidationResult
-}
-
 export type FormInjection = {}
 
 export type ClFormInstance = InstanceType<typeof form>
