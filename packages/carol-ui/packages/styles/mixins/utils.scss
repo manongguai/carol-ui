@@ -21,6 +21,13 @@
     }
   }
 }
+
+@mixin pseudo($pseudo) {
+  @at-root #{&}#{':#{$pseudo}'} {
+    @content;
+  }
+}
+
 @mixin b($block) {
   $B: $namespace + '-' + $block !global;
   .#{$B} {

@@ -1,9 +1,11 @@
 @use '../../../styles/mixins/utils' as *;
+@use '../../../styles/mixins/config/' as *;
 
 .cl-form-item {
   display: flex;
   align-items: center;
   margin-bottom: 18px;
+
   &__label {
     font-size: var(--cl-form-label-font-size);
     color: var(--cl-form-label-color);
@@ -20,5 +22,24 @@
     top: 100%;
     font-size: var(--cl-form-error-message-font-size);
     color: var(--cl-form-error-message-color);
+  }
+
+  @include when(required) {
+    @include pseudo('not(.is-no-asterisk)') {
+      &.asterisk-left {
+        > .#{$namespace}-form-item__label:before {
+          content: '*';
+          color: var(--cl-color-error);
+          margin-right: 4px;
+        }
+      }
+      &.asterisk-right {
+        > .#{$namespace}-form-item__label:after {
+          content: '*';
+          color: var(--cl-color-error);
+          margin-left: 4px;
+        }
+      }
+    }
   }
 }

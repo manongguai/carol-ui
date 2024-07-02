@@ -50,7 +50,7 @@ import { refDebounced } from '@vueuse/core'
 // import { useFormSize } from './hooks'
 // import FormLabelWrap from './form-label-wrap'
 import type { RuleItem } from 'async-validator'
-import { createKey, type Arrayable } from '@kirkw/utils'
+import { createIsClassName, createKey, type Arrayable } from '@kirkw/utils'
 import type { FormItemContext, FormItemRule, FormValidateFailure } from '@/types/form'
 import type { FormItemValidateState } from './form-item'
 import { formInjectionKey } from '@/components/form/src/context'
@@ -85,7 +85,8 @@ export default defineComponent({
       }
       const colorProps = {
         '--cl-form-label-color': common.textColor3,
-        '--cl-form-error-message-color': common.warningColor
+        '--cl-form-error-message-color': common.warningColor,
+        '--cl-color-error': common.errorColor
       }
 
       return {
@@ -93,7 +94,12 @@ export default defineComponent({
         ...colorProps
       }
     })
-    const formItemKls = computed(() => ['cl-form-item'])
+    const formItemKls = computed(() => [
+      'cl-form-item',
+      createIsClassName('required', props.required === true),
+      createIsClassName('no-asterisk', formContext?.hideRequiredAsterisk),
+      `asterisk-right`
+    ])
     const labelWidth = computed(() => {
       return 'auto'
     })
