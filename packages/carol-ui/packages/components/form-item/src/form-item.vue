@@ -2,12 +2,12 @@
   <div :class="formItemKls" :style="cssVars">
     <div
       class="cl-form-item__label"
-      v-if="!!label"
+      v-if="!!hasLabel"
       :style="{
         width: labelWidth || 'auto'
       }"
     >
-      {{ label }}
+      {{ currentLabel }}
     </div>
     <div class="cl-form-item__content">
       <slot />
@@ -71,7 +71,6 @@ export default defineComponent({
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
       const { self, common } = theme
-
       // size
       const {
         [createKey('labelFontSize', size.value)]: fontSize,
@@ -94,6 +93,11 @@ export default defineComponent({
         ...colorProps
       }
     })
+    const hasLabel = computed<boolean>(() => {
+      return !!(props.label || slots.label)
+    })
+    const currentLabel = computed(() => `${props.label || ''}${formContext?.labelSuffix || ''}`)
+
     const formItemKls = computed(() => [
       'cl-form-item',
       createIsClassName('required', props.required === true),
@@ -111,7 +115,9 @@ export default defineComponent({
       formItemKls,
       validateMessage,
       shouldShowError,
-      labelWidth
+      labelWidth,
+      currentLabel,
+      hasLabel
     }
   }
 })

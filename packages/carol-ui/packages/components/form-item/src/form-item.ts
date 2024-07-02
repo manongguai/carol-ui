@@ -44,10 +44,6 @@ export const formItemProps = {
     type: String as PropType<FormItemValidateState>
   },
   /**
-   * @description Same as for in native label.
-   */
-  for: String,
-  /**
    * @description Inline style validate message.
    */
   inlineMessage: {
