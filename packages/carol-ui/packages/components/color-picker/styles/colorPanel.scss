@@ -32,7 +32,7 @@
 
 .cl-color-picker-popup {
   width: 228px;
-  background-color: #fff;
+  background-color: var('--cl-bg-color');
   box-shadow: 0 2px 6px 0 #d4d7dc;
   border-radius: 2px;
   padding: 4px;

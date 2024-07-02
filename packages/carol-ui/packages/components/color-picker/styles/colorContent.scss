@@ -1,10 +1,4 @@
-$L2_COLOR: #d4d7dc;
-$B2_COLOR: #507afd;
-$F3_FONT: 14px;
-$F4_FONT: 12px;
-$T4_COLOR: #54607c;
-
-.cl-color-picker-conent {
+.cl-color-picker-content {
   display: flex;
   align-items: center;
 
@@ -12,7 +6,7 @@ $T4_COLOR: #54607c;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    border: 1px solid $L2_COLOR;
+    border: 1px solid var(--cl-color-picker-disk-border-color);
     border-radius: 2px;
     cursor: pointer;
 
@@ -31,13 +25,15 @@ $T4_COLOR: #54607c;
       &-empty {
         width: 46px;
         box-sizing: border-box;
-        border: 1px solid rgba(151, 153, 156, 1);
-        background: linear-gradient(to top right,
-            rgba(151, 153, 156, 0) 0%,
-            rgba(151, 153, 156, 0) calc(50% - 1.5px),
-            rgba(151, 153, 156, 1) 50%,
-            rgba(151, 153, 156, 0) calc(50% + 1.5px),
-            rgba(151, 153, 156, 0) 100%);
+        border: 1px solid var(--cl-color-picker-disk-border-color);
+        background: linear-gradient(
+          to top right,
+          rgba(151, 153, 156, 0) 0%,
+          rgba(151, 153, 156, 0) calc(50% - 1.5px),
+          rgba(151, 153, 156, 1) 50%,
+          rgba(151, 153, 156, 0) calc(50% + 1.5px),
+          rgba(151, 153, 156, 0) 100%
+        );
       }
     }
 
@@ -46,21 +42,21 @@ $T4_COLOR: #54607c;
       height: 100%;
       box-sizing: border-box;
       text-align: center;
-      background: #f7f7f7;
-      color: #707070;
-      border-left: 1px solid $L2_COLOR;
+      background: var();
+      color: var(--cl-color-picker-disk-icon-color);
+      border-left: 1px solid var(--cl-color-picker-disk-border-color);
       display: flex;
       align-items: center;
       justify-content: center;
 
       &:hover {
-        background: rgba(231, 243, 254, 1);
-        color: $B2_COLOR;
+        background: var(--cl-color-picker-disk-icon-hover-bg-color);
+        color: var(--cl-color-primary-color);
       }
 
       &__disabled:hover {
-        color: #707070;
-        background: #f7f7f7;
+        color: var(--cl-text-color-disabled);
+        background: var(--cl-color-picker-disk-icon-hover-bg-color);
         cursor: no-drop;
       }
     }
@@ -77,16 +73,16 @@ $T4_COLOR: #54607c;
 
   .cl-color-picker-reset {
     margin-left: 9px;
-    font-size: $F3_FONT;
+    font-size: var(--cl-font-size-medium);
     font-weight: 500;
-    color: $T4_COLOR;
+    color: var(--cl-color-picker-reset-color);
 
     .reset-cion {
-      font-size: 12px;
+      font-size: var(--cl-font-size-small);
     }
 
     &:hover {
-      color: $B2_COLOR;
+      color: var(--cl-color-primary-color);
       cursor: pointer;
     }
   }
@@ -126,7 +122,7 @@ $T4_COLOR: #54607c;
     ::v-deep .cl-input {
       height: 24px;
       line-height: 24px;
-      font-size: $F4_FONT;
+      font-size: var(--cl-font-size-small);
     }
   }
 }

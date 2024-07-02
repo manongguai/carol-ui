@@ -10,6 +10,8 @@
       </div>
     </cl-form-item>
   </cl-form>
+
+  <cl-color-picker v-model="color1"></cl-color-picker>
 </template>
 
 <script lang="ts" setup>
@@ -19,7 +21,7 @@ const formRef = ref<ClFormInstance>()
 const form = ref({
   name: ''
 })
-
+const color1 = ref('#000000')
 const submitForm = () => {
   formRef.value!.validate((valid) => {
     console.log(valid)

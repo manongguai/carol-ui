@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'cl-color-picker-conent',
+      'cl-color-picker-content',
       `cl-color-picker-content-size-${sizeEnums[size] || 'default'}`
     ]"
   >
@@ -32,6 +32,7 @@
     </div>
     <cl-button
       v-if="showResetButton"
+      class="cl-color-picker-reset"
       style="margin-left: 9px"
       :disabled="disabled"
       @click="colorReset"

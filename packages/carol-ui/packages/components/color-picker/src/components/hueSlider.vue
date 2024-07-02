@@ -1,18 +1,18 @@
 <template>
-  <div class="cl-color-picker-pannel-slider">
+  <div class="cl-color-picker-panel-slider">
     <div
       ref="sliderRef"
       @mousedown="handleMouseDown"
       :style="{ margin: `${HANDLE_SIZE_NUM / 2}px 0;` }"
-      class="cl-color-picker-pannel-slider-container"
+      class="cl-color-picker-panel-slider-container"
     >
       <div
         :style="{ top: `calc((${hue}%) / 359 * 100)` }"
-        class="cl-color-picker-pannel-slider-pointer"
+        class="cl-color-picker-panel-slider-pointer"
       >
         <div
           :style="{ height: HANDLE_SIZE, transform: `translateY(-${HANDLE_SIZE_NUM / 2}px)` }"
-          class="cl-color-picker-pannel-slider-picker"
+          class="cl-color-picker-panel-slider-picker"
         ></div>
       </div>
     </div>

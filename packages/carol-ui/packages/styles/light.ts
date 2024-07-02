@@ -169,6 +169,7 @@ const derived = {
   // buttonColor2Pressed: 'rgba(46, 51, 56, .13)',
 
   //bg
+  bgColor0: 'rgb(255, 255, 255)', //BG1: #FFFFFF
   bgColor1: 'rgb(247, 248, 250)', //BG1: #F7F8FA
   bgColor2: 'rgb(240, 242, 245)', //BG2: #F0F2F5
   bgColor3: 'rgb(240, 243, 250)', //BG3: #F0F3FA

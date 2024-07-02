@@ -1,5 +1,5 @@
 <template>
-  <div class="cl-color-picker">
+  <div class="cl-color-picker" :style="cssVars">
     <cl-popup
       popupClass="cl-color-picker-custom—popup"
       v-model="panelVisible"
@@ -72,8 +72,27 @@ export default defineComponent({
     const themeRef = useTheme('colorPicker', colorPickerLight)
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
-      const { self } = theme
-      return {}
+      const { self, common } = theme
+
+      const colorProps = {
+        '--cl-color-picker-disk-border-color': common.borderColor,
+        '--cl-color-primary-color': common.primaryColor,
+        '--cl-color-picker-reset-color': common.infoColor,
+        '--cl-color-picker-disk-icon-color': common.textColor4,
+        '--cl-color-picker-disk-icon-bg-color': common.bgColor1,
+        '--cl-color-picker-disk-icon-hover-bg-color': common.bgColor4,
+        '--cl-text-color-disabled': common.textColorDisabled,
+        '--cl-bg-color': common.bgColor0
+      }
+
+      const fontProps = {
+        '--cl-font-size-medium': common.fontSizeMedium,
+        '--cl-font-size-small': common.fontSizeSmall
+      }
+      return {
+        ...fontProps,
+        ...colorProps
+      }
     })
     //  重置颜色
     function colorReset() {
