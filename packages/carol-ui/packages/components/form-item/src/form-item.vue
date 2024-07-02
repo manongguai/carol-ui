@@ -50,11 +50,12 @@ import { refDebounced } from '@vueuse/core'
 // import { useFormSize } from './hooks'
 // import FormLabelWrap from './form-label-wrap'
 import type { RuleItem } from 'async-validator'
-import type { Arrayable } from '@kirkw/utils'
+import { createKey, type Arrayable } from '@kirkw/utils'
 import type { FormItemContext, FormItemRule, FormValidateFailure } from '@/types/form'
 import type { FormItemValidateState } from './form-item'
 import { formInjectionKey } from '@/components/form/src/context'
 import { formItemInjectionKey } from './context'
+import { useFormSize } from '@/hooks/use-form-props'
 
 export default defineComponent({
   name: 'ClFormItem',
@@ -66,14 +67,31 @@ export default defineComponent({
     const themeRef = useTheme('formItem', formItemLight)
     const formContext = inject(formInjectionKey)
     const parentFormItemContext = inject(formItemInjectionKey)
-    const mergeSize = computed(() => {
-      return ''
-    })
+    const size = useFormSize()
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
-      const { self } = theme
+      const { self, common } = theme
 
-      return {}
+      // size
+      const {
+        [createKey('labelFontSize', size.value)]: fontSize,
+        [createKey('marginBottom', size.value)]: marginBottom
+      } = self
+
+      const sizeProps = {
+        '--cl-form-label-font-size': fontSize,
+        '--cl-form-error-message-font-size': common.fontSizeSmall,
+        '--cl-form-margin-bottom': marginBottom
+      }
+      const colorProps = {
+        '--cl-form-label-color': common.textColor3,
+        '--cl-form-error-message-color': common.warningColor
+      }
+
+      return {
+        ...sizeProps,
+        ...colorProps
+      }
     })
     const formItemKls = computed(() => ['cl-form-item'])
     const labelWidth = computed(() => {

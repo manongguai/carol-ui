@@ -8,14 +8,14 @@ import { useProp } from './use-prop'
 
 export const useFormSize = (
   fallback?: MaybeRef<ComponentSize | undefined>,
-  ignore: Partial<Record<'prop' | 'form' | 'formItem' | 'global', boolean>> = {}
+  ignore: Partial<Record<'prop' | 'form' | 'formItem', boolean>> = {}
 ) => {
   const emptyRef = ref(undefined)
   const size = ignore.prop ? emptyRef : useProp<ComponentSize>('size')
   const form = ignore.form ? { size: undefined } : inject(formInjectionKey, undefined)
   const formItem = ignore.formItem ? { size: undefined } : inject(formItemInjectionKey, undefined)
   return computed(
-    (): ComponentSize => size.value || unref(fallback) || formItem?.size || form?.size || ''
+    (): ComponentSize => size.value || unref(fallback) || formItem?.size || form?.size || 'medium'
   )
 }
 export const useFormDisabled = (fallback?: MaybeRef<boolean | undefined>) => {

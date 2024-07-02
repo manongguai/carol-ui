@@ -24,6 +24,9 @@ export type MergedTheme<T> = T extends Theme<unknown, infer V>
     }
   : T
 
+/* 
+    description: 合并global , com
+ */
 function useTheme<N, T>(
   resolveId: Exclude<keyof GlobalTheme, 'common' | 'name'>,
   defaultTheme: Theme<N, T>

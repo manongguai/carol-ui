@@ -1,5 +1,6 @@
 @use 'config' as *;
 @use 'function' as *;
+@use 'transition' as *;
 
 // Break-points
 @mixin res($key, $map: $breakpoints) {

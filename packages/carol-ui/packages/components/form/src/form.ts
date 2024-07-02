@@ -13,7 +13,7 @@ import type {
 export const formProps = {
   size: {
     type: String as PropType<ComponentSize>,
-    default: 'default'
+    default: 'medium'
   },
   disabled: Boolean,
   model: Object,
