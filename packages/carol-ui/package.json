@@ -52,7 +52,7 @@
     "@rushstack/eslint-patch": "^1.2.0",
     "@testing-library/vue": "^8.1.0",
     "@tsconfig/node18": "^2.0.1",
-    "@types/node": "^18.16.8",
+    "@types/node": "^18.19.39",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitest/coverage-v8": "^1.6.0",
     "@vue/eslint-config-prettier": "^7.1.0",

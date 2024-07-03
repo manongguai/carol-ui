@@ -1,6 +1,6 @@
 <template>
-  <cl-form ref="formRef" :model="{ form }">
-    <cl-form-item label="名称" required>
+  <cl-form ref="formRef" :rules="rules" :model="{ form }">
+    <cl-form-item label="名称">
       <cl-input v-model="form.name"></cl-input>
     </cl-form-item>
     <cl-form-item>
@@ -13,15 +13,24 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { reactive, ref } from 'vue'
 import { type ClFormInstance } from '@/components/form/src/form'
 const formRef = ref<ClFormInstance>()
 const form = ref({
   name: ''
 })
+const rules = reactive({
+  name: [
+    {
+      required: true,
+      message: '名称不能为空',
+      trigger: 'blur'
+    }
+  ]
+})
 const submitForm = () => {
-  formRef.value!.validate((valid) => {
-    console.log(valid)
+  formRef.value!.validate((valid, fields) => {
+    console.log(valid, fields)
   })
 }
 const resetForm = () => {

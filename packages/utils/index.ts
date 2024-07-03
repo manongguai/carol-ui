@@ -10,3 +10,4 @@ export { createIsClassName } from "./create-is-classname";
 export * from "./handleMouseMove";
 export * from "./typescript";
 export * from "./array";
+export * from "./error";

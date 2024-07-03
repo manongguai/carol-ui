@@ -1,5 +1,5 @@
 import { computed, ref } from 'vue'
-import { castArray } from '@kirkw/utils'
+import { castArray, debugWarn } from '@kirkw/utils'
 import type { Arrayable } from '@kirkw/utils'
 import type { FormItemProp } from './form-item'
 import type { FormItemContext } from '@/types/form'
@@ -18,8 +18,7 @@ export function useFormLabelWidth() {
   function getLabelWidthIndex(width: number) {
     const index = potentialLabelWidthArr.value.indexOf(width)
     if (index === -1 && autoLabelWidth.value === '0') {
-      // debugWarn(SCOPE, `unexpected width ${width}`)
-      console.warn(SCOPE, `unexpected width ${width}`)
+      debugWarn(SCOPE, `unexpected width ${width}`)
     }
     return index
   }

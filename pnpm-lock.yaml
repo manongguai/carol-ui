@@ -139,7 +139,7 @@ importers:
         specifier: ^2.0.1
         version: 2.0.1
       '@types/node':
-        specifier: ^18.16.8
+        specifier: ^18.19.39
         version: 18.19.39
       '@vitejs/plugin-vue':
         specifier: ^4.2.3
