@@ -25,7 +25,7 @@ export const formItemProps = {
    */
   required: {
     type: Boolean,
-    default: false
+    default: undefined
   },
   /**
    * @description Validation rules of form, see the [following table](#formitemrule), more advanced usage at [async-validator](https://github.com/yiminghe/async-validator).

@@ -134,15 +134,13 @@ export default defineComponent({
       if (formRules && props.prop) {
         const _rules = getProp<Arrayable<FormItemRule> | undefined>(formRules, props.prop).value
         if (_rules) {
-          rules.push(..._rules)
+          rules.push(...ensureArray(_rules))
         }
       }
-
       if (required !== undefined) {
         const requiredRules = rules
           .map((rule, i) => [rule, i] as const)
           .filter(([rule]) => Object.keys(rule).includes('required'))
-
         if (requiredRules.length > 0) {
           for (const [rule, i] of requiredRules) {
             if (rule.required === required) continue
@@ -225,8 +223,6 @@ export default defineComponent({
     const validate: FormItemContext['validate'] = async (trigger, callback) => {
       // skip validation if its resetting
       if (isResettingField || !props.prop) {
-        console.log(1)
-
         return false
       }
 
@@ -282,8 +278,8 @@ export default defineComponent({
 
     const context = reactive<FormItemContext>({
       ...toRefs(props),
-      $el: formItemRef,
-      size: size,
+      $el: formItemRef.value,
+      size: size.value,
       validateState,
       hasLabel,
       resetField,
