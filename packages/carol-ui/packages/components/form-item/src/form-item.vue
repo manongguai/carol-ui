@@ -45,12 +45,17 @@ import { formItemLight } from '../styles/light'
 import {} from 'vue'
 import AsyncValidator from 'async-validator'
 import { refDebounced } from '@vueuse/core'
-// import { addUnit, ensureArray, getProp, isBoolean, isFunction, isString } from '@kirkw/utils'
-// import { useId, useNamespace } from '@element-plus/hooks'
-// import { useFormSize } from './hooks'
-// import FormLabelWrap from './form-label-wrap'
+import { clone } from 'lodash'
 import type { RuleItem } from 'async-validator'
-import { createIsClassName, createKey, type Arrayable } from '@kirkw/utils'
+import {
+  createIsClassName,
+  createKey,
+  ensureArray,
+  getProp,
+  isFunction,
+  isString,
+  type Arrayable
+} from '@kirkw/utils'
 import type { FormItemContext, FormItemRule, FormValidateFailure } from '@/types/form'
 import type { FormItemValidateState } from './form-item'
 import { formInjectionKey } from '@/components/form/src/context'
@@ -62,12 +67,15 @@ export default defineComponent({
   props: formItemProps,
   emits: formItemEmits,
   setup(props, { emit }) {
-    const formItemRef: Ref<HTMLElement | undefined> = ref<HTMLElement | undefined>()
+    const formItemRef: Ref<HTMLDivElement | undefined> = ref<HTMLDivElement | undefined>()
     const slots = useSlots()
     const themeRef = useTheme('formItem', formItemLight)
     const formContext = inject(formInjectionKey)
     const parentFormItemContext = inject(formItemInjectionKey)
-    const size = useFormSize()
+    const size = useFormSize(undefined, { formItem: false })
+
+    const validateState = ref<FormItemValidateState>('')
+
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
       const { self, common } = theme
@@ -109,6 +117,189 @@ export default defineComponent({
     })
     const validateMessage = ref('')
     const shouldShowError = ref(false)
+    let initialValue: any = undefined
+
+    let isResettingField = false
+
+    const normalizedRules = computed(() => {
+      const { required } = props
+
+      const rules: FormItemRule[] = []
+
+      if (props.rules) {
+        rules.push(...ensureArray(props.rules))
+      }
+
+      const formRules = formContext?.rules
+      if (formRules && props.prop) {
+        const _rules = getProp<Arrayable<FormItemRule> | undefined>(formRules, props.prop).value
+        if (_rules) {
+          rules.push(..._rules)
+        }
+      }
+
+      if (required !== undefined) {
+        const requiredRules = rules
+          .map((rule, i) => [rule, i] as const)
+          .filter(([rule]) => Object.keys(rule).includes('required'))
+
+        if (requiredRules.length > 0) {
+          for (const [rule, i] of requiredRules) {
+            if (rule.required === required) continue
+            rules[i] = { ...rule, required }
+          }
+        } else {
+          rules.push({ required })
+        }
+      }
+      return rules
+    })
+    const propString = computed(() => {
+      if (!props.prop) return ''
+      return isString(props.prop) ? props.prop : props.prop.join('.')
+    })
+
+    const fieldValue = computed(() => {
+      const model = formContext?.model
+      if (!model || !props.prop) {
+        return
+      }
+      return getProp(model, props.prop).value
+    })
+    const validateEnabled = computed(() => normalizedRules.value.length > 0)
+    const setValidationState = (state: FormItemValidateState) => {
+      validateState.value = state
+    }
+    const getFilteredRule = (trigger: string) => {
+      const rules = normalizedRules.value
+      return (
+        rules
+          .filter((rule) => {
+            if (!rule.trigger || !trigger) return true
+            if (Array.isArray(rule.trigger)) {
+              return rule.trigger.includes(trigger)
+            } else {
+              return rule.trigger === trigger
+            }
+          })
+          // exclude trigger
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          .map(({ trigger, ...rule }): RuleItem => rule)
+      )
+    }
+
+    const onValidationFailed = (error: FormValidateFailure) => {
+      const { errors, fields } = error
+      if (!errors || !fields) {
+        console.error(error)
+      }
+
+      setValidationState('error')
+      validateMessage.value = errors ? errors?.[0]?.message ?? `${props.prop} is required` : ''
+
+      formContext?.emit('validate', props.prop!, false, validateMessage.value)
+    }
+
+    const onValidationSucceeded = () => {
+      setValidationState('success')
+      formContext?.emit('validate', props.prop!, true, '')
+    }
+
+    const doValidate = async (rules: RuleItem[]): Promise<true> => {
+      const modelName = propString.value
+      const validator = new AsyncValidator({
+        [modelName]: rules
+      })
+      return validator
+        .validate({ [modelName]: fieldValue.value }, { firstFields: true })
+        .then(() => {
+          onValidationSucceeded()
+          return true as const
+        })
+        .catch((err: FormValidateFailure) => {
+          onValidationFailed(err as FormValidateFailure)
+          return Promise.reject(err)
+        })
+    }
+
+    const validate: FormItemContext['validate'] = async (trigger, callback) => {
+      // skip validation if its resetting
+      if (isResettingField || !props.prop) {
+        console.log(1)
+
+        return false
+      }
+
+      const hasCallback = isFunction(callback)
+      if (!validateEnabled.value) {
+        callback?.(false)
+        return false
+      }
+
+      const rules = getFilteredRule(trigger)
+
+      if (rules.length === 0) {
+        callback?.(true)
+        return true
+      }
+
+      setValidationState('validating')
+
+      return doValidate(rules)
+        .then(() => {
+          callback?.(true)
+          return true as const
+        })
+        .catch((err: FormValidateFailure) => {
+          const { fields } = err
+          callback?.(false, fields)
+          return hasCallback ? false : Promise.reject(fields)
+        })
+    }
+
+    const clearValidate: FormItemContext['clearValidate'] = () => {
+      setValidationState('')
+      validateMessage.value = ''
+      isResettingField = false
+    }
+
+    const resetField: FormItemContext['resetField'] = async () => {
+      const model = formContext?.model
+      if (!model || !props.prop) return
+
+      const computedValue = getProp(model, props.prop)
+
+      // prevent validation from being triggered
+      isResettingField = true
+
+      computedValue.value = clone(initialValue)
+
+      await nextTick()
+      clearValidate()
+
+      isResettingField = false
+    }
+
+    const context = reactive<FormItemContext>({
+      ...toRefs(props),
+      $el: formItemRef,
+      size: size,
+      validateState,
+      hasLabel,
+      resetField,
+      clearValidate,
+      validate
+    })
+    onMounted(() => {
+      if (props.prop) {
+        formContext?.addField(context)
+        initialValue = clone(fieldValue.value)
+      }
+    })
+    provide(formItemInjectionKey, context)
+    onBeforeUnmount(() => {
+      formContext?.removeField(context)
+    })
     return {
       cssVars: cssVarsRef,
       formItemRef,

@@ -11,3 +11,4 @@ export * from "./handleMouseMove";
 export * from "./typescript";
 export * from "./array";
 export * from "./error";
+export * from "./object";

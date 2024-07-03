@@ -112,12 +112,12 @@ export interface FormItemContext extends FormItemProps {
   $el: HTMLDivElement | undefined
   size: ComponentSize
   validateState: FormItemValidateState
-  isGroup: boolean
-  labelId: string
-  inputIds: string[]
+  // isGroup: boolean
+  // labelId: string
+  // inputIds: string[]
   hasLabel: boolean
-  addInputId: (id: string) => void
-  removeInputId: (id: string) => void
+  // addInputId: (id: string) => void
+  // removeInputId: (id: string) => void
   validate: (trigger: string, callback?: FormValidateCallback) => FormValidationResult
   resetField(): void
   clearValidate(): void

@@ -81,6 +81,7 @@ export default defineComponent({
       const shouldThrow = !isFunction(callback)
       try {
         const result = await doValidateField(modelProps)
+
         // When result is false meaning that the fields are not validatable
         if (result === true) {
           callback?.(result)
@@ -108,6 +109,7 @@ export default defineComponent({
       if (!isValidatable.value) return false
 
       const fields = obtainValidateFields(props)
+
       if (fields.length === 0) return true
 
       let validationErrors: ValidateFieldsError = {}

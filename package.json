@@ -28,6 +28,7 @@
     "@commitlint/config-conventional": "^18.5.0",
     "@turbo/codemod": "1.13.3",
     "@turbo/gen": "^1.11.3",
+    "@types/lodash": "^4.17.6",
     "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^6.17.0",
     "@typescript-eslint/parser": "^6.17.0",
@@ -75,5 +76,8 @@
     "commitizen": {
       "path": "node_modules/cz-git"
     }
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
