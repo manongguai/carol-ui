@@ -26,6 +26,10 @@ export const dataInputComponents = [
   {
     text: "颜色选择器(ColorPicker)",
     link: "/components/color-picker"
+  },
+  {
+    text: "表单(Form)",
+    link: "/components/form"
   }
 ];
 export const dataDisplayComponents = [
