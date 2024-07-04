@@ -74,7 +74,9 @@ export default defineComponent({
     const parentFormItemContext = inject(formItemInjectionKey)
     const size = useFormSize(undefined, { formItem: false })
 
+    // 验证状态
     const validateState = ref<FormItemValidateState>('')
+    const validateStateDebounced = refDebounced(validateState, 100)
 
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
@@ -106,17 +108,17 @@ export default defineComponent({
     })
     const currentLabel = computed(() => `${props.label || ''}${formContext?.labelSuffix || ''}`)
 
-    const formItemKls = computed(() => [
-      'cl-form-item',
-      createIsClassName('required', props.required === true),
-      createIsClassName('no-asterisk', formContext?.hideRequiredAsterisk),
-      `asterisk-right`
-    ])
     const labelWidth = computed(() => {
       return 'auto'
     })
+
     const validateMessage = ref('')
-    const shouldShowError = ref(false)
+    const shouldShowError = computed(
+      () =>
+        validateStateDebounced.value === 'error' &&
+        props.showMessage &&
+        (formContext?.showMessage ?? true)
+    )
     let initialValue: any = undefined
 
     let isResettingField = false
@@ -152,6 +154,9 @@ export default defineComponent({
       }
       return rules
     })
+
+    const isRequired = computed(() => normalizedRules.value.some((rule) => rule.required))
+
     const propString = computed(() => {
       if (!props.prop) return ''
       return isString(props.prop) ? props.prop : props.prop.join('.')
@@ -276,12 +281,12 @@ export default defineComponent({
       isResettingField = false
     }
 
-    const context = reactive<FormItemContext>({
+    const context: FormItemContext = reactive({
       ...toRefs(props),
-      $el: formItemRef.value,
-      size: size.value,
-      validateState,
-      hasLabel,
+      $el: formItemRef,
+      size: size,
+      validateState: validateState,
+      hasLabel: hasLabel,
       resetField,
       clearValidate,
       validate
@@ -296,6 +301,14 @@ export default defineComponent({
     onBeforeUnmount(() => {
       formContext?.removeField(context)
     })
+
+    const formItemKls = computed(() => [
+      'cl-form-item',
+      createIsClassName('required', isRequired.value || props.required),
+      createIsClassName('no-asterisk', formContext?.hideRequiredAsterisk),
+      `asterisk-right`
+    ])
+
     return {
       cssVars: cssVarsRef,
       formItemRef,
