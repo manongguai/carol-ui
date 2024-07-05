@@ -1,9 +1,9 @@
 <template>
-  <cl-radio-group v-model="labelPosition" label="label position">
-    <cl-radio-button label="left">Left</cl-radio-button>
-    <cl-radio-button label="right">Right</cl-radio-button>
-    <cl-radio-button label="top">Top</cl-radio-button>
-  </cl-radio-group>
+  <cl-button-group label="label position">
+    <cl-button @click="labelPosition='left'">Left</cl-button>
+    <cl-button @click="labelPosition='right'">Right</cl-button>
+    <cl-button @click="labelPosition='top'">Top</cl-button>
+  </cl-button-group>
   <div style="margin: 20px" />
   <cl-form
     :label-position="labelPosition"

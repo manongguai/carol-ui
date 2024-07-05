@@ -1,5 +1,5 @@
 <template>
-  <cl-form :model="form" label-width="120px">
+  <cl-form :model="form" label-width="50px">
     <cl-form-item label="name">
       <cl-input v-model="form.name" />
     </cl-form-item>
@@ -12,7 +12,7 @@
     <cl-form-item label="color">
       <cl-color-picker v-model="form.color" />
     </cl-form-item>
-    <cl-form-item>
+    <cl-form-item label="">
       <cl-button type="primary" @click="onSubmit">Create</cl-button>
       <cl-button>Cancel</cl-button>
     </cl-form-item>

@@ -1,36 +1,41 @@
 <template>
-  <cl-form :model="form" label-width="40px">
-    <cl-form-item label="name">
-      <cl-input v-model="form.name" />
+  <cl-button-group label="label position">
+    <cl-button @click="labelPosition = 'left'">Left</cl-button>
+    <cl-button @click="labelPosition = 'right'">Right</cl-button>
+    <cl-button @click="labelPosition = 'top'">Top</cl-button>
+  </cl-button-group>
+  <div style="margin: 20px" />
+  <cl-form
+    :label-position="labelPosition"
+    label-width="100px"
+    :model="formLabelAlign"
+    style="max-width: 460px"
+  >
+    <cl-form-item label="Name">
+      <template #label>
+        <div class="custom-label-align">
+          <span>自定义label</span>
+        </div>
+      </template>
+      <cl-input v-model="formLabelAlign.name" />
     </cl-form-item>
-    <cl-form-item label="desc">
-      <cl-input v-model="form.desc" type="textarea" />
+    <cl-form-item label="Activity zone">
+      <cl-input v-model="formLabelAlign.region" />
     </cl-form-item>
-    <cl-form-item label="count">
-      <cl-input-number v-model="form.count" />
-    </cl-form-item>
-    <cl-form-item label="color">
-      <cl-color-picker v-model="form.color" />
-    </cl-form-item>
-    <cl-form-item>
-      <cl-button type="primary" @click="onSubmit">Create</cl-button>
-      <cl-button>Cancel</cl-button>
+    <cl-form-item label="Activity form">
+      <cl-input v-model="formLabelAlign.type" />
     </cl-form-item>
   </cl-form>
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 
-// do not use same name with ref
-const form = reactive({
+const labelPosition = ref('right')
+
+const formLabelAlign = reactive({
   name: '',
-  count: '',
-  color: '',
-  desc: ''
+  region: '',
+  type: ''
 })
-
-const onSubmit = () => {
-  console.log('submit!')
-}
 </script>

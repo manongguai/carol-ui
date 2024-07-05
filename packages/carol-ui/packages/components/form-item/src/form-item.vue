@@ -7,7 +7,9 @@
       }"
       :class="formItemLabelCls"
     >
-      {{ currentLabel }}
+      <slot name="label" :label="currentLabel">
+        {{ currentLabel }}
+      </slot>
     </div>
     <div class="cl-form-item__content">
       <slot />

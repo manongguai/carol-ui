@@ -146,9 +146,8 @@ export default defineComponent({
       },
       { deep: true }
     )
-
-    provide(formInjectionKey, {
-      ...props,
+    const context: FormContext = reactive({
+      ...toRefs(props),
       emit,
       resetFields,
       clearValidate,
@@ -157,6 +156,7 @@ export default defineComponent({
       removeField,
       ...useFormLabelWidth()
     })
+    provide(formInjectionKey, context)
     return {
       cssVars: cssVarsRef,
       formRef,

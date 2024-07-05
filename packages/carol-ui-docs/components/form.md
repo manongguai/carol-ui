@@ -18,21 +18,15 @@ W3C 标准定义：
 
 :::
 
-## 行内表单
+<!-- ## 行内表单
 
 当垂直方向空间受限且表单较简单时，可以在一行内放置表单。
 
-通过设置 inline 属性为 true 可以让表单域变为行内的表单域。
+通过设置 inline 属性为 true 可以让表单域变为行内的表单域。 -->
 
 ## 对齐方式
 
-根据你们的设计情况，来选择最佳的标签对齐方式。
-
-通过设置 label-position 属性可以改变表单域标签的位置，可选值为 top、left， 当设为 top 时标签会置于表单域的顶部
-
-form/alignment
-
-:::
+<preview path="./demos/form/alignment.vue" title="根据设计情况，来选择最佳的标签对齐方式。" description="通过设置 label-position 属性可以改变表单域标签的位置，可选值为 top、left， 当设为 top 时标签会置于表单域的顶部"></preview>
 
 ## 表单校验
 
