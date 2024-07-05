@@ -1,11 +1,11 @@
 <template>
-  <div :class="formItemKls" :style="cssVars">
+  <div :class="formItemCls" :style="cssVars">
     <div
-      class="cl-form-item__label"
       v-if="!!hasLabel"
       :style="{
-        width: labelWidth || 'auto'
+        width: labelWidthWithPosition
       }"
+      :class="formItemLabelCls"
     >
       {{ currentLabel }}
     </div>
@@ -48,6 +48,7 @@ import { refDebounced } from '@vueuse/core'
 import { clone } from 'lodash'
 import type { RuleItem } from 'async-validator'
 import {
+  addUnit,
   createIsClassName,
   createKey,
   ensureArray,
@@ -109,7 +110,8 @@ export default defineComponent({
     const currentLabel = computed(() => `${props.label || ''}${formContext?.labelSuffix || ''}`)
 
     const labelWidth = computed(() => {
-      return 'auto'
+      const labelWidth = props.labelWidth || formContext?.labelWidth || ''
+      return addUnit(labelWidth)
     })
 
     const validateMessage = ref('')
@@ -302,25 +304,34 @@ export default defineComponent({
       formContext?.removeField(context)
     })
 
-    const formItemKls = computed(() => {
+    const formItemCls = computed(() => {
       return [
         'cl-form-item',
         createIsClassName('required', isRequired.value || props.required === true),
         createIsClassName('no-asterisk', formContext?.hideRequiredAsterisk),
-        `asterisk-right`
+        createIsClassName('label-position__top', formContext?.labelPosition === 'top'),
+        `asterisk-${formContext?.requireAsteriskPosition}`
       ]
+    })
+    const labelWidthWithPosition = computed(() => {
+      return formContext?.labelPosition === 'top' ? '100%' : labelWidth.value || 'auto'
+    })
+    const formItemLabelCls = computed(() => {
+      return ['cl-form-item__label', `cl-form-item__label__${formContext?.labelPosition}`]
     })
 
     return {
       cssVars: cssVarsRef,
       formItemRef,
-      formItemKls,
+      formItemCls,
       validateMessage,
       shouldShowError,
       labelWidth,
       currentLabel,
       hasLabel,
-      isRequired
+      isRequired,
+      formItemLabelCls,
+      labelWidthWithPosition
     }
   }
 })

@@ -9,12 +9,28 @@
   &__label {
     font-size: var(--cl-form-label-font-size);
     color: var(--cl-form-label-color);
-    text-align: left;
     padding: 0 12px 0 0;
   }
+  &__label__left {
+    text-align: left;
+  }
+  &__label__left {
+    text-align: right;
+  }
+  &__label__top {
+    text-align: left;
+    margin-bottom: 8px;
+    line-height: 22px;
+  }
+
   &__content {
-    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     flex: 1;
+    line-height: 32px;
+    position: relative;
+    min-width: 0;
   }
   &__error-message {
     position: absolute;
@@ -22,6 +38,8 @@
     top: 100%;
     font-size: var(--cl-form-error-message-font-size);
     color: var(--cl-form-error-message-color);
+    line-height: 1;
+    padding-top: 2px;
   }
 
   @include when(required) {
@@ -42,4 +60,9 @@
       }
     }
   }
+
+  @include when(label-position__top){
+    display: block;
+  }
 }
+

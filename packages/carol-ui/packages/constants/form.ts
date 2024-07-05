@@ -1,4 +1,4 @@
-export const formLabelPosition = ['default', 'small', 'large'] as const
+export const formLabelPosition = ['left', 'right', 'top'] as const
 
 export type FormLabelPosition = (typeof formLabelPosition)[number]
 

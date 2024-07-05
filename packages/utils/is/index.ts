@@ -157,3 +157,10 @@ export function isEmptyObject(obj: any): boolean {
 export function isHttp(path: string) {
   return /^(http|https):\/\//.test(path);
 }
+
+export const isStringNumber = (val: string): boolean => {
+  if (!isString(val)) {
+    return false;
+  }
+  return !Number.isNaN(Number(val));
+};

@@ -1,5 +1,5 @@
 <template>
-  <cl-form :model="form" label-width="120px">
+  <cl-form :model="form" label-width="40px">
     <cl-form-item label="name">
       <cl-input v-model="form.name" />
     </cl-form-item>

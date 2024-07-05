@@ -12,3 +12,4 @@ export * from "./typescript";
 export * from "./array";
 export * from "./error";
 export * from "./object";
+export * from "./dom/style";
