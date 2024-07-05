@@ -7,7 +7,7 @@
   box-sizing: border-box;
   display: inline-flex;
   position: relative;
-  border-radius:var(--cl-input-border-radius);
+  border-radius: var(--cl-input-border-radius);
 
   /* 输入框在大中小三种情况下边框圆角不变 */
   border: var(--cl-input-border);
@@ -64,12 +64,12 @@
       color: var(--cl-input-disabled-border-color);
     }
 
-    @include when(disabled)  {
+    @include when(disabled) {
       cursor: not-allowed;
     }
 
     :deep(.cl-icon .icon) {
-      width: 100%;
+      padding-left: 4px;
     }
   }
 
@@ -106,12 +106,13 @@
       padding: 0 var(--cl-input-inner-padding);
     }
 
-    .cl-input-number-increase, .cl-input-number-decrease{
+    .cl-input-number-increase,
+    .cl-input-number-decrease {
       display: flex;
       align-items: center;
       font-weight: 400;
     }
-    .cl-input-number-increase  {
+    .cl-input-number-increase {
       right: 0;
       border-left: var(--cl-input-controls-border);
     }
@@ -183,7 +184,7 @@
     .cl-input-number-decrease,
     .cl-input-number-increase {
       &:hover {
-        color: var(--cl-input-controls-color); 
+        color: var(--cl-input-controls-color);
       }
     }
   }
@@ -197,4 +198,3 @@
   z-index: 9;
   border-color: var(--cl-input-error-border-color);
 }
-

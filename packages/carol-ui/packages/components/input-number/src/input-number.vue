@@ -28,7 +28,6 @@
       @keydown.down.prevent="handleDecrease"
     />
     <span
-      v-if="hasControls"
       :class="['cl-input-number-decrease', { 'is-disabled': minDisabled }]"
       @click="handleDecrease"
     >
@@ -38,7 +37,6 @@
       ></cl-icon>
     </span>
     <span
-      v-if="hasControls"
       :class="['cl-input-number-increase', { 'is-disabled': maxDisabled }]"
       @click="handleIncrease"
     >

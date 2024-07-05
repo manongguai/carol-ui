@@ -1,6 +1,6 @@
 <template>
   <i :class="[`cl-icon`]" :style="cssVars" v-bind="$attrs">
-    <svg class="icon" aria-hidden="true" v-if="hasIcon">
+    <svg class="icon" aria-hidden="true" v-if="hasIcon" viewBox="0 0 1024 1024">
       <use :xlink:href="icon"></use>
     </svg>
     <slot></slot>
