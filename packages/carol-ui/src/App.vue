@@ -1,41 +1,36 @@
 <template>
-  <cl-form ref="formRef" :model="{ form }">
-    <cl-form-item label="名称" prop="name">
-      <cl-input v-model="form.name"></cl-input>
+  <cl-form :model="form" label-width="120px">
+    <cl-form-item label="name">
+      <cl-input v-model="form.name" />
+    </cl-form-item>
+    <cl-form-item label="desc">
+      <cl-input v-model="form.desc" type="textarea" />
+    </cl-form-item>
+    <cl-form-item label="count">
+      <cl-input-number v-model="form.count" />
+    </cl-form-item>
+    <cl-form-item label="color">
+      <cl-color-picker v-model="form.color" />
     </cl-form-item>
     <cl-form-item>
-      <div>
-        <cl-button type="primary" @click="submitForm">提交</cl-button>
-        <cl-button @click="resetForm">重置</cl-button>
-      </div>
+      <cl-button type="primary" @click="onSubmit">Create</cl-button>
+      <cl-button>Cancel</cl-button>
     </cl-form-item>
   </cl-form>
 </template>
 
 <script lang="ts" setup>
-import type { FormInstance } from '@/components/form'
-import { reactive, ref } from 'vue'
-const formRef = ref<FormInstance>()
-const form = ref({
-  name: ''
+import { reactive } from 'vue'
+
+// do not use same name with ref
+const form = reactive({
+  name: '',
+  count: '',
+  color: '',
+  desc: ''
 })
-const rules = reactive({
-  name: [
-    {
-      required: true,
-      message: '名称不能为空',
-      trigger: 'blur'
-    }
-  ]
-})
-const submitForm = () => {
-  formRef.value!.validate((valid, fields) => {
-    console.log(valid, fields)
-  })
-}
-const resetForm = () => {
-  formRef.value!.resetFields()
+
+const onSubmit = () => {
+  console.log('submit!')
 }
 </script>
-
-<style scoped lang="scss"></style>
