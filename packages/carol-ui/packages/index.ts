@@ -1,5 +1,5 @@
 import type { App } from 'vue'
-
+export * from './types'
 import { clComponents } from './components/components'
 import { setZIndex } from '@kirkw/utils'
 import type { LibraryOptions } from './types'
