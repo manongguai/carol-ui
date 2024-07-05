@@ -33,6 +33,12 @@ componentNames.forEach(({ name }) => {
   const kebabCaseName = kebabCase(name);
   writeFileByLine(componentsTsPath, `import ${clName} from './${kebabCaseName}'`);
 });
+
+componentNames.forEach(({ name }) => {
+  const kebabCaseName = kebabCase(name);
+  writeFileByLine(componentsTsPath, `export * from './${kebabCaseName}'`);
+});
+
 const clNames = componentNames.map(({ name }) => `Cl${upperCamelCase(name)}`);
 writeFileByLine(componentsTsPath);
 writeFileByLine(componentsTsPath, `const clComponents: Component[] = [${clNames.join(", ")}]`);

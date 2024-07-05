@@ -97,5 +97,3 @@ export const formEmits = {
 export type FormEmits = typeof formEmits
 
 export type FormInjection = {}
-
-export type ClFormInstance = InstanceType<typeof form>

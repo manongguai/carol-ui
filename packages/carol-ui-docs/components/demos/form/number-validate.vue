@@ -28,15 +28,15 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import type { ClFormInstance } from '@kirkw/carol-ui'
+import type { FormInstance } from '@kirkw/carol-ui'
 
-const formRef = ref<ClFormInstance>()
+const formRef = ref<FormInstance>()
 
 const numberValidateForm = reactive({
   age: '',
 })
 
-const submitForm = (formEl: ClFormInstance | undefined) => {
+const submitForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.validate((valid) => {
     if (valid) {
@@ -48,7 +48,7 @@ const submitForm = (formEl: ClFormInstance | undefined) => {
   })
 }
 
-const resetForm = (formEl: ClFormInstance | undefined) => {
+const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.resetFields()
 }

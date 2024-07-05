@@ -13,9 +13,9 @@
 </template>
 
 <script lang="ts" setup>
+import type { FormInstance } from '@/components/form'
 import { reactive, ref } from 'vue'
-import { type ClFormInstance } from '@/components/form/src/form'
-const formRef = ref<ClFormInstance>()
+const formRef = ref<FormInstance>()
 const form = ref({
   name: ''
 })

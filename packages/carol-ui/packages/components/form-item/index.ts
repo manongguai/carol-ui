@@ -6,3 +6,5 @@ ClFormItem.install = (app: App): void => {
 }
 
 export default ClFormItem
+
+export type FormItemInstance = InstanceType<typeof ClFormItem>
