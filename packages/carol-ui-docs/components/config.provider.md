@@ -6,15 +6,15 @@ Config Provider
 import { ref } from 'vue'
 </script>
 
-### 配置器
+## 配置器
 
 用来配置主题，样式覆盖，等全局的配置。
 
-### 演示
+## 演示
 
 <preview path="./demos/config-provider/config-provider-demo1.vue" title="样式覆盖" description="覆盖原始的样式, 允许多层嵌套"></preview>
 
-### API
+## API
 
 Config Provider Props
 | 名称 | 类型 | 默认值 | 说明 |

@@ -2,11 +2,11 @@
 import { ref } from 'vue'
 </script>
 
-### Notification
+## Notification
 
 悬浮出现在页面角落，显示全局的通知提醒消息。
 
-### 演示
+## 演示
 
 <preview path="./demos/notification/notification-demo1.vue" title="基本用法" description="通知内容message支持string和render函数"></preview>
 <preview path="./demos/notification/notification-demo2.vue" title="是否自动关闭" description="duration为0则是默认不关闭"></preview>
@@ -14,11 +14,11 @@ import { ref } from 'vue'
 <preview path="./demos/notification/notification-demo4.vue" title="自定义弹出位置" description="可以让 Notification 从屏幕四角中的任意一角弹出"></preview>
 <preview path="./demos/notification/notification-demo5.vue" title="自定义底部 | 自定义icon" description="底部可以自定义例如去跳转｜可直接送进来iconName"></preview>
 
-### <font color=FF0000> warning！！！ </font>
+## <font color=FF0000> warning！！！ </font>
 
 `message` `footerInfo` 属性虽然支持传入 HTML/JSX，但是在网站上动态渲染任意 HTML 是非常危险的，因为容易导致 [XSS 攻击](https://en.wikipedia.org/wiki/Cross-site_scripting)。因此在使用的情况下，请确保 `message` `footerInfo` 的内容是可信的，**永远不要**将用户提交的内容赋值给 `message` `footerInfo` 属性。
 
-### API
+## API
 
 Notification Props
 | 名称 | 类型 | 默认值 | 可选值 | 说明 |

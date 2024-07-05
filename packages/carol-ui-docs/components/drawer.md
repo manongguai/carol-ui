@@ -6,7 +6,7 @@ Button
 import { ref } from 'vue'
 </script>
 
-### drawer 抽屉
+## drawer 抽屉
 
 <preview path="./demos/drawer/drawer-demo1.vue" title="不同方向" description="抽屉弹出的方式分为 左  上  右  下四种方式，默认是从右侧弹出。"></preview>
 <preview path="./demos/drawer/drawer-demo2.vue" title="设置抽屉的宽高" description="width / height / size 的区别"></preview>
@@ -17,7 +17,7 @@ import { ref } from 'vue'
 <preview path="./demos/drawer/drawer-demo7.vue" title="自定义内容" description=""></preview>
 <preview path="./demos/drawer/drawer-demo8.vue" title="自定义内容" description="使用自定义样式覆盖原有的样式"></preview>
 
-### API
+## API
 
 drawer Props
 | 名称 | 类型 | 默认值 | 说明 |
@@ -44,7 +44,7 @@ drawer Props
 | bodyStyle | string / object | - | 抽屉 body 部分的样式 |
 | footerStyle | string / object | - | 抽屉 footer 部分的样式 |
 
-#### slots
+### slots
 
 | name       |                  说明                   |
 | ---------- | :-------------------------------------: |
@@ -53,7 +53,7 @@ drawer Props
 | footer     |         自定义抽屉 footer 部分          |
 | 默认插槽   |          自定义抽屉 body 部分           |
 
-#### dialog Events
+### dialog Events
 
 | 事件          |         说明         |               回调参数 |
 | ------------- | :------------------: | ---------------------: |

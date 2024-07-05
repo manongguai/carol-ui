@@ -6,13 +6,13 @@ Popup
 import { ref } from 'vue'
 </script>
 
-### Popup 弹出泡
+## Popup 弹出泡
 
 用于包裹页面内容
 
 - 请注意：popup 的 reference 插槽只能有一个根节点，否则只渲染第一个节点
 
-#### 演示
+### 演示
 
 <preview path="./demos/popup/popup-demo1.vue" title="使用方式：" description="popup的使用可以用传统插槽方式和虚拟元素触发"></preview>
 
@@ -35,7 +35,7 @@ import { ref } from 'vue'
 
 <preview path="./demos/popup/popup-demo9.vue" title="初始状态" description="v-model / value：可以设置 pop 初始是否显示。默认隐藏，不创建pop，disabled：是否不能激活弹出信息"></preview>
 
-#### input 参数说明
+### input 参数说明
 
 | 参数                       |                  说明                  |                                                     类型 |             可选值 |     默认值 |
 | -------------------------- | :------------------------------------: | -------------------------------------------------------: | -----------------: | ---------: |
@@ -58,7 +58,7 @@ import { ref } from 'vue'
 | virtualRef                 |             虚拟触发的元素             | ComponentPublicInstance\<HTMLElement\>\| \<HTMLElement\> |                  - |       null |
 | outsideAutoCloseWithManual | 手动触发模式下，是否点击内容外自动关闭 |                                                  boolean |                  - |      false |
 
-#### popup 插槽
+### popup 插槽
 
 | 参数      |                                          说明                                          |
 | --------- | :------------------------------------------------------------------------------------: |

@@ -6,15 +6,15 @@ PopConfirm
 import { ref } from 'vue'
 </script>
 
-### PopConfirm 问答泡
+## PopConfirm 问答泡
 
-#### 演示
+### 演示
 
 <preview path="./demos/pop-confirm/pop-confirm-demo1.vue" title="使用方式：" description="popConfirm的使用可以用传统插槽方式和虚拟元素触发"></preview>
 
 <preview path="./demos/pop-confirm/pop-confirm-demo2.vue" title="自定义内容：" description="传入content插槽，自定义内容,title:自定义标题"></preview>
 
-#### popConfirm 参数说明
+### popConfirm 参数说明
 
 | 参数        |       说明       |    类型 | 可选值 |          默认值 |
 | ----------- | :--------------: | ------: | -----: | --------------: |
@@ -48,7 +48,7 @@ import { ref } from 'vue'
 | virtualRef                 |             虚拟触发的元素             | ComponentPublicInstance\<HTMLElement\>\|\<HTMLElement\> |                  - |          - |
 | outsideAutoCloseWithManual | 手动触发模式下，是否点击内容外自动关闭 |                                                 boolean |                  - |      false |
 
-#### popConfirm 插槽
+### popConfirm 插槽
 
 | 参数      |            说明             |
 | --------- | :-------------------------: |
@@ -57,7 +57,7 @@ import { ref } from 'vue'
 | footer    |           操作区            |
 | reference | 触发 popConfirm 显示的 元素 |
 
-#### popConfirm 事件
+### popConfirm 事件
 
 | 事件名称 |        说明        | 回调参数 |
 | -------- | :----------------: | -------: |

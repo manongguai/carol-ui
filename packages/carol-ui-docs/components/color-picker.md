@@ -2,13 +2,13 @@
 ColorPicker
 ---
 
-### ColorPicker 颜色选择器
+## ColorPicker 颜色选择器
 
-#### 演示
+### 演示
 
 <preview path="./demos/color-picker/color-picker-demo1.vue" title="使用方式：" description="使用v-model绑定色值，目前只支持HEX格式颜色"></preview>
 
-#### 参数说明
+### 参数说明
 
 | 参数            |                         说明                         |     类型 |           可选值 |  默认值 |
 | --------------- | :--------------------------------------------------: | -------: | ---------------: | ------: |
@@ -22,7 +22,7 @@ ColorPicker
 | showColorIcon   |                     是否展示icon                     |     bool |                - |    true |
 | resetColor      | 重置色，点击重置按钮设为的颜色，默认是初始绑定的颜色 |     bool |                - |    true |
 
-#### 事件
+### 事件
 
 | 参数   |     说明     |
 | ------ | :----------: |

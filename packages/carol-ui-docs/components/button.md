@@ -6,11 +6,11 @@ Button
 import { ref } from 'vue'
 </script>
 
-### Button 按钮
+## Button 按钮
 
 按钮用来触发一些操作
 
-#### 演示
+### 演示
 
 <preview path="./demos/button/button-demo1.vue" title="基础" description="按钮的 type 分为 default, primary, secondary, minor, dashed, link, text, underlined。"></preview>
 
@@ -24,7 +24,7 @@ import { ref } from 'vue'
 
 <preview path="./demos/button/button-demo6.vue" title="自定义颜色, 块级按钮, 圆形按钮" description="Color, TextColor, block, round"></preview>
 
-### API
+## API
 
 Button Props
 | 名称 | 类型 | 默认值 | 说明 |

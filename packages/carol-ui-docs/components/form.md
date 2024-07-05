@@ -3,7 +3,7 @@
 表单包含 输入框, 单选框, 下拉选择, 多选框 等用户输入的组件。 使用表单，您可以收集、验证和提交数据。
 :::tip
 
-Form 组件已经从 2. x 的 Float 布局升级为 Flex 布局。
+Form组件为Flex 布局。
 :::
 
 ## 基础表单
@@ -92,7 +92,7 @@ form/accessibility
 
 ## Form API
 
-### Form Attributes
+## Form Attributes
 
 | Name                      | Description                                                                                                                                                                              | Type                                           | Default |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ------- |
@@ -113,19 +113,19 @@ form/accessibility
 | scroll-to-error           | When validation fails, scroll to the first error form entry.                                                                                                                             | ^[boolean]                                     | false   |
 | scroll-into-view-options  | When validation fails, it scrolls to the first error item based on the scrollIntoView option. [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView). | ^[object]`Record<string, any>` / ^[boolean]    | —       |
 
-### Form Events
+## Form Events
 
 | Name     | Description                             | Type                                                                         |
 | -------- | --------------------------------------- | ---------------------------------------------------------------------------- |
 | validate | triggers after a form item is validated | ^[Function]`(prop: FormItemProp, isValid: boolean, message: string) => void` |
 
-### Form Slots
+## Form Slots
 
 | Name    | Description               | Subtags  |
 | ------- | ------------------------- | -------- |
 | default | customize default content | FormItem |
 
-### Form Exposes
+## Form Exposes
 
 | Name          | Description                                                        | Type                                                                                                                              |
 | ------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -137,7 +137,7 @@ form/accessibility
 
 ## FormItem API
 
-### FormItem Attributes
+## FormItem Attributes
 
 | Name            | Description                                                                                                                                                   | Type                                                | Default |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------- |
@@ -153,7 +153,7 @@ form/accessibility
 | for             | Same as for in native label.                                                                                                                                  | ^[string]                                           | —       |
 | validate-status | Validation state of formItem.                                                                                                                                 | ^[enum]`'' \| 'error' \| 'validating' \| 'success'` | —       |
 
-#### FormItemRule
+### FormItemRule
 
 | Name    | Description                     | Type                        | Default |
 | ------- | ------------------------------- | --------------------------- | ------- |
@@ -165,7 +165,7 @@ If you don't want to trigger the validator based on input events, set the `valid
 
 :::
 
-### FormItem Slots
+## FormItem Slots
 
 | Name    | Description                                   | Type                         |
 | ------- | --------------------------------------------- | ---------------------------- |
@@ -173,7 +173,7 @@ If you don't want to trigger the validator based on input events, set the `valid
 | label   | Custom content to display on label.           | ^[object]`{ label: string }` |
 | error   | Custom content to display validation message. | ^[object]`{ error: string }` |
 
-### FormItem Exposes
+## FormItem Exposes
 
 | Name            | Description                                       | Type                                                                                                 |
 | --------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
