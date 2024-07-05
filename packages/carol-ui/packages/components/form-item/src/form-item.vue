@@ -302,12 +302,14 @@ export default defineComponent({
       formContext?.removeField(context)
     })
 
-    const formItemKls = computed(() => [
-      'cl-form-item',
-      createIsClassName('required', isRequired.value || props.required),
-      createIsClassName('no-asterisk', formContext?.hideRequiredAsterisk),
-      `asterisk-right`
-    ])
+    const formItemKls = computed(() => {
+      return [
+        'cl-form-item',
+        createIsClassName('required', isRequired.value || props.required === true),
+        createIsClassName('no-asterisk', formContext?.hideRequiredAsterisk),
+        `asterisk-right`
+      ]
+    })
 
     return {
       cssVars: cssVarsRef,
@@ -317,7 +319,8 @@ export default defineComponent({
       shouldShowError,
       labelWidth,
       currentLabel,
-      hasLabel
+      hasLabel,
+      isRequired
     }
   }
 })
