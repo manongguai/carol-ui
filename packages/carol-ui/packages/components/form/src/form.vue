@@ -162,7 +162,9 @@ export default defineComponent({
       formRef,
       formKls,
       validate,
-      resetFields
+      resetFields,
+      validateField,
+      clearValidate
     }
   }
 })

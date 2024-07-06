@@ -2,7 +2,7 @@
   <cl-form
     ref="formRef"
     :model="dynamicValidateForm"
-    label-width="120px"
+    label-width="80px"
     class="demo-dynamic"
   >
     <cl-form-item
@@ -48,9 +48,8 @@
 </template>
 
 <script lang="ts" setup>
+import { FormInstance } from '@kirkw/carol-ui';
 import { reactive, ref } from 'vue'
-import type { FormInstance } from 'element-plus'
-
 const formRef = ref<FormInstance>()
 const dynamicValidateForm = reactive<{
   domains: DomainItem[]

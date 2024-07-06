@@ -1,8 +1,12 @@
 # Form
 
 表单包含 输入框, 单选框, 下拉选择, 多选框 等用户输入的组件。 使用表单，您可以收集、验证和提交数据。
-:::tip
 
+:::warning
+Form组件还在开发中，
+:::
+
+:::tip
 Form组件为Flex 布局。
 :::
 
@@ -14,7 +18,7 @@ Form组件为Flex 布局。
 
 W3C 标准定义：
 
-当一个表单中只有一个单行文本输入字段时， 浏览器应当将在此字段中按下 Enter （回车键）的行为视为提交表单的请求。 如果希望阻止这一默认行为，可以在 \<el-form> 标签上添加 @submit.prevent。
+当一个表单中只有一个单行文本输入字段时， 浏览器应当将在此字段中按下 Enter （回车键）的行为视为提交表单的请求。 如果希望阻止这一默认行为，可以在 \<cl-form> 标签上添加 @submit.prevent。
 
 :::
 
@@ -34,13 +38,7 @@ W3C 标准定义：
 
 ## 自定义校验规则
 
-这个例子中展示了如何使用自定义验证规则来完成密码的二次验证。
-
-本例还使用status-icon属性为输入框添加了表示校验结果的反馈图标。
-
-form/custom-validation
-
-:::
+<preview path="./demos/form/custom-validation.vue" title="这个例子中展示了如何使用自定义验证规则来完成密码的二次验证。" description="Form 组件提供了表单验证的功能，只需为 rules 属性传入约定的验证规则，并将 form-Item 的 prop 属性设置为需要验证的特殊键值即可。 更多高级用法可参考 async-validator。"></preview>
 
 :::tip
 
@@ -50,144 +48,119 @@ form/custom-validation
 
 ## 添加/删除表单项
 
-除了一次通过表单组件上的所有验证规则外. 您也可以动态地通过验证规则或删除单个表单字段的规则。
-
-form/form-items
-
-:::
+<preview path="./demos/form/form-items.vue" title="除了一次通过表单组件上的所有验证规则外. 您也可以动态地通过验证规则或删除单个表单字段的规则。" description=""></preview>
 
 ## 数字类型验证
 
-数字类型的验证需要在 v-model 处加上 .number 的修饰符，这是 Vue 自身提供的用于将绑定值转化为 number 类型的修饰符。
-
-form/number-validate
-
-:::
+<preview path="./demos/form/number-validate.vue" title="数字类型的验证需要在 v-model 处加上 .number 的修饰符，这是 Vue 自身提供的用于将绑定值转化为 number 类型的修饰符。" description=""></preview>
 
 :::tip
 
-When an `el-form-item` is nested in another `el-form-item`, its label width will be `0`. You can set `label-width` on that `el-form-item` if needed.
+When an `cl-form-item` is nested in another `cl-form-item`, its label width will be `0`. You can set `label-width` on that `cl-form-item` if needed.
 
 :::
 
 ## 尺寸控制
 
-表单中的所有子组件都继承了该表单的 size 属性。 同样，form-item 也有一个 size 属性。
-
-如果希望某个表单项或某个表单组件的尺寸不同于 Form 上的 size 属性，直接为这个表单项或表单组件设置自己的 size 属性即可。
-
-form/size-control
+<preview path="./demos/form/size-control.vue" title="表单中的所有子组件都继承了该表单的 size 属性。 同样，form-item 也有一个 size 属性。" description="如果希望某个表单项或某个表单组件的尺寸不同于 Form 上的 size 属性，直接为这个表单项或表单组件设置自己的 size 属性即可。"></preview>
 
 :::
 
-## 无障碍
+<!-- ## 无障碍
 
-当在 el-form-item 内只有一个输入框（或相关的控制部件，如选择或复选框），表单项的标签将自动附加在那个输入框上。 然而，如果同时有多个输入框在 el-form-item内， 表单项将被分配为 WAI-ARIA 组 的角色。 在这种情况下，需要手动给每个 input 指定访问标签。
-
-:::demo
-
-form/accessibility
-
-:::
+<preview path="./demos/form/accessibility.vue" title="" description="当在 cl-form-item 内只有一个输入框（或相关的控制部件，如选择或复选框），表单项的标签将自动附加在那个输入框上。 然而，如果同时有多个输入框在 cl-form-item内， 表单项将被分配为 WAI-ARIA 组 的角色。 在这种情况下，需要手动给每个 input 指定访问标签。"></preview> -->
 
 ## Form API
 
 ## Form Attributes
 
-| Name                      | Description                                                                                                                                                                              | Type                                           | Default |
-| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ------- |
-| model                     | Data of form component.                                                                                                                                                                  | ^[object]`Record<string, any>`                 | —       |
-| rules                     | Validation rules of form.                                                                                                                                                                | ^[object]`FormRules`                           | —       |
-| inline                    | Whether the form is inline.                                                                                                                                                              | ^[boolean]                                     | false   |
-| label-position            | Position of label. If set to `'left'` or `'right'`, `label-width` prop is also required.                                                                                                 | ^[enum]`'left' \| 'right' \| 'top'`            | right   |
-| label-width               | Width of label, e.g. `'50px'`. All its direct child form items will inherit this value. `auto` is supported.                                                                             | ^[string] / ^[number]                          | ''      |
-| label-suffix              | Suffix of the label.                                                                                                                                                                     | ^[string]                                      | ''      |
-| hide-required-asterisk    | Whether to hide required fields should have a red asterisk (star) beside their labels.                                                                                                   | ^[boolean]                                     | false   |
-| require-asterisk-position | Position of asterisk.                                                                                                                                                                    | ^[enum]`'left' \| 'right'`                     | left    |
-| show-message              | Whether to show the error message.                                                                                                                                                       | ^[boolean]                                     | true    |
-| inline-message            | Whether to display the error message inline with the form item.                                                                                                                          | ^[boolean]                                     | false   |
-| status-icon               | Whether to display an icon indicating the validation result.                                                                                                                             | ^[boolean]                                     | false   |
-| validate-on-rule-change   | Whether to trigger validation when the `rules` prop is changed.                                                                                                                          | ^[boolean]                                     | true    |
-| size                      | Control the size of components in this form.                                                                                                                                             | ^[enum]`'' \| 'large' \| 'default' \| 'small'` | —       |
-| disabled                  | Whether to disable all components in this form. If set to `true`, it will override the `disabled` prop of the inner component.                                                           | ^[boolean]                                     | false   |
-| scroll-to-error           | When validation fails, scroll to the first error form entry.                                                                                                                             | ^[boolean]                                     | false   |
-| scroll-into-view-options  | When validation fails, it scrolls to the first error item based on the scrollIntoView option. [scrollIntoView](https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView). | ^[object]`Record<string, any>` / ^[boolean]    | —       |
+| Name                      | Description                                                                             | Type                                         | Default |
+| ------------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------- | ------- |
+| model                     | 表单数据对象                                                                            | object `Record<string, any>`                 | —       |
+| rules                     | 表单验证规则.                                                                           | object `FormRules`                           | —       |
+| label-position            | 表单域标签的位置， 当设置为 left 或 right 时，则也需要设置 label-width 属性             | enum `'left' \| 'right' \| 'top'`            | right   |
+| label-width               | 标签的长度，例如 '50px'。 作为 Form 直接子元素的 form-item 会继承该值。 可以使用 auto。 | string / number                              | ''      |
+| label-suffix              | 表单域标签的后缀                                                                        | string                                       | ''      |
+| hide-required-asterisk    | 是否隐藏必填字段标签旁边的红色星号。                                                    | boolean                                      | false   |
+| require-asterisk-position | 星号的位置。                                                                            | enum `'left' \| 'right'`                     | left    |
+| show-message              | 是否显示校验错误信息                                                                    | boolean                                      | true    |
+| validate-on-rule-change   | 是否在 rules 属性改变后立即触发一次验证                                                 | boolean                                      | true    |
+| size                      | 用于控制该表单内组件的尺寸form.                                                         | enum `'' \| 'large' \| 'default' \| 'small'` | —       |
+| disabled                  | 是否禁用该表单内的所有组件。 如果设置为 true, 它将覆盖内部组件的 disabled 属性          | boolean                                      | false   |
 
 ## Form Events
 
-| Name     | Description                             | Type                                                                         |
-| -------- | --------------------------------------- | ---------------------------------------------------------------------------- |
-| validate | triggers after a form item is validated | ^[Function]`(prop: FormItemProp, isValid: boolean, message: string) => void` |
+| Name     | Description            | Type                                                                       |
+| -------- | ---------------------- | -------------------------------------------------------------------------- |
+| validate | 任一表单项被校验后触发 | Function `(prop: FormItemProp, isValid: boolean, message: string) => void` |
 
 ## Form Slots
 
-| Name    | Description               | Subtags  |
-| ------- | ------------------------- | -------- |
-| default | customize default content | FormItem |
+| Name    | Description    | Subtags  |
+| ------- | -------------- | -------- |
+| default | 自定义默认内容 | FormItem |
 
 ## Form Exposes
 
-| Name          | Description                                                        | Type                                                                                                                              |
-| ------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
-| validate      | Validate the whole form. Receives a callback or returns `Promise`. | ^[Function]`(callback?: FormValidateCallback) => Promise<void>`                                                                   |
-| validateField | Validate specified fields.                                         | ^[Function]`(props?: Arrayable<FormItemProp> \| undefined, callback?: FormValidateCallback \| undefined) => FormValidationResult` |
-| resetFields   | Reset specified fields and remove validation result.               | ^[Function]`(props?: Arrayable<FormItemProp> \| undefined) => void`                                                               |
-| scrollToField | Scroll to the specified fields.                                    | ^[Function]`(prop: FormItemProp) => void`                                                                                         |
-| clearValidate | Clear validation message for specified fields.                     | ^[Function]`(props?: Arrayable<FormItemProp> \| undefined) => void`                                                               |
+| Name                                                              | Description                                                   | Type                                                                                                                            |
+| ----------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| validate                                                          | 对整个表单的内容进行验证。 接收一个回调函数，或返回 Promise。 | Function `(callback?: FormValidateCallback) => Promise<void>`                                                                   |
+| validateField                                                     | 验证具体的某个字段。                                          | Function `(props?: Arrayable<FormItemProp> \| undefined, callback?: FormValidateCallback \| undefined) => FormValidationResult` |
+| resetFields                                                       | 重置该表单项，将其值重置为初始值，并移除校验结果              |
+| Function `(props?: Arrayable<FormItemProp> \| undefined) => void` |
+| clearValidate                                                     | 清理某个字段的表单验证信息。                                  | Function `(props?: Arrayable<FormItemProp> \| undefined) => void`                                                               |
 
 ## FormItem API
 
 ## FormItem Attributes
 
-| Name            | Description                                                                                                                                                   | Type                                                | Default |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ------- |
-| prop            | A key of `model`. It could be an array of property paths (e.g `['a', 'b', 0]`). In the use of `validate` and `resetFields` method, the attribute is required. | ^[string] / ^[string&#91;&#93;]                     | —       |
-| label           | Label text.                                                                                                                                                   | ^[string]                                           | —       |
-| label-width     | Width of label, e.g. `'50px'`. `'auto'` is supported.                                                                                                         | ^[string] / ^[number]                               | ''      |
-| required        | Whether the field is required or not, will be determined by validation rules if omitted.                                                                      | ^[boolean]                                          | —       |
-| rules           | Validation rules of form, see the [following table](#formitemrule), more advanced usage at [async-validator](https://github.com/yiminghe/async-validator).    | ^[object]`Arrayable<FormItemRule>`                  | —       |
-| error           | Field error message, set its value and the field will validate error and show this message immediately.                                                       | ^[string]                                           | —       |
-| show-message    | Whether to show the error message.                                                                                                                            | ^[boolean]                                          | true    |
-| inline-message  | Inline style validate message.                                                                                                                                | ^[string] / ^[boolean]                              | ''      |
-| size            | Control the size of components in this form-item.                                                                                                             | ^[enum]`'' \| 'large' \| 'default' \| 'small'`      | —       |
-| for             | Same as for in native label.                                                                                                                                  | ^[string]                                           | —       |
-| validate-status | Validation state of formItem.                                                                                                                                 | ^[enum]`'' \| 'error' \| 'validating' \| 'success'` | —       |
+| Name         | Description                                                                                                                | Type                                         | Default                                           |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------------- | --- | --- |
+| prop         | model 的键名。 它可以是一个属性的值(如 a.b.0 或 ['a', 'b', '0'])。 在使用了 validate、resetFields 的方法时，该属性是必填的 | string / string&#91;&#93;                    | —                                                 |
+| label        | 标签文本                                                                                                                   | string                                       | —                                                 |
+| label-width  | 标签宽度，例如 '50px'。 可以使用 auto。                                                                                    | string / number                              | ''                                                |
+| required     | 是否为必填项，如不设置，则会根据校验规则确认                                                                               | boolean                                      | —                                                 |
+| rules        | 表单验证规则, 具体配置见下表, 更多内容可以参考async-validator                                                              | object `Arrayable<FormItemRule>`             | —                                                 |
+| error        | 表单域验证错误时的提示信息。设置该值会导致表单验证状态变为 error，并显示该错误信息。                                       | string                                       | —                                                 |
+| show-message | 是否显示校验错误信息                                                                                                       | boolean                                      | true                                              |
+| size         | 用于控制该表单域下组件的默认尺寸                                                                                           | enum `'' \| 'large' \| 'default' \| 'small'` | —                                                 |
+| <!--         | validate-status                                                                                                            | formitem 校验的状态                          | enum `'' \| 'error' \| 'validating' \| 'success'` | —   | --> |
 
 ### FormItemRule
 
-| Name    | Description                     | Type                        | Default |
-| ------- | ------------------------------- | --------------------------- | ------- |
-| trigger | How the validator is triggered. | ^[enum]`'blur' \| 'change'` | —       |
+| Name    | Description        | Type                      | Default |
+| ------- | ------------------ | ------------------------- | ------- |
+| trigger | 验证逻辑的触发方式 | enum `'blur' \| 'change'` | —       |
 
 :::tip
 
-If you don't want to trigger the validator based on input events, set the `validate-event` attribute as `false` on the corresponding input type components (`<el-input>`, `<el-radio>`, `<el-select>`, ...).
+如果您不想根据输入事件触发验证器， 在相应的输入类型组件上设置 validate-event 属性为 false (\<cl-input>, \<cl-radio>, \<cl-select>, . ……).
 
 :::
 
 ## FormItem Slots
 
-| Name    | Description                                   | Type                         |
-| ------- | --------------------------------------------- | ---------------------------- |
-| default | Content of Form Item.                         | —                            |
-| label   | Custom content to display on label.           | ^[object]`{ label: string }` |
-| error   | Custom content to display validation message. | ^[object]`{ error: string }` |
+| Name    | Description            | Type                       |
+| ------- | ---------------------- | -------------------------- |
+| default | 表单的内容。           | —                          |
+| label   | 标签位置显示的内容     | object `{ label: string }` |
+| error   | 验证错误信息的显示内容 | object `{ error: string }` |
 
 ## FormItem Exposes
 
-| Name            | Description                                       | Type                                                                                                 |
-| --------------- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| size            | Form item size.                                   | ^[object]`ComputedRef<'' \| 'large' \| 'default' \| 'small'>`                                        |
-| validateMessage | Validation message.                               | ^[object]`Ref<string>`                                                                               |
-| validateState   | Validation state.                                 | ^[object]`Ref<'' \| 'error' \| 'validating' \| 'success'>`                                           |
-| validate        | Validate form item.                               | ^[Function]`(trigger: string, callback?: FormValidateCallback \| undefined) => FormValidationResult` |
-| resetField      | Reset current field and remove validation result. | ^[Function]`() => void`                                                                              |
-| clearValidate   | Remove validation status of the field.            | ^[Function]`() => void`                                                                              |
+| Name            | Description                                          | Type                                                                                               |
+| --------------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| size            | 表单项大小                                           | object `ComputedRef<'' \| 'large' \| 'default' \| 'small'>`                                        |
+| validateMessage | 校验消息                                             | object `Ref<string>`                                                                               |
+| validateState   | 校验状态                                             | object `Ref<'' \| 'error' \| 'validating' \| 'success'>`                                           |
+| validate        | 验证表单项                                           | Function `(trigger: string, callback?: FormValidateCallback \| undefined) => FormValidationResult` |
+| resetField      | 对该表单项进行重置，将其值重置为初始值并移除校验结果 | Function `() => void`                                                                              |
+| clearValidate   | 移除该表单项的校验结果                               | Function `() => void`                                                                              |
 
-## Type Declarations
+## 类型声明
 
 <details>
-  <summary>Show declarations</summary>
+  <summary>展示类型声明</summary>
 
 ```ts
 type Arrayable<T> = T | T[];

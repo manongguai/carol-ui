@@ -10,7 +10,7 @@
     "@kirkw/carol-ui#build": {
       "dependsOn": [],
       "cache": false,
-      "outputs": ["dist/**", "es/**", "lib/**"]
+      "outputs": []
     },
     "@kirkw/carol-ui#type-check": {
       "dependsOn": []

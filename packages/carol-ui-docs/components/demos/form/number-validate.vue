@@ -2,7 +2,7 @@
   <cl-form
     ref="formRef"
     :model="numberValidateForm"
-    label-width="100px"
+    label-width="auto"
     class="demo-ruleForm"
   >
     <cl-form-item
