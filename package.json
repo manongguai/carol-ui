@@ -10,7 +10,7 @@
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky install",
-    "lint:lint-staged": "lint-staged",
+    "lint:lint-staged": "lint-staged --allow-empty",
     "commit": "git add -A && git pull && git-cz && git push",
     "changeset:add": "changeset add",
     "changeset:version": "changeset version",
