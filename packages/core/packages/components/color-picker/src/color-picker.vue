@@ -13,7 +13,7 @@
       <template #reference>
         <color-content
           ref="popRef"
-          :size="size"
+          :size="mergeSize"
           @panelVisibleChange="panelVisibleChange"
           :disabled="disabled"
           @reset="colorReset"
@@ -47,15 +47,17 @@ import {
   type Ref,
   nextTick,
   watch,
-  onMounted
+  onMounted,
+  type ComputedRef
 } from 'vue'
-import { colorPickerEmits, colorPickerProps } from './color-picker'
+import { colorPickerEmits, colorPickerProps, type Size } from './color-picker'
 import useTheme from '@/hooks/use-theme'
 import { colorPickerLight } from '../styles/light'
 import ClPopup from '@/components/popup'
 import ColorContent from './components/colorContent.vue'
 import ColorPanel from './components/colorPanel.vue'
 import { validHexString, getHexValueFromString } from './util'
+import { useFormSize } from '@/hooks/use-form-props'
 export default defineComponent({
   name: 'ClColorPicker',
   props: colorPickerProps,
@@ -70,6 +72,11 @@ export default defineComponent({
     const popRef = ref<InstanceType<typeof ColorContent> | undefined>()
     const referenceRef = ref<InstanceType<typeof ColorPanel> | undefined>()
     const themeRef = useTheme('colorPicker', colorPickerLight)
+    const formSize = useFormSize()
+    const mergeSize = computed(() => {
+      if (props.size) return props.size
+      return formSize.value === 'small' ? 'small' : 'medium'
+    })
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
       const { self, common } = theme
@@ -130,7 +137,8 @@ export default defineComponent({
       colorReset,
       popRef,
       referenceRef,
-      colorSave
+      colorSave,
+      mergeSize
     }
   }
 })

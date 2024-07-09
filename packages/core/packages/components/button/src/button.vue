@@ -36,6 +36,7 @@ import { buttonLight } from '../styles/light'
 import useTheme from '@/hooks/use-theme'
 import { createHoverColor, createKey } from '@kirkw/utils'
 import ClIcon from '@/components/icon'
+import { useFormSize } from '@/hooks/use-form-props'
 
 export default defineComponent({
   name: 'ClButton',
@@ -47,12 +48,13 @@ export default defineComponent({
   setup(props, { emit }) {
     const clButtonGroup = inject(buttonGroupInjectionKey, {})
     const buttonRef: Ref<HTMLElement | null> = ref<HTMLElement | null>(null)
+    const formSize = useFormSize()
     const mergedSizeRef = computed(() => {
       const { size } = props
       if (size) return size
       const { size: buttonGroupSize } = clButtonGroup
       if (buttonGroupSize) return buttonGroupSize
-      return 'medium'
+      return formSize.value || 'medium'
     })
 
     const handleClick = (e: MouseEvent): void => {

@@ -9,7 +9,7 @@ export const colorPickerProps = {
   //   可选值 ： default,small
   size: {
     type: String as PropType<Size>,
-    default: 'default'
+    default: 'medium'
   },
   disabled: {
     type: Boolean,

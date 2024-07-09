@@ -67,10 +67,6 @@
     @include when(disabled) {
       cursor: not-allowed;
     }
-
-    :deep(.cl-icon .icon) {
-      padding-left: 4px;
-    }
   }
 
   // 后缀元素
@@ -110,6 +106,7 @@
     .cl-input-number-decrease {
       display: flex;
       align-items: center;
+      justify-content: center;
       font-weight: 400;
     }
     .cl-input-number-increase {
@@ -129,9 +126,9 @@
       padding: 0 25px 0 0;
 
       &:hover:not(.is-disabled) {
-        .same {
-          display: block;
-        }
+        // .same {
+        //   display: block;
+        // }
       }
     }
 
@@ -142,6 +139,9 @@
       position: absolute;
       right: 0;
       border-left: var(--cl-input-controls-border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .cl-input-number-increase {
@@ -155,6 +155,13 @@
       @extend .same;
 
       bottom: 0;
+    }
+  }
+
+  &.is-controls-none {
+    .cl-input-number-increase,
+    .cl-input-number-decrease {
+      display: none;
     }
   }
 
@@ -192,9 +199,9 @@
 
 // 输入框（form-item中的元素在反映form校验失败时，都是通过css来控制）
 // 由于目前没有form，所以先放置在这里
-.el-form-item.is-error .cl-input-number,
-.el-form-item.is-error .cl-input-number:focus,
-.el-form-item.is-error .cl-input-number:hover {
+.cl-form-item.is-error .cl-input-number,
+.cl-form-item.is-error .cl-input-number:focus,
+.cl-form-item.is-error .cl-input-number:hover {
   z-index: 9;
   border-color: var(--cl-input-error-border-color);
 }

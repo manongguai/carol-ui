@@ -21,6 +21,7 @@
       <cl-button @click="resetForm(ruleFormRef)">Reset</cl-button>
     </cl-form-item>
   </cl-form>
+  <cl-icon iconName="cl-icon-wancheng"></cl-icon>
 </template>
 
 <script lang="ts" setup>

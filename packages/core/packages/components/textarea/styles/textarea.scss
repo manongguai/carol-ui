@@ -108,9 +108,9 @@
 
 /* 输入框（form-item中的元素在反映form校验失败时，都是通过css来控制）*/
 /* 由于目前没有form，所以先放置在这里 */
-.el-form-item.is-error .cl-textarea,
-.el-form-item.is-error .cl-textarea:focus,
-.el-form-item.is-error .cl-textarea:hover {
+.cl-form-item.is-error .cl-textarea,
+.cl-form-item.is-error .cl-textarea:focus,
+.cl-form-item.is-error .cl-textarea:hover {
   z-index: 9;
   border-color: var(--cl-input-error-border-color);
 }

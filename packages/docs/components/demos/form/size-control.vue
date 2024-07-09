@@ -2,7 +2,7 @@
   <div>
     <cl-button-group v-model="size" label="size control">
       <cl-button label="large" @click="size = 'large'">large</cl-button>
-      <cl-button label="default" @click="size = 'default'">default</cl-button>
+      <cl-button label="medium" @click="size = 'medium'">medium</cl-button>
       <cl-button label="small" @click="size = 'small'">small</cl-button>
     </cl-button-group>
     <cl-button-group style="margin-left: 10px" v-model="labelPosition" label="position control">
@@ -26,7 +26,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from "vue";
 
-const size = ref("default");
+const size = ref("medium");
 const labelPosition = ref("right");
 
 const sizeForm = reactive({
@@ -46,7 +46,7 @@ function onSubmit() {
 </script>
 
 <style>
-.el-radio-group {
+.cl-radio-group {
   margin-right: 12px;
 }
 </style>

@@ -32,7 +32,7 @@
 
 // 输入框（form-item中的元素在反映form校验失败时，都是通过css来控制）
 // 由于目前没有form，所以先放置在这里
-.el-form-item.is-error .cl-input-group {
+.cl-form-item.is-error .cl-input-group {
   .cl-input,
   .cl-input-number {
     z-index: 9;

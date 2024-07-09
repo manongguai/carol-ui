@@ -36,7 +36,7 @@ interface RuleForm {
   desc: string;
 }
 
-const formSize = ref("default");
+const formSize = ref("medium");
 const ruleFormRef = ref<FormInstance>();
 const ruleForm = reactive<RuleForm>({
   name: "Hello",
