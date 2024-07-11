@@ -27,6 +27,9 @@
       vertical-align: middle;
       height: 24px;
     }
+    .cl-color-picker-panel-button + .cl-color-picker-panel-button {
+      margin-left: 0;
+    }
   }
 }
 
