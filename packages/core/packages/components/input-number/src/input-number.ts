@@ -1,6 +1,10 @@
 import type { ExtractPropTypes, PropType } from 'vue'
 import { isNumber, isNil } from '@kirkw/utils'
+import type { ComponentSize } from '@/constants/size'
 export const inputNumberProps = {
+  size: {
+    type: String as PropType<ComponentSize | undefined>
+  },
   max: {
     type: Number,
     default: Number.POSITIVE_INFINITY

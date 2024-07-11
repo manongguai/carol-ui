@@ -1,6 +1,5 @@
+import type { ComponentSize } from '@/constants/size'
 import type { ExtractPropTypes, PropType } from 'vue'
-
-export type Size = 'small' | 'medium' | 'large'
 
 export type Type =
   | 'default'
@@ -22,7 +21,7 @@ export const buttonProps = {
   disabled: Boolean,
   icon: String,
   iconColor: String,
-  size: String as PropType<Size>,
+  size: String as PropType<ComponentSize>,
   round: Boolean,
   scene: {
     type: String as PropType<Scene>,

@@ -59,6 +59,8 @@ import useTheme from '@/hooks/use-theme'
 import { textareaLight } from '../../input/styles/input-light'
 import ClIcon from '@/components/icon'
 import { calcTextareaHeight, calcBoxHeight } from './calcTextareaHeight'
+import { useFormSize } from '@/hooks/use-form-props'
+import { createKey } from '@kirkw/utils'
 
 export default defineComponent({
   name: 'ClTextarea',
@@ -76,6 +78,12 @@ export default defineComponent({
       isComposing: false,
       focused: false,
       boxStyle: {}
+    })
+    const formSize = useFormSize()
+    const mergedSize = computed(() => {
+      const { size } = props
+      if (size) return size
+      return formSize.value || 'medium'
     })
     const textareaDisabled = computed(() => {
       return props.disabled
@@ -137,7 +145,7 @@ export default defineComponent({
         inputRadius,
         inputBorderColor,
         inputFontWeight,
-        inputFontSize,
+        [createKey('inputFontSize', mergedSize.value)]: inputFontSize,
         inputPadding,
         clearPaddingRight
       } = self

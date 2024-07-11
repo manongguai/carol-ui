@@ -10,19 +10,20 @@ input-number用来做金额/比例的增长输入框
 
 ### input props
 
-| 名称        |  类型   |   默认值 |               可选值 |                   说明 |
-| ----------- | :-----: | -------: | -------------------: | ---------------------: |
-| v-model     | string  |        - |                    - |
-| min         | number  | Infinity |                    - | 设置计数器允许的最小值 |
-| max         | number  | Infinity |                    - | 设置计数器允许的最大值 |
-| step        | number  |        - |                      |             计数器步长 |
-| placeholder | string  |   请输入 |                    - |         输入框占位文本 |
-| clearable   | boolean |     true |                    - |             是否可清空 |
-| disabled    | boolean |    false |                    - |                   禁用 |
-| readonly    | boolean |    false |                    - |                   只读 |
-| precision   | number  |        - |                    - |               数值精度 |
-| layout      | string  |     true | between, right, none |           控制按钮位置 |
-| inputWidth  | number  |      240 |                    - |            input的宽度 |
+| 名称        |  类型   |                       默认值 |               可选值 |                   说明 |
+| ----------- | :-----: | ---------------------------: | -------------------: | ---------------------: |
+| v-model     | string  |                            - |                    - |
+| min         | number  |                     Infinity |                    - | 设置计数器允许的最小值 |
+| max         | number  |                     Infinity |                    - | 设置计数器允许的最大值 |
+| step        | number  |                            - |                      |             计数器步长 |
+| placeholder | string  |                       请输入 |                    - |         输入框占位文本 |
+| clearable   | boolean |                         true |                    - |             是否可清空 |
+| disabled    | boolean |                        false |                    - |                   禁用 |
+| readonly    | boolean |                        false |                    - |                   只读 |
+| precision   | number  |                            - |                    - |               数值精度 |
+| layout      | string  |                         true | between, right, none |           控制按钮位置 |
+| inputWidth  | number  |                          240 |                    - |            input的宽度 |
+| size        | string  | 'small'｜ 'medium'｜ 'large' |             'medium' |         输入框尺寸变化 |
 
 ### Events 参数说明
 

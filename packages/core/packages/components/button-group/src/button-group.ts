@@ -1,9 +1,9 @@
-import type { Size } from '@/components/button/src/button'
+import type { ComponentSize } from '@/constants/size'
 import type { ExtractPropTypes, PropType } from 'vue'
 
 export const buttonGroupProps = {
   size: {
-    type: String as PropType<Size | undefined>,
+    type: String as PropType<ComponentSize | undefined>,
     default: undefined
   },
   vertical: Boolean
@@ -12,5 +12,5 @@ export const buttonGroupProps = {
 export type ButtonGroupProps = ExtractPropTypes<typeof buttonGroupProps>
 
 export interface ButtonGroupInjection {
-  size?: Size | undefined
+  size?: ComponentSize | undefined
 }

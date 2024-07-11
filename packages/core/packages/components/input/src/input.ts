@@ -1,7 +1,11 @@
 import type { ExtractPropTypes, PropType } from 'vue'
 import { isString } from '@kirkw/utils'
+import type { ComponentSize } from '@/constants/size'
 export type Type = 'text' | 'password' | 'phone'
 export const inputProps = {
+  size: {
+    type: String as PropType<ComponentSize | undefined>
+  },
   maxlength: Number,
   disabled: {
     type: Boolean,

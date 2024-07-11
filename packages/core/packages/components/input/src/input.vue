@@ -54,11 +54,23 @@
   </span>
 </template>
 <script lang="ts">
-import { defineComponent, ref, reactive, watch, type CSSProperties, computed, type Ref } from 'vue'
+import {
+  defineComponent,
+  ref,
+  reactive,
+  watch,
+  type CSSProperties,
+  computed,
+  type Ref,
+  inject
+} from 'vue'
 import { inputProps, inputEmits } from './input'
 import { inputLight } from '../styles/input-light'
 import useTheme from '@/hooks/use-theme'
 import ClIcon from '@/components/icon'
+import { useFormSize } from '@/hooks/use-form-props'
+import { createKey } from '@kirkw/utils'
+import { inputGroupInjectionKey } from '@/components/input-group/src/context'
 // import { createHoverColor, createKey } from '@kirkw/utils'
 export default defineComponent({
   name: 'ClInput',
@@ -85,6 +97,15 @@ export default defineComponent({
       },
       { immediate: true }
     )
+    const formSize = useFormSize()
+    const clInputGroup = inject(inputGroupInjectionKey, {})
+    const mergedSize = computed(() => {
+      const { size } = props
+      if (size) return size
+      const { size: inputGroupSize } = clInputGroup
+      if (inputGroupSize) return inputGroupSize
+      return formSize.value || 'medium'
+    })
     const inputDisabled = computed(() => {
       return props.disabled
     })
@@ -139,6 +160,7 @@ export default defineComponent({
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
       const { self } = theme
+      const size = mergedSize.value
       const {
         inputColor,
         borderHoverColor,
@@ -165,11 +187,11 @@ export default defineComponent({
         '--cl-input-hover-color': clearHoverColor
       }
       const {
-        inputHeight,
+        [createKey('inputHeight', size)]: inputHeight,
         inputRadius,
         inputBorder,
         inputFontWeight,
-        inputFontSize,
+        [createKey('inputFontSize', size)]: inputFontSize,
         inputPadding,
         clearPaddingRight
       } = self

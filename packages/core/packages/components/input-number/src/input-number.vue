@@ -66,13 +66,16 @@ import {
   computed,
   type CSSProperties,
   type Ref,
-  toRefs
+  toRefs,
+  inject
 } from 'vue'
 import { inputNumberProps, inputNumberEmits } from './input-number'
 import useTheme from '@/hooks/use-theme'
 import ClIcon from '@/components/icon'
-import { isNumber } from '@kirkw/utils'
+import { createKey, isNumber } from '@kirkw/utils'
 import { inputNumberLight } from '../../input/styles/input-light'
+import { useFormSize } from '@/hooks/use-form-props'
+import { inputGroupInjectionKey } from '@/components/input-group/src/context'
 export default defineComponent({
   name: 'ClInputNumber',
   props: inputNumberProps,
@@ -88,6 +91,16 @@ export default defineComponent({
       currentValue: modelValue,
       focused: false,
       hovering: false
+    })
+
+    const formSize = useFormSize()
+    const clInputGroup = inject(inputGroupInjectionKey, {})
+    const mergedSize = computed(() => {
+      const { size } = props
+      if (size) return size
+      const { size: inputGroupSize } = clInputGroup
+      if (inputGroupSize) return inputGroupSize
+      return formSize.value || 'medium'
     })
     // 监听订单状态变化,订单状态更新时更新快速选择
     watch(
@@ -132,6 +145,7 @@ export default defineComponent({
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
       const { self } = theme
+      const size = mergedSize.value
       const {
         inputColor,
         borderHoverColor,
@@ -159,11 +173,11 @@ export default defineComponent({
         '--cl-input-hover-color': clearHoverColor
       }
       const {
-        inputHeight,
+        [createKey('inputHeight', size)]: inputHeight,
         inputRadius,
         inputBorder,
         inputFontWeight,
-        inputFontSize,
+        [createKey('inputFontSize', size)]: inputFontSize,
         inputPadding,
         clearPaddingRight
       } = self

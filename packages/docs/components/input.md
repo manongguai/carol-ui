@@ -43,17 +43,18 @@ const form = reactive({
 
 ### input props
 
-| 名称            |  类型   | 默认值 |                 说明 |
-| --------------- | :-----: | -----: | -------------------: |
-| v-model         | string  |      - |                    - |
-| maxlength       | number  |      - | 最大输入长度(字符数) |
-| show-word-limit | boolean |  false | 是否显示输入字数统计 |
-| placeholder     | string  | 请输入 |       输入框占位文本 |
-| clearable       | boolean |   true |           是否可清空 |
-| disabled        | boolean |  false |                 禁用 |
-| readonly        | boolean |  false |                 只读 |
-| autofocus       | boolean |  false |         自动获取焦点 |
-| inputWidth      | number  |    240 |          input的宽度 |
+| 名称            |  类型   |   默认值 |                 说明 |
+| --------------- | :-----: | -------: | -------------------: |
+| v-model         | string  |        - |                    - |
+| maxlength       | number  |        - | 最大输入长度(字符数) |
+| show-word-limit | boolean |    false | 是否显示输入字数统计 |
+| placeholder     | string  |   请输入 |       输入框占位文本 |
+| clearable       | boolean |     true |           是否可清空 |
+| disabled        | boolean |    false |                 禁用 |
+| readonly        | boolean |    false |                 只读 |
+| autofocus       | boolean |    false |         自动获取焦点 |
+| inputWidth      | number  |      240 |          input的宽度 |
+| size            | string  | medium |       输入框尺寸变化 |
 
 ### password props
 
@@ -85,7 +86,7 @@ const form = reactive({
 ### Events 参数说明
 
 | 事件   |                    说明                     | 回调参数       |
-| ------ | :-----------------------------------------: | -------------- | 
+| ------ | :-----------------------------------------: | -------------- |
 | blur   |           在 Input 失去焦点时触发           | (event: Event) |
 | focus  |           在 Input 获得焦点时触发           | (event: Event) |
 | change |   仅在输入框失去焦点或用户按下回车时触发    | (value: string | number) |

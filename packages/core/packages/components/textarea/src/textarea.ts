@@ -1,6 +1,10 @@
 import type { ExtractPropTypes, PropType } from 'vue'
 import { isString } from '@kirkw/utils'
+import type { ComponentSize } from '@/constants/size'
 export const textareaProps = {
+  size: {
+    type: String as PropType<ComponentSize | undefined>
+  },
   value: String,
   placeholder: {
     type: String,
