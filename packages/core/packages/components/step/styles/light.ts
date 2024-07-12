@@ -5,8 +5,8 @@ const commonVariables = {
   descriptionFontSize: '12px',
   iconSize: '32px',
   iconIndexSize: '16px',
-  iconIndexWidth: '30px',
-  iconIndexHight: '30px',
+  iconIndexWidth: '28px',
+  iconIndexHight: '28px',
   iconIndexRaduis: '50%',
   fontWeight: '500'
 }

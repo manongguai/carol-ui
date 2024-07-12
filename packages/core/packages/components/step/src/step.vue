@@ -13,7 +13,7 @@
       <cl-icon
         class="cl-step-icon"
         iconName="cl-icon-wancheng"
-        v-if="currentStatus === 'finish'"
+        v-else-if="currentStatus === 'finish'"
       ></cl-icon>
       <span
         v-else

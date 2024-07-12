@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   flex-grow: 1;
-
+  justify-content: flex-start;
   .is-arrow {
     flex-grow: 1;
     display: flex;
@@ -102,14 +102,16 @@
       counter-reset: index var(--index);
       content: counter(index);
       border: 1px solid var(--cl-step-icon-color);
-      display: inline-block;
-      text-align: center;
+      display: inline-flex;
+      box-sizing: border-box;
       width: var(--cl-step-icon-index-width);
       height: var(--cl-step-icon-index-hight);
-      line-height: var(--cl-step-icon-index-width);
       border-radius: var(--cl-step-icon-index-raduis);
       font-size: var(--cl-step-icon-index-size);
       font-weight: var(--cl-step-font-weight);
+      justify-content: center;
+      align-items: center;
+      margin-right: 4px;
     }
   }
 }
