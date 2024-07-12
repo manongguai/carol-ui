@@ -1,5 +1,5 @@
 <template>
-  <div :class="formItemCls" :style="cssVars">
+  <div :class="formItemCls" ref="formItemRef" :style="cssVars">
     <div
       v-if="!!hasLabel"
       :style="{

@@ -32,9 +32,11 @@
     &,
     &:hover {
       cursor: not-allowed;
-      background-color: var(--cl-color-disabled);
-      color: var(--cl-text-color-disabled);
+      background-image: none;
+      background-color: var(--cl-color);
+      color: var(--cl-text-color);
       border: var(--cl-border-disabled);
+      opacity: .6;
     }
   }
   @include when(loading) {

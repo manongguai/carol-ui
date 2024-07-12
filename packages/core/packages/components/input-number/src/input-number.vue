@@ -74,7 +74,7 @@ import useTheme from '@/hooks/use-theme'
 import ClIcon from '@/components/icon'
 import { createKey, isNumber } from '@kirkw/utils'
 import { inputNumberLight } from '../../input/styles/input-light'
-import { useFormSize } from '@/hooks/use-form-props'
+import { useFormDisabled, useFormSize } from '@/hooks/use-form-props'
 import { inputGroupInjectionKey } from '@/components/input-group/src/context'
 export default defineComponent({
   name: 'ClInputNumber',
@@ -110,9 +110,7 @@ export default defineComponent({
       },
       { immediate: true }
     )
-    const inputNumberDisabled = computed(() => {
-      return props.disabled
-    })
+    const inputNumberDisabled = useFormDisabled()
     // 减不可点
     const minDisabled = computed(() => {
       return toDecrease(data.currentValue, props.step) < props.min || inputNumberDisabled.value

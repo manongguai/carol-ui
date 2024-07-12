@@ -5,7 +5,7 @@
       `cl-button`,
       `cl-button--${type}-type`,
       `cl-button--${mergedSize}-type`,
-      disabled && `is-disabled`,
+      buttonDisabled && `is-disabled`,
       block && `is-block`,
       color && `cl-button--color`,
       loading && `is-loading`
@@ -24,8 +24,8 @@
     <span>
       <slot></slot>
     </span>
-    <div class="cl-button_border"></div>
-    <div class="cl-button_state-border"></div>
+    <div v-show="!buttonDisabled" class="cl-button_border"></div>
+    <div v-show="!buttonDisabled" class="cl-button_state-border"></div>
   </button>
 </template>
 <script lang="ts">
@@ -36,7 +36,7 @@ import { buttonLight } from '../styles/light'
 import useTheme from '@/hooks/use-theme'
 import { createHoverColor, createKey } from '@kirkw/utils'
 import ClIcon from '@/components/icon'
-import { useFormSize } from '@/hooks/use-form-props'
+import { useFormDisabled, useFormSize } from '@/hooks/use-form-props'
 
 export default defineComponent({
   name: 'ClButton',
@@ -56,9 +56,9 @@ export default defineComponent({
       if (buttonGroupSize) return buttonGroupSize
       return formSize.value || 'medium'
     })
-
+    const buttonDisabled = useFormDisabled()
     const handleClick = (e: MouseEvent): void => {
-      if (!props.disabled && !props.loading) {
+      if (!buttonDisabled && !props.loading) {
         emit('click', e)
       }
     }
@@ -169,7 +169,8 @@ export default defineComponent({
       mergedSize: mergedSizeRef,
       handleClick,
       buttonRef,
-      cssVars: cssVarsRef
+      cssVars: cssVarsRef,
+      buttonDisabled
     }
   }
 })

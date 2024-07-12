@@ -68,7 +68,7 @@ import { inputProps, inputEmits } from './input'
 import { inputLight } from '../styles/input-light'
 import useTheme from '@/hooks/use-theme'
 import ClIcon from '@/components/icon'
-import { useFormSize } from '@/hooks/use-form-props'
+import { useFormDisabled, useFormSize } from '@/hooks/use-form-props'
 import { createKey } from '@kirkw/utils'
 import { inputGroupInjectionKey } from '@/components/input-group/src/context'
 // import { createHoverColor, createKey } from '@kirkw/utils'
@@ -106,9 +106,7 @@ export default defineComponent({
       if (inputGroupSize) return inputGroupSize
       return formSize.value || 'medium'
     })
-    const inputDisabled = computed(() => {
-      return props.disabled
-    })
+    const inputDisabled = useFormDisabled()
     const isWordLimitVisible = computed(() => {
       /**
        * 用户定义showWordLimit，且 用户限制输入长度

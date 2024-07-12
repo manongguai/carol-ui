@@ -2,92 +2,116 @@
   <cl-form
     ref="ruleFormRef"
     :model="ruleForm"
-    status-icon
     :rules="rules"
-    label-width="80"
+    label-width="120px"
     class="demo-ruleForm"
+    :size="formSize"
+    status-icon
+    scrollToError
   >
-    <cl-form-item label="Password" prop="pass">
-      <cl-input v-model="ruleForm.pass" type="password" autocomplete="off" />
+    <cl-form-item label="Activity name" prop="name">
+      <cl-input v-model="ruleForm.name" />
     </cl-form-item>
-    <cl-form-item label="Confirm" prop="checkPass">
-      <cl-input v-model="ruleForm.checkPass" type="password" autocomplete="off" />
-    </cl-form-item>
-    <cl-form-item label="Age" prop="age">
-      <cl-input v-model.number="ruleForm.age" />
+    <cl-form-item label="Activity form" prop="desc">
+      <cl-input v-model="ruleForm.desc" type="textarea" />
     </cl-form-item>
     <cl-form-item>
-      <cl-button type="primary" @click="submitForm(ruleFormRef)">Submit</cl-button>
+      <cl-button type="primary" @click="submitForm(ruleFormRef)"> Create </cl-button>
       <cl-button @click="resetForm(ruleFormRef)">Reset</cl-button>
     </cl-form-item>
   </cl-form>
-  <cl-icon iconName="cl-icon-wancheng"></cl-icon>
+  <div style="height: 1500px"></div>
 </template>
 
 <script lang="ts" setup>
-import type { FormInstance, FormRules } from '@/index'
+import type { FormInstance, FormRules } from '../packages'
 import { reactive, ref } from 'vue'
+interface RuleForm {
+  name: string
+  region: string
+  count: string
+  date1: string
+  date2: string
+  delivery: boolean
+  type: string[]
+  resource: string
+  desc: string
+}
 
+const formSize = ref('medium')
 const ruleFormRef = ref<FormInstance>()
-
-const checkAge = (rule: any, value: any, callback: any) => {
-  if (!value) {
-    return callback(new Error('Please input the age'))
-  }
-  setTimeout(() => {
-    if (!Number.isInteger(value)) {
-      callback(new Error('Please input digits'))
-    } else {
-      if (value < 18) {
-        callback(new Error('Age must be greater than 18'))
-      } else {
-        callback()
-      }
-    }
-  }, 1000)
-}
-
-const validatePass = (rule: any, value: any, callback: any) => {
-  if (value === '') {
-    callback(new Error('Please input the password'))
-  } else {
-    if (ruleForm.checkPass !== '') {
-      if (!ruleFormRef.value) return
-      ruleFormRef.value.validateField('checkPass', () => null)
-    }
-    callback()
-  }
-}
-const validatePass2 = (rule: any, value: any, callback: any) => {
-  if (value === '') {
-    callback(new Error('Please input the password again'))
-  } else if (value !== ruleForm.pass) {
-    callback(new Error("Two inputs don't match!"))
-  } else {
-    callback()
-  }
-}
-
-const ruleForm = reactive({
-  pass: '',
-  checkPass: '',
-  age: ''
+const ruleForm = reactive<RuleForm>({
+  name: 'Hello',
+  region: '',
+  count: '',
+  date1: '',
+  date2: '',
+  delivery: false,
+  type: [],
+  resource: '',
+  desc: ''
 })
 
-const rules = reactive<FormRules<typeof ruleForm>>({
-  pass: [{ validator: validatePass, trigger: 'blur' }],
-  checkPass: [{ validator: validatePass2, trigger: 'blur' }],
-  age: [{ validator: checkAge, trigger: 'blur' }]
+const rules = reactive<FormRules<RuleForm>>({
+  name: [
+    { required: true, message: 'Please input Activity name', trigger: 'blur' },
+    { min: 3, max: 5, message: 'Length should be 3 to 5', trigger: 'blur' }
+  ],
+  region: [
+    {
+      required: true,
+      message: 'Please select Activity zone',
+      trigger: 'change'
+    }
+  ],
+  count: [
+    {
+      required: true,
+      message: 'Please select Activity count',
+      trigger: 'change'
+    }
+  ],
+  date1: [
+    {
+      type: 'date',
+      required: true,
+      message: 'Please pick a date',
+      trigger: 'change'
+    }
+  ],
+  date2: [
+    {
+      type: 'date',
+      required: true,
+      message: 'Please pick a time',
+      trigger: 'change'
+    }
+  ],
+  type: [
+    {
+      type: 'array',
+      required: true,
+      message: 'Please select at least one activity type',
+      trigger: 'change'
+    }
+  ],
+  resource: [
+    {
+      required: true,
+      message: 'Please select activity resource',
+      trigger: 'change'
+    }
+  ],
+  desc: [{ required: true, message: 'Please input activity form', trigger: 'blur' }]
 })
 
-const submitForm = (formEl: FormInstance | undefined) => {
+const submitForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return
-  formEl.validate((valid) => {
+  await formEl.validate((valid, fields) => {
     if (valid) {
       console.log('submit!')
     } else {
-      console.log('error submit!')
-      return false
+      console.log('error submit!', fields)
     }
   })
 }
@@ -96,4 +120,9 @@ const resetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return
   formEl.resetFields()
 }
+
+const options = Array.from({ length: 10000 }).map((_, idx) => ({
+  value: `${idx + 1}`,
+  label: `${idx + 1}`
+}))
 </script>

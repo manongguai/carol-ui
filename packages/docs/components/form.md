@@ -87,6 +87,9 @@ When an `cl-form-item` is nested in another `cl-form-item`, its label width will
 | validate-on-rule-change   | 是否在 rules 属性改变后立即触发一次验证                                                 | boolean                                      | true    |
 | size                      | 用于控制该表单内组件的尺寸form.                                                         | enum `'' \| 'large' \| 'default' \| 'small'` | —       |
 | disabled                  | 是否禁用该表单内的所有组件。 如果设置为 true, 它将覆盖内部组件的 disabled 属性          | boolean                                      | false   |
+| scroll-to-error           | 当校验失败时，滚动到第一个错误表单项                                                    | boolean                                      | false   |
+| scroll-into-view-options  | 当校验有失败结果时，滚动到第一个失败的表单项目 可通过 scrollIntoView 配置               | object                                       | boolean | — |
+
 
 ## Form Events
 

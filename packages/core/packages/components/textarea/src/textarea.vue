@@ -59,7 +59,7 @@ import useTheme from '@/hooks/use-theme'
 import { textareaLight } from '../../input/styles/input-light'
 import ClIcon from '@/components/icon'
 import { calcTextareaHeight, calcBoxHeight } from './calcTextareaHeight'
-import { useFormSize } from '@/hooks/use-form-props'
+import { useFormDisabled, useFormSize } from '@/hooks/use-form-props'
 import { createKey } from '@kirkw/utils'
 
 export default defineComponent({
@@ -85,9 +85,7 @@ export default defineComponent({
       if (size) return size
       return formSize.value || 'medium'
     })
-    const textareaDisabled = computed(() => {
-      return props.disabled
-    })
+    const textareaDisabled = useFormDisabled()
     const isWordLimitVisible = computed(() => {
       return props.showWordLimit && props.maxlength && !textareaDisabled.value && !props.readonly
     })

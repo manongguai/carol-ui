@@ -91,10 +91,17 @@ export default defineComponent({
         if (e instanceof Error) throw e
         const invalidFields = e as ValidateFieldsError
         if (props.scrollToError) {
-          // scrollToField(Object.keys(invalidFields)[0])
+          scrollToField(Object.keys(invalidFields)[0])
         }
         callback?.(false, invalidFields)
         return shouldThrow && Promise.reject(invalidFields)
+      }
+    }
+
+    const scrollToField = (prop: FormItemProp) => {
+      const field = filterFields(fields, prop)[0]
+      if (field) {
+        field.$el?.scrollIntoView(props.scrollIntoViewOptions)
       }
     }
     const isValidatable = computed(() => {
