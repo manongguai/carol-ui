@@ -186,7 +186,7 @@ export default defineComponent({
       }
       const {
         [createKey('inputHeight', size)]: inputHeight,
-        inputRadius,
+        [createKey('inputRadius', size)]: inputRadius,
         inputBorder,
         inputFontWeight,
         [createKey('inputFontSize', size)]: inputFontSize,

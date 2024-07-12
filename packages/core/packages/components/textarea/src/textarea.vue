@@ -140,7 +140,7 @@ export default defineComponent({
         '--cl-input-hover-color': clearHoverColor
       }
       const {
-        inputRadius,
+        [createKey('inputRadius', mergedSize.value)]: inputRadius,
         inputBorderColor,
         inputFontWeight,
         [createKey('inputFontSize', mergedSize.value)]: inputFontSize,

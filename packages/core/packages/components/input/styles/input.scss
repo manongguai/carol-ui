@@ -15,7 +15,7 @@
   font-size: var(--cl-input-font-size);
   /* 大中小模式字体大小不变 */
   background: var(--cl-input-background-color);
-
+  padding: 0 var(--cl-input-padding-horizontal);
   &:hover,
   &:focus {
     border-color: var(--cl-input-border-hover-color);
@@ -31,7 +31,7 @@
     width: 100%;
     caret-color: var(--cl-input-caret-color);
     /*光标蓝色*/
-    padding: 0 var(--cl-input-padding-horizontal);
+
     background: inherit;
 
     &::placeholder {
@@ -54,8 +54,8 @@
     display: flex;
     align-items: center;
     font-size: 14px;
-    :deep(.cl-icon){
-      padding-right: var(--cl-input-padding-horizontal);
+    :deep(.cl-icon) {
+      padding-left: var(--cl-input-padding-horizontal);
     }
   }
 
@@ -64,12 +64,10 @@
     flex-shrink: 0;
     display: flex;
     align-items: center;
-    padding-left: var(--cl-input-padding-horizontal);
     :deep(.cl-icon) {
-      padding-left: var(--cl-input-padding-horizontal);
+      padding-right: var(--cl-input-padding-horizontal);
     }
   }
-
 
   @include when(disabled) {
     cursor: not-allowed;
@@ -94,8 +92,6 @@
     }
   }
 }
-
-
 
 // 输入框（form-item中的元素在反映form校验失败时，都是通过css来控制）
 // 由于目前没有form，所以先放置在这里

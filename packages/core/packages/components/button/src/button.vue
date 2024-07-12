@@ -146,6 +146,7 @@ export default defineComponent({
         [createKey('fontSize', size)]: fontSize,
         [createKey('padding', size)]: padding,
         [createKey('minWidth', size)]: minWidth,
+        [createKey('roundBorderRadius', size)]: roundBorderRadius,
         [createKey('borderRadius', size)]: borderRadius
       } = self
 
@@ -156,7 +157,7 @@ export default defineComponent({
         '--cl-font-size': fontSize,
         '--cl-min-width': minWidth,
         '--cl-padding': textBtn ? 'initial' : padding,
-        '--cl-border-radius': textBtn ? 'initial' : round ? borderRadius : self['borderRadius']
+        '--cl-border-radius': textBtn ? 'initial' : round ? roundBorderRadius : borderRadius
       }
       return {
         ...fontProps,

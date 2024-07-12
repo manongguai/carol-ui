@@ -10,9 +10,12 @@ export default {
   cubicBezierEaseIn: 'cubic-bezier(.4, 0, 1, 1)',
 
   borderRadius: '2px',
-  borderRadiusSmall: '12px',
-  borderRadiusMedium: '16px',
-  borderRadiusLarge: '20px',
+  borderRadiusSmall: '2px',
+  borderRadiusMedium: '4px',
+  borderRadiusLarge: '4px',
+  roundRadiusSmall: '12px',
+  roundRadiusMedium: '16px',
+  roundRadiusLarge: '20px',
 
   fontSize: '14px',
   fontSizeMini: '10px',

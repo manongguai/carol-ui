@@ -8,7 +8,7 @@
   display: inline-flex;
   position: relative;
   border-radius: var(--cl-input-border-radius);
-
+  padding: 0 var(--cl-input-padding-horizontal);
   /* 输入框在大中小三种情况下边框圆角不变 */
   border: var(--cl-input-border);
   color: var(--cl-input-color);
@@ -32,7 +32,7 @@
     font-size: inherit;
     width: 100%;
     background: inherit;
-    padding: 0 var(--cl-input-padding-horizontal);
+   
     caret-color: var(--cl-input-caret-color);
 
     /* 光标蓝色 */
@@ -123,7 +123,7 @@
   // 控制器右侧上下分布
   &.is-controls-right {
     &.cl-input-number {
-      padding: 0 25px 0 0;
+      padding: 0 var(--cl-input-controls-padding) 0 var(--cl-input-padding-horizontal);
 
       &:hover:not(.is-disabled) {
         // .same {
