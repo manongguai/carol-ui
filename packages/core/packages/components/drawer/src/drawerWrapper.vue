@@ -22,9 +22,9 @@
 import { type CSSProperties, computed, defineComponent, ref, type Ref, onMounted } from 'vue'
 import { drawerEmits, drawerProps } from './drawer'
 import useTheme from '@/hooks/use-theme'
-import { nextZIndex } from '@kirkw/utils'
 import { drawerLight } from '../styles/light'
 import DrawerContentWrapper from './drawerContentWrapper.vue'
+import { useZIndex } from '@/hooks/use-zindex'
 
 export default defineComponent({
   name: 'DrawerWrapper',
@@ -36,7 +36,7 @@ export default defineComponent({
   setup(props, { emit, slots }) {
     const drawerWrapperRef: Ref<HTMLElement | undefined> = ref<HTMLElement | undefined>()
     const isMountedRef = ref<boolean>(false)
-
+    const { nextZIndex } = useZIndex()
     const themeRef = useTheme('drawer', drawerLight)
 
     const drawerContentProps = computed(() => ({

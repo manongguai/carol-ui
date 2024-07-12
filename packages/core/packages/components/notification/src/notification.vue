@@ -49,8 +49,9 @@ import { type CSSProperties, computed, onMounted, defineComponent, ref, type Ref
 import { notificationEmits, notificationProps } from './notification'
 import useTheme from '@/hooks/use-theme'
 import ClIcon from '@/components/icon'
-import { createKey, nextZIndex } from '@kirkw/utils'
+import { createKey } from '@kirkw/utils'
 import { notificationLight } from '../styles/light'
+import { useZIndex } from '@/hooks/use-zindex'
 
 export default defineComponent({
   name: 'ClNotification',
@@ -64,6 +65,7 @@ export default defineComponent({
     let timer: number | undefined
     const themeRef = useTheme('notification', notificationLight)
     const visible = ref(true)
+    const { nextZIndex } = useZIndex()
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
       const { self } = theme

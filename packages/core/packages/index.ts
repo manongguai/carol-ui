@@ -1,8 +1,8 @@
 import type { App } from 'vue'
 export * from './types'
 import { clComponents } from './components/components'
-import { setZIndex } from '@kirkw/utils'
 import type { LibraryOptions } from './types'
+import { setZIndex } from './hooks/use-zindex'
 export * from './components/components'
 export { lightTheme } from './themes'
 

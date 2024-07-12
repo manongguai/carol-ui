@@ -2,13 +2,14 @@ import { ref, nextTick } from 'vue'
 import type { ComponentPublicInstance, Ref } from 'vue'
 import type { PopupProps } from './popup'
 import { Popper } from './popper'
-import { nextZIndex } from '@kirkw/utils'
+import { useZIndex } from '@/hooks/use-zindex'
 export function usePopper(
   popRef: Ref<HTMLElement | undefined>,
   referenceSlotEl: Ref<HTMLElement | null>,
   props: PopupProps,
   visible: Ref<boolean>
 ) {
+  const { nextZIndex } = useZIndex()
   const hasInitPop = ref<boolean>(false)
   const popJs = ref<Popper | null>(null)
   const timer = ref<number | null>(null)
