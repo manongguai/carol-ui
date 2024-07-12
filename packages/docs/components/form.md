@@ -30,6 +30,14 @@ W3C 标准定义：
 
 ## 表单校验
 
+:::tip
+
+ 使用scroll-to-error 参数控制是否在验证失败后滚动至第一个错误表单
+ 使用scroll-into-view-options 进行scrollIntoView 的配置
+
+:::
+
+
 <preview path="./demos/form/validation.vue" title="Form 组件允许你验证用户的输入是否符合规范，来帮助你找到和纠正错误。" description="Form 组件提供了表单验证的功能，只需为 rules 属性传入约定的验证规则，并将 form-Item 的 prop 属性设置为需要验证的特殊键值即可。 更多高级用法可参考 async-validator。"></preview>
 
 ## 自定义校验规则
@@ -62,6 +70,9 @@ When an `cl-form-item` is nested in another `cl-form-item`, its label width will
 
 :::
 
+
+
+
 <!-- ## 无障碍
 
 <preview path="./demos/form/accessibility.vue" title="" description="当在 cl-form-item 内只有一个输入框（或相关的控制部件，如选择或复选框），表单项的标签将自动附加在那个输入框上。 然而，如果同时有多个输入框在 cl-form-item内， 表单项将被分配为 WAI-ARIA 组 的角色。 在这种情况下，需要手动给每个 input 指定访问标签。"></preview> -->
@@ -70,21 +81,21 @@ When an `cl-form-item` is nested in another `cl-form-item`, its label width will
 
 ## Form Attributes
 
-| Name                      | Description                                                                             | Type                                         | Default |
-| ------------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------- | ------- |
-| model                     | 表单数据对象                                                                            | object `Record<string, any>`                 | —       |
-| rules                     | 表单验证规则.                                                                           | object `FormRules`                           | —       |
-| label-position            | 表单域标签的位置， 当设置为 left 或 right 时，则也需要设置 label-width 属性             | enum `'left' \| 'right' \| 'top'`            | right   |
-| label-width               | 标签的长度，例如 '50px'。 作为 Form 直接子元素的 form-item 会继承该值。 可以使用 auto。 | string / number                              | ''      |
-| label-suffix              | 表单域标签的后缀                                                                        | string                                       | ''      |
-| hide-required-asterisk    | 是否隐藏必填字段标签旁边的红色星号。                                                    | boolean                                      | false   |
-| require-asterisk-position | 星号的位置。                                                                            | enum `'left' \| 'right'`                     | left    |
-| show-message              | 是否显示校验错误信息                                                                    | boolean                                      | true    |
-| validate-on-rule-change   | 是否在 rules 属性改变后立即触发一次验证                                                 | boolean                                      | true    |
-| size                      | 用于控制该表单内组件的尺寸form.                                                         | enum `'' \| 'large' \| 'default' \| 'small'` | —       |
-| disabled                  | 是否禁用该表单内的所有组件。 如果设置为 true, 它将覆盖内部组件的 disabled 属性          | boolean                                      | false   |
-| scroll-to-error           | 当校验失败时，滚动到第一个错误表单项                                                    | boolean                                      | false   |
-| scroll-into-view-options  | 当校验有失败结果时，滚动到第一个失败的表单项目 可通过 scrollIntoView 配置               | object                                       | boolean | — |
+| Name                      | Description                                                                             | Type                                                    | Default             |
+| ------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------------- |
+| model                     | 表单数据对象                                                                            | object `Record<string, any>`                            | —                   |
+| rules                     | 表单验证规则.                                                                           | object `FormRules`                                      | —                   |
+| label-position            | 表单域标签的位置， 当设置为 left 或 right 时，则也需要设置 label-width 属性             | enum `'left' \| 'right' \| 'top'`                       | right               |
+| label-width               | 标签的长度，例如 '50px'。 作为 Form 直接子元素的 form-item 会继承该值。 可以使用 auto。 | string / number                                         | ''                  |
+| label-suffix              | 表单域标签的后缀                                                                        | string                                                  | ''                  |
+| hide-required-asterisk    | 是否隐藏必填字段标签旁边的红色星号。                                                    | boolean                                                 | false               |
+| require-asterisk-position | 星号的位置。                                                                            | enum `'left' \| 'right'`                                | left                |
+| show-message              | 是否显示校验错误信息                                                                    | boolean                                                 | true                |
+| validate-on-rule-change   | 是否在 rules 属性改变后立即触发一次验证                                                 | boolean                                                 | true                |
+| size                      | 用于控制该表单内组件的尺寸form.                                                         | enum `'' \| 'large' \| 'default' \| 'small'`            | —                   |
+| disabled                  | 是否禁用该表单内的所有组件。 如果设置为 true, 它将覆盖内部组件的 disabled 属性          | boolean                                                 | false               |
+| scroll-to-error           | 当校验失败时，滚动到第一个错误表单项                                                    | boolean                                                 | false               |
+| scroll-into-view-options  | 当校验有失败结果时，滚动到第一个失败的表单项目 可通过 scrollIntoView 配置               | object                                       \| boolean | \{block:'center'\} |
 
 
 ## Form Events

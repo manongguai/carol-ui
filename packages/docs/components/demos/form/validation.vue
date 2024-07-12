@@ -7,6 +7,10 @@
     class="demo-ruleForm"
     :size="formSize"
     status-icon
+    scroll-to-error
+    :scroll-into-view-options="{
+      block:'center'
+    }"
   >
     <cl-form-item label="Activity name" prop="name">
       <cl-input v-model="ruleForm.name" />

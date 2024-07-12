@@ -58,7 +58,7 @@ export default defineComponent({
     })
     const buttonDisabled = useFormDisabled()
     const handleClick = (e: MouseEvent): void => {
-      if (!buttonDisabled && !props.loading) {
+      if (!buttonDisabled.value && !props.loading) {
         emit('click', e)
       }
     }
