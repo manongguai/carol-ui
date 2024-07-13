@@ -18,6 +18,7 @@ import { popupLight } from '@/components/popup/styles'
 import { rowLight } from '@/components/row/styles'
 import { stepLight } from '@/components/step/styles'
 import { stepsLight } from '@/components/steps/styles'
+import { tableLight } from '@/components/table/styles'
 import { textareaLight } from '@/components/textarea/styles'
 import { titleLight } from '@/components/title/styles'
 
@@ -41,6 +42,7 @@ export const lightTheme: BuiltInGlobalTheme = {
   row: rowLight,
   step: stepLight,
   steps: stepsLight,
+  table: tableLight,
   textarea: textareaLight,
   title: titleLight
 }

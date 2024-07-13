@@ -19,6 +19,7 @@ import ClPopup from './popup'
 import ClRow from './row'
 import ClStep from './step'
 import ClSteps from './steps'
+import ClTable from './table'
 import ClTextarea from './textarea'
 import ClTitle from './title'
 export * from './button'
@@ -41,6 +42,7 @@ export * from './popup'
 export * from './row'
 export * from './step'
 export * from './steps'
+export * from './table'
 export * from './textarea'
 export * from './title'
 
@@ -65,6 +67,7 @@ const clComponents: Component[] = [
   ClRow,
   ClStep,
   ClSteps,
+  ClTable,
   ClTextarea,
   ClTitle
 ]
@@ -91,6 +94,7 @@ export {
   ClRow,
   ClStep,
   ClSteps,
+  ClTable,
   ClTextarea,
   ClTitle
 }
