@@ -27,7 +27,7 @@ module.exports = function generator(plop) {
       return [
         {
           type: "addMany",
-          destination: `packages/carol-ui/packages/components/${kebabCaseName}`,
+          destination: `packages/core/packages/components/${kebabCaseName}`,
           base: `templates/`,
           templateFiles: "**/*",
           data: {

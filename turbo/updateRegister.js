@@ -13,7 +13,7 @@ const {
 } = require("./utils");
 
 // 读取components
-const rootComponentDir = path.resolve(__dirname, "../packages/carol-ui/packages/components");
+const rootComponentDir = path.resolve(__dirname, "../packages/core/packages/components");
 const componentNames = readDirSync(rootComponentDir, 2).map(fullPath => {
   return {
     fullPath,
@@ -25,7 +25,7 @@ const componentNames = readDirSync(rootComponentDir, 2).map(fullPath => {
 });
 
 // 写入components.ts => packages/components/components.ts
-const componentsTsPath = path.resolve(__dirname, "../packages/carol-ui/packages/components/components.ts");
+const componentsTsPath = path.resolve(__dirname, "../packages/core/packages/components/components.ts");
 cleanFile(componentsTsPath); // 先清空文件
 writeFileByLine(componentsTsPath, `import type { Component } from 'vue'`);
 componentNames.forEach(({ name }) => {
@@ -47,7 +47,7 @@ writeFileByLine(componentsTsPath, `export { clComponents, ${clNames.join(", ")} 
 formatFile(componentsTsPath);
 
 // 写入custom-theme.ts => packages/components/config-provider/src/custom-theme.ts
-const customThemeTsPath = path.resolve(__dirname, "../packages/carol-ui/packages/components/config-provider/src/custom-theme.ts");
+const customThemeTsPath = path.resolve(__dirname, "../packages/core/packages/components/config-provider/src/custom-theme.ts");
 
 const filterComponentNames = componentNames.filter(({ name }) => {
   // 需要排除config-provider
@@ -55,7 +55,7 @@ const filterComponentNames = componentNames.filter(({ name }) => {
     return false;
   }
   // 不存在theme定义的也要排除
-  const themePath = path.resolve(__dirname, `../packages/carol-ui/packages/components/${kebabCase(name)}/styles/index.ts`);
+  const themePath = path.resolve(__dirname, `../packages/core/packages/components/${kebabCase(name)}/styles/index.ts`);
   // console.log(themePath)
   return fs.existsSync(themePath);
 });
@@ -75,7 +75,7 @@ writeFileByLine(customThemeTsPath, `export interface CustomTheme { ${themeProper
 formatFile(customThemeTsPath);
 
 // 写入light.ts => packages/themes/light.ts
-const themeLightTsPath = path.resolve(__dirname, "../packages/carol-ui/packages/themes/light.ts");
+const themeLightTsPath = path.resolve(__dirname, "../packages/core/packages/themes/light.ts");
 cleanFile(themeLightTsPath);
 writeFileByLine(themeLightTsPath, `import { commonLight } from '../styles'`);
 writeFileByLine(themeLightTsPath, `import type { BuiltInGlobalTheme } from './themes'`);
