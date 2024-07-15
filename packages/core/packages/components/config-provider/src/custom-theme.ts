@@ -16,6 +16,7 @@ import type { RowTheme } from '@/components/row/styles'
 import type { StepTheme } from '@/components/step/styles'
 import type { StepsTheme } from '@/components/steps/styles'
 import type { TableTheme } from '@/components/table/styles'
+import type { TableColumnTheme } from '@/components/table-column/styles'
 import type { TextareaTheme } from '@/components/textarea/styles'
 import type { TitleTheme } from '@/components/title/styles'
 
@@ -38,6 +39,7 @@ export interface CustomTheme {
   step?: StepTheme
   steps?: StepsTheme
   table?: TableTheme
+  tableColumn?: TableColumnTheme
   textarea?: TextareaTheme
   title?: TitleTheme
 }

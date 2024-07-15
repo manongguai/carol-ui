@@ -2,8 +2,8 @@ import DefaultTheme from "vitepress/theme";
 import CarolUI, { ClNotification } from "@kirkw/carol-ui";
 import "@kirkw/carol-ui/style.css";
 import "@vitepress-demo-preview/component/dist/style.css";
+// @ts-ignore
 import { AntDesignContainer } from "@vitepress-demo-preview/component";
-
 export default {
   extends: DefaultTheme,
   enhanceApp(ctx: any) {

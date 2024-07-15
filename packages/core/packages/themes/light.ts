@@ -19,6 +19,7 @@ import { rowLight } from '@/components/row/styles'
 import { stepLight } from '@/components/step/styles'
 import { stepsLight } from '@/components/steps/styles'
 import { tableLight } from '@/components/table/styles'
+import { tableColumnLight } from '@/components/table-column/styles'
 import { textareaLight } from '@/components/textarea/styles'
 import { titleLight } from '@/components/title/styles'
 
@@ -43,6 +44,7 @@ export const lightTheme: BuiltInGlobalTheme = {
   step: stepLight,
   steps: stepsLight,
   table: tableLight,
+  tableColumn: tableColumnLight,
   textarea: textareaLight,
   title: titleLight
 }

@@ -20,6 +20,7 @@ import ClRow from './row'
 import ClStep from './step'
 import ClSteps from './steps'
 import ClTable from './table'
+import ClTableColumn from './table-column'
 import ClTextarea from './textarea'
 import ClTitle from './title'
 export * from './button'
@@ -43,6 +44,7 @@ export * from './row'
 export * from './step'
 export * from './steps'
 export * from './table'
+export * from './table-column'
 export * from './textarea'
 export * from './title'
 
@@ -68,6 +70,7 @@ const clComponents: Component[] = [
   ClStep,
   ClSteps,
   ClTable,
+  ClTableColumn,
   ClTextarea,
   ClTitle
 ]
@@ -95,6 +98,7 @@ export {
   ClStep,
   ClSteps,
   ClTable,
+  ClTableColumn,
   ClTextarea,
   ClTitle
 }
