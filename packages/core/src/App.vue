@@ -1,12 +1,28 @@
 <template>
   <div>
-    <cl-table :data="data"> </cl-table>
+    <cl-table :data="data">
+      <cl-table-column prop="name" label="Name"> </cl-table-column>
+      <cl-table-column prop="age" label="Age"> </cl-table-column>
+    </cl-table>
+
+    <cl-table :data="data">
+      <cl-table-column prop="name" label="Name"> </cl-table-column>
+    </cl-table>
   </div>
 </template>
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
-
-const data = ref([])
+import ClTable from '../packages/components/table'
+const data = ref([
+  {
+    name: 'Alice',
+    age: 25
+  },
+  {
+    name: 'Bob',
+    age: 30
+  }
+])
 </script>
 
 <style></style>

@@ -3,10 +3,11 @@
 </template>
 
 <script lang="ts">
-import { type CSSProperties, computed, defineComponent, ref, type Ref } from 'vue'
+import { type CSSProperties, computed, defineComponent, ref, type Ref, inject } from 'vue'
 import { tableColumnEmits, tableColumnProps } from './table-column'
 import useTheme from '@/hooks/use-theme'
 import { tableColumnLight } from '../styles/light'
+import { tableInjectionKey } from '@/components/table/src/context'
 
 export default defineComponent({
   name: 'ClTableColumn',
@@ -22,6 +23,13 @@ export default defineComponent({
       const { self } = theme
 
       return {}
+    })
+
+    const context = inject(tableInjectionKey)
+
+    context?.store.insertColumn({
+      prop: props.prop!,
+      type: props.type || 'default'
     })
 
     return {
