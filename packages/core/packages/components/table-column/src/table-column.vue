@@ -8,6 +8,7 @@ import { tableColumnEmits, tableColumnProps } from './table-column'
 import useTheme from '@/hooks/use-theme'
 import { tableColumnLight } from '../styles/light'
 import { tableInjectionKey } from '@/components/table/src/context'
+import { addUnit } from '@kirkw/utils'
 
 export default defineComponent({
   name: 'ClTableColumn',
@@ -27,10 +28,14 @@ export default defineComponent({
 
     const context = inject(tableInjectionKey)
 
-    context?.store.insertColumn({
+    const columnOptions = {
       prop: props.prop!,
-      type: props.type || 'default'
-    })
+      type: props.type || 'default',
+      label: props.label || props.prop!,
+      width: props.width,
+      minWidth: props.minWidth
+    }
+    context?.store.insertColumn(columnOptions)
 
     return {
       cssVars: cssVarsRef,

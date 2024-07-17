@@ -1,8 +1,8 @@
 <template>
   <div>
     <cl-table :data="data">
-      <cl-table-column prop="name" label="Name"> </cl-table-column>
-      <cl-table-column prop="age" label="Age"> </cl-table-column>
+      <cl-table-column prop="name" width="200" label="Name"> </cl-table-column>
+      <cl-table-column prop="age" min-width="300" label="Age"> </cl-table-column>
     </cl-table>
 
     <cl-table :data="data">

@@ -3,7 +3,7 @@
     <slot></slot>
     <div class="cl-table__header-wrapper">
       <table>
-        <table-header :columns="columns"></table-header>
+        <table-header></table-header>
       </table>
     </div>
     <div class="cl-table__body-wrapper">
