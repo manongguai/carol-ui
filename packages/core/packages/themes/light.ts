@@ -16,6 +16,7 @@ import { panelLight } from '@/components/panel/styles'
 import { popConfirmLight } from '@/components/pop-confirm/styles'
 import { popupLight } from '@/components/popup/styles'
 import { rowLight } from '@/components/row/styles'
+import { scrollbarLight } from '@/components/scrollbar/styles'
 import { stepLight } from '@/components/step/styles'
 import { stepsLight } from '@/components/steps/styles'
 import { tableLight } from '@/components/table/styles'
@@ -41,6 +42,7 @@ export const lightTheme: BuiltInGlobalTheme = {
   popConfirm: popConfirmLight,
   popup: popupLight,
   row: rowLight,
+  scrollbar: scrollbarLight,
   step: stepLight,
   steps: stepsLight,
   table: tableLight,

@@ -17,6 +17,7 @@ import ClPanel from './panel'
 import ClPopConfirm from './pop-confirm'
 import ClPopup from './popup'
 import ClRow from './row'
+import ClScrollbar from './scrollbar'
 import ClStep from './step'
 import ClSteps from './steps'
 import ClTable from './table'
@@ -41,6 +42,7 @@ export * from './panel'
 export * from './pop-confirm'
 export * from './popup'
 export * from './row'
+export * from './scrollbar'
 export * from './step'
 export * from './steps'
 export * from './table'
@@ -67,6 +69,7 @@ const clComponents: Component[] = [
   ClPopConfirm,
   ClPopup,
   ClRow,
+  ClScrollbar,
   ClStep,
   ClSteps,
   ClTable,
@@ -95,6 +98,7 @@ export {
   ClPopConfirm,
   ClPopup,
   ClRow,
+  ClScrollbar,
   ClStep,
   ClSteps,
   ClTable,

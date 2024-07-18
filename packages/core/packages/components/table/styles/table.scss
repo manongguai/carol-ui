@@ -2,6 +2,27 @@
 
 .cl-table {
   &__header {
-   
+  }
+  &__body {
+    color: #606266;
+  }
+  thead {
+    color: #909399;
+  }
+
+  &__row {
+    background-color: #fff;
+  }
+  &__cell {
+    border-bottom: 1px solid #ebeef5;
+    transition: background-color 0.25s ease;
+    padding: 8px 0;
+    min-width: 0;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    position: relative;
+    text-align: left;
+    z-index: var(--el-table-index);
   }
 }

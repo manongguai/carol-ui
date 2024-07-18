@@ -1,11 +1,24 @@
 <template>
   <div>
-    <cl-table :data="data">
+    <cl-table style="width: 1000px; margin: 0 auto" :data="data">
       <cl-table-column prop="name" label="Name"> </cl-table-column>
-      <cl-table-column prop="age" min-width="300" label="Age"> </cl-table-column>
+      <cl-table-column prop="age" label="Age"> </cl-table-column>
+      <cl-table-column prop="name" label="Name"> </cl-table-column>
+      <cl-table-column prop="age" label="Age"> </cl-table-column>
+      <cl-table-column prop="name" label="Name"> </cl-table-column>
+      <cl-table-column prop="age" label="Age"> </cl-table-column>
+      <cl-table-column prop="name" label="Name"> </cl-table-column>
+      <cl-table-column prop="age" label="Age"> </cl-table-column>
+      <cl-table-column prop="name" label="Name"> </cl-table-column>
+      <cl-table-column prop="age" label="Age"> </cl-table-column>
+
+      <cl-table-column prop="name" label="Name"> </cl-table-column>
+      <cl-table-column prop="age" label="Age"> </cl-table-column>
+      <cl-table-column prop="name" label="Name"> </cl-table-column>
+      <cl-table-column prop="age" label="Age"> </cl-table-column>
     </cl-table>
 
-    <cl-table :data="data">
+    <cl-table style="width: 1000px; margin: 0 auto" :data="data">
       <cl-table-column prop="name" label="Name"> </cl-table-column>
     </cl-table>
   </div>
@@ -17,6 +30,10 @@ const data = ref([
   {
     name: 'Alice',
     age: 25
+  },
+  {
+    name: 'Bob',
+    age: 30
   },
   {
     name: 'Bob',

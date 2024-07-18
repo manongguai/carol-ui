@@ -14,19 +14,21 @@
         <table-header></table-header>
       </table>
     </div>
-    <div class="cl-table__body-wrapper">
-      <table
-        cellspacing="0"
-        cellpadding="0"
-        border="0"
-        ref="tableBody"
-        class="cl-table__body"
-        :style="tableBodyStyles"
-      >
-        <hColgroup :columns="columns" :tableLayout="tableLayout"></hColgroup>
-        <table-header v-if="showHeader && tableLayout === 'auto'" ref="tableHeaderRef" />
-        <table-body></table-body>
-      </table>
+    <div ref="bodyWrapper" class="cl-table__body-wrapper">
+      <cl-scrollbar>
+        <table
+          cellspacing="0"
+          cellpadding="0"
+          border="0"
+          ref="tableBody"
+          class="cl-table__body"
+          :style="tableBodyStyles"
+        >
+          <hColgroup :columns="columns" :tableLayout="tableLayout"></hColgroup>
+          <table-header v-if="showHeader && tableLayout === 'auto'" ref="tableHeaderRef" />
+          <table-body></table-body>
+        </table>
+      </cl-scrollbar>
     </div>
     <div class="cl-table__footer-wrapper">
       <table-footer></table-footer>
@@ -100,6 +102,6 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../styles/table.scss';
 </style>

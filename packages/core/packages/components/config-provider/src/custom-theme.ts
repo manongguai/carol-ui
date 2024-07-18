@@ -13,6 +13,7 @@ import type { PanelTheme } from '@/components/panel/styles'
 import type { PopConfirmTheme } from '@/components/pop-confirm/styles'
 import type { PopupTheme } from '@/components/popup/styles'
 import type { RowTheme } from '@/components/row/styles'
+import type { ScrollbarTheme } from '@/components/scrollbar/styles'
 import type { StepTheme } from '@/components/step/styles'
 import type { StepsTheme } from '@/components/steps/styles'
 import type { TableTheme } from '@/components/table/styles'
@@ -36,6 +37,7 @@ export interface CustomTheme {
   popConfirm?: PopConfirmTheme
   popup?: PopupTheme
   row?: RowTheme
+  scrollbar?: ScrollbarTheme
   step?: StepTheme
   steps?: StepsTheme
   table?: TableTheme
