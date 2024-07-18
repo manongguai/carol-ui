@@ -19,7 +19,9 @@ export function useStore<T>() {
   }
   function updateColumns(columns: Ref<Column[]>) {
     columns.value = columns.value.map((column) => {
+      column.width = column.width ? stringToNumber(column.width) : undefined
       column.realWidth = getRealWidth(columns.value, column)
+      column.minWidth = column.minWidth ? stringToNumber(column.minWidth) : undefined
       return column
     })
   }
@@ -27,7 +29,7 @@ export function useStore<T>() {
   function getRealWidth(columns: Column[], column: Column): number {
     if (column.width) return stringToNumber(column.width)
 
-    const minWidth = column.minWidth || 80
+    const minWidth = stringToNumber(column.minWidth || 80)
 
     const tableWidth = instance!.vnode.el!.clientWidth
 
@@ -46,7 +48,7 @@ export function useStore<T>() {
       const averageWidth = Math.floor((flexWidth - totalMinWidth) / noHasWidthColumns.length)
       return stringToNumber(minWidth) + averageWidth
     } else {
-      return stringToNumber(minWidth)
+      return minWidth
     }
   }
   onMounted(() => {

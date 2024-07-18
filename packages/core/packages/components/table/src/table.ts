@@ -21,4 +21,5 @@ export const tableEmits = {}
 
 export type TableInjection = {
   store: ReturnType<typeof useStore>
+  data: DefaultRow[]
 }

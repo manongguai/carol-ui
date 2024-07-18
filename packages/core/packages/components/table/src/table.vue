@@ -79,7 +79,8 @@ export default defineComponent({
       return store.columns
     })
     provide(tableInjectionKey, {
-      store: store
+      store: store,
+      data: props.data || []
     })
 
     const tableBodyStyles = computed(() => {

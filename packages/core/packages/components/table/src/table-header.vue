@@ -1,11 +1,8 @@
 <template>
   <thead>
     <tr>
-      <th>
-        <div>Name</div>
-      </th>
-      <th>
-        <div>Age</div>
+      <th v-for="(column, index) in columns" :key="index">
+        <div>{{ column.label }}</div>
       </th>
     </tr>
   </thead>

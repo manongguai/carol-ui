@@ -5,6 +5,7 @@ export function hColgroup(props) {
   let columns = props.columns.value || []
 
   if (isAuto) {
+    // auto 没有width时候，自动分配
     if (columns.every((column) => column.width === undefined)) {
       columns = []
     }
@@ -15,12 +16,17 @@ export function hColgroup(props) {
       style: {},
       name: undefined
     }
-    if (isAuto) {
+    // auto 布局时，添加width
+    if (isAuto && (column.width || column.minWidth)) {
       propsData.style = {
-        width: `${column.width}px`
+        width: `${column.width || column.minWidth}px`
       }
     } else {
+      // fixed布局时，添加realWidth
       propsData.name = column.id
+      propsData.style = {
+        width: `${column.realWidth}px`
+      }
     }
     return propsData
   }
