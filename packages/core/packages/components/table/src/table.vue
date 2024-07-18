@@ -1,13 +1,30 @@
 <template>
   <div class="cl-table">
     <slot></slot>
-    <div class="cl-table__header-wrapper">
-      <table>
+    <div class="cl-table__header-wrapper" v-if="showHeader && tableLayout === 'fixed'">
+      <table
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+        ref="tableHeader"
+        class="cl-table__header"
+        :style="tableBodyStyles"
+      >
+        <hColgroup :columns="columns" :tableLayout="tableLayout"></hColgroup>
         <table-header></table-header>
       </table>
     </div>
     <div class="cl-table__body-wrapper">
-      <table>
+      <table
+        cellspacing="0"
+        cellpadding="0"
+        border="0"
+        ref="tableBody"
+        class="cl-table__body"
+        :style="tableBodyStyles"
+      >
+        <hColgroup :columns="columns" :tableLayout="tableLayout"></hColgroup>
+        <table-header v-if="showHeader && tableLayout === 'auto'" ref="tableHeaderRef" />
         <table-body></table-body>
       </table>
     </div>
@@ -35,6 +52,7 @@ import TableHeader from './table-header.vue'
 import TableFooter from './table-footer.vue'
 import { useStore } from './store'
 import { tableInjectionKey } from './context'
+import { hColgroup } from './h-helper'
 export default defineComponent({
   name: 'ClTable',
   props: tableProps,
@@ -42,7 +60,8 @@ export default defineComponent({
   components: {
     TableHeader,
     TableFooter,
-    TableBody
+    TableBody,
+    hColgroup
   },
   setup(props, { emit }) {
     const tableRef: Ref<HTMLElement | undefined> = ref<HTMLElement | undefined>()
@@ -63,11 +82,18 @@ export default defineComponent({
       store: store
     })
 
+    const tableBodyStyles = computed(() => {
+      return {
+        'table-layout': props.tableLayout,
+        width: '100%'
+      }
+    })
     return {
       cssVars: cssVarsRef,
       tableRef,
       store,
-      columns
+      columns,
+      tableBodyStyles
     }
   }
 })

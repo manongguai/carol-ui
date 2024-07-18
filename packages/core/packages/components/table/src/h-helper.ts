@@ -3,6 +3,7 @@ import { h } from 'vue'
 export function hColgroup(props) {
   const isAuto = props.tableLayout === 'auto'
   let columns = props.columns.value || []
+
   if (isAuto) {
     if (columns.every((column) => column.width === undefined)) {
       columns = []
