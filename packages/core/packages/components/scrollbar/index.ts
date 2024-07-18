@@ -6,3 +6,5 @@ ClScrollbar.install = (app: App): void => {
 }
 
 export default ClScrollbar
+
+export type ScrollbarInstance = InstanceType<typeof ClScrollbar>
