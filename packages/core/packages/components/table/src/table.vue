@@ -15,7 +15,12 @@
       </table>
     </div>
     <div ref="bodyWrapper" class="cl-table__body-wrapper">
-      <cl-scrollbar>
+      <cl-scrollbar
+        ref="scrollBarRef"
+        :view-style="{ display: 'inline-block', verticalAlign: 'middle' }"
+        :wrap-style="{ height: '100%' }"
+        :always="true"
+      >
         <table
           cellspacing="0"
           cellpadding="0"
@@ -55,6 +60,7 @@ import TableFooter from './table-footer.vue'
 import { useStore } from './store'
 import { tableInjectionKey } from './context'
 import { hColgroup } from './h-helper'
+import ClScrollbar from '@/components/scrollbar'
 export default defineComponent({
   name: 'ClTable',
   props: tableProps,
@@ -63,6 +69,7 @@ export default defineComponent({
     TableHeader,
     TableFooter,
     TableBody,
+    ClScrollbar,
     hColgroup
   },
   setup(props, { emit }) {

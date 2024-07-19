@@ -1,5 +1,5 @@
 <template>
-  <div ref="scrollbarRef" class="cl-scrollBar">
+  <div ref="scrollbarRef" class="cl-scrollbar">
     <div ref="wrapRef" :class="wrapKls" :style="style" @scroll="handleScroll">
       <component :is="tag" ref="resizeRef" :class="resizeKls" :style="viewStyle">
         <slot />
@@ -186,3 +186,7 @@ defineExpose({
   handleScroll
 })
 </script>
+
+<style lang="scss">
+@import '../styles/scrollbar.scss';
+</style>

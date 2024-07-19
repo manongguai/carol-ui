@@ -1,8 +1,10 @@
+@use 'sass:map';
+
 $namespace: 'cl';
 $element-separator: '__';
 $modifier-separator: '--';
 $state-prefix: 'is-';
-
+$common-separator: '-' !default;
 
 // SCSS variables
 // breakpoints
@@ -43,3 +45,14 @@ $breakpoints-spec: (
   'lg-and-down': '(max-width: #{$xl - 1})',
   'xl-only': '(min-width: #{$xl})'
 ) !default;
+
+$scrollbar: () !default;
+$scrollbar: map.merge(
+  (
+    'opacity': 0.3,
+    'bg-color': getCssVar('text-color-secondary'),
+    'hover-opacity': 0.5,
+    'hover-bg-color': getCssVar('text-color-secondary')
+  ),
+  $scrollbar
+);
