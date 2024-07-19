@@ -1,5 +1,5 @@
 <template>
-  <div ref="scrollbarRef" class="cl-scrollbar">
+  <div ref="scrollbarRef" class="cl-scrollbar" :style="cssVarsRef">
     <div ref="wrapRef" :class="wrapKls" :style="style" @scroll="handleScroll">
       <component :is="tag" ref="resizeRef" :class="resizeKls" :style="viewStyle">
         <slot />
@@ -27,6 +27,8 @@ import { scrollbarEmits, scrollbarProps } from './scrollbar'
 import type { BarInstance } from './bar'
 import type { CSSProperties, StyleValue } from 'vue'
 import { addUnit, debugWarn, isNumber, isObject } from '@kirkw/utils'
+import { scrollbarLight } from '../styles'
+import useTheme from '@/hooks/use-theme'
 
 const COMPONENT_NAME = 'ElScrollbar'
 
@@ -184,6 +186,24 @@ defineExpose({
   setScrollLeft,
   /** @description handle scroll event */
   handleScroll
+})
+const themeRef = useTheme('scrollbar', scrollbarLight)
+const cssVarsRef = computed<CSSProperties>(() => {
+  const theme = themeRef.value
+  const { self, common } = theme
+  let colorProps: CSSProperties = {
+    '--cl-scrollbar-bg-color': common.textColor4,
+    '--cl-scrollbar-hover-bg-color': common.textColor4
+  }
+  let opacityProps: CSSProperties = {
+    '--cl-scrollbar-opacity': self.opacity,
+    '--cl-scrollbar-hover-opacity': self.opacityHover
+  }
+
+  return {
+    ...colorProps,
+    ...opacityProps
+  }
 })
 </script>
 

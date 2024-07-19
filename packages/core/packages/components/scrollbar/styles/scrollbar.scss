@@ -1,5 +1,6 @@
 @use '../../../styles/mixins/utils' as *;
 @use '../../../styles/mixins/config' as *;
+@use '../../../styles/mixins/function' as *;
 @use 'sass:map';
 
 @include b(scrollbar) {
@@ -30,13 +31,13 @@
     height: 0;
     cursor: pointer;
     border-radius: inherit;
-    background-color: #909399;
+    background-color: var(#{getCssVarName('scrollbar-bg-color')});
     transition: 0.3s background-color;
-    opacity: 0.3;
+    opacity: var(#{getCssVarName('scrollbar-opacity')});
 
     &:hover {
-      background-color: #909399;
-      opacity: 1;
+      background-color: var(#{getCssVarName('scrollbar-bg-color')});
+      opacity: var(#{getCssVarName('scrollbar-hover-opacity')});
     }
   }
 
