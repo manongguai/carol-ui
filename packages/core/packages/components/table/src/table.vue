@@ -1,7 +1,11 @@
 <template>
   <div class="cl-table">
     <slot></slot>
-    <div class="cl-table__header-wrapper" v-if="showHeader && tableLayout === 'fixed'">
+    <div
+      ref="headerWrapper"
+      class="cl-table__header-wrapper"
+      v-if="showHeader && tableLayout === 'fixed'"
+    >
       <table
         cellspacing="0"
         cellpadding="0"
@@ -20,6 +24,7 @@
         :view-style="{ display: 'inline-block', verticalAlign: 'middle' }"
         :wrap-style="{ height: '100%' }"
         :always="true"
+        @scroll="handleBodyScroll"
       >
         <table
           cellspacing="0"
@@ -75,13 +80,17 @@ export default defineComponent({
   setup(props, { emit }) {
     const tableRef: Ref<HTMLElement | undefined> = ref<HTMLElement | undefined>()
     const themeRef = useTheme('table', tableLight)
-
+    const tableHeader = ref<HTMLTableElement | undefined>()
+    const headerWrapper = ref<HTMLTableElement | undefined>()
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
       const { self } = theme
 
       return {}
     })
+    function handleBodyScroll({ scrollLeft }: { scrollLeft: number }) {
+      headerWrapper.value!.scrollLeft = scrollLeft
+    }
 
     const store = useStore()
     const columns = computed(() => {
@@ -103,7 +112,10 @@ export default defineComponent({
       tableRef,
       store,
       columns,
-      tableBodyStyles
+      tableBodyStyles,
+      handleBodyScroll,
+      tableHeader,
+      headerWrapper
     }
   }
 })

@@ -1,7 +1,9 @@
 @use '../../../styles/mixins/utils' as *;
 
 .cl-table {
-  &__header {
+  &__header-wrapper {
+    width: 100%;
+    overflow: hidden;
   }
   &__body {
     color: #606266;
@@ -23,6 +25,6 @@
     vertical-align: middle;
     position: relative;
     text-align: left;
-    z-index: var(--el-table-index);
+    z-index: var(--cl-table-index);
   }
 }
