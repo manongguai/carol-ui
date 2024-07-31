@@ -12,7 +12,7 @@ import { ref } from 'vue'
 <preview path="./demos/notification/notification-demo2.vue" title="是否自动关闭" description="duration为0则是默认不关闭"></preview>
 <preview path="./demos/notification/notification-demo3.vue" title="带有倾向性" description="带有 icon，常用来显示「成功、警告、消息、错误」类的系统消息"></preview>
 <preview path="./demos/notification/notification-demo4.vue" title="自定义弹出位置" description="可以让 Notification 从屏幕四角中的任意一角弹出"></preview>
-<preview path="./demos/notification/notification-demo5.vue" title="自定义底部 | 自定义icon" description="底部可以自定义例如去跳转｜可直接送进来iconName"></preview>
+<preview path="./demos/notification/notification-demo5.vue" title="自定义底部 | 自定义icon" description="底部可以自定义例如去跳转｜可直接送进来icon属性"></preview>
 
 ## <font color=FF0000> warning！！！ </font>
 
@@ -21,14 +21,14 @@ import { ref } from 'vue'
 ## API
 
 Notification Props
-| 名称 | 类型 | 默认值 | 可选值 | 说明 |
+| 名称 | 类型 | 默认值 | 可选值 | 描述 |
 | ------------- | :----------- | :---- | :----------- | :----------- |
 | customClass | string | | | 自定义组件名 |  
 | id | string | | | 自定义组件ID |
 | dangerouslyUseHTMLString | boolean |false | true/false| 是否支持传入HTML片段） |
 | duration | number | 3000 | | 关闭弹窗的时间，0则不自动关闭 |
 | type | string | | success error info warning| 带有倾向性的弹窗 |
-| iconName | string | | | 自定义的icon |
+| icon属性 | string | | | 自定义的icon |
 | title | string | | | title |
 | message | string vnode | | | content |
 | footerInfo | string vnode | | | footer |

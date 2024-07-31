@@ -17,7 +17,7 @@ import { ref } from 'vue'
 ## API
 
 Config Provider Props
-| 名称 | 类型 | 默认值 | 说明 |
+| 名称 | 类型 | 默认值 | 描述 |
 | ------------- | :----------- | :---- | ---- |
 | theme | Object | lightTheme | 默认的Theme 主题，可以使用其他系统提供的theme主题类型 |
 | themeOverrides | Object | | 覆盖现有的主题内可以改变的部分 |

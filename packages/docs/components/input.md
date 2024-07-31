@@ -43,7 +43,7 @@ const form = reactive({
 
 ### input props
 
-| 名称            |  类型   |   默认值 |                 说明 |
+| 名称            |  类型   |   默认值 |                 描述 |
 | --------------- | :-----: | -------: | -------------------: |
 | v-model         | string  |        - |                    - |
 | maxlength       | number  |        - | 最大输入长度(字符数) |
@@ -58,14 +58,14 @@ const form = reactive({
 
 ### password props
 
-| 名称             |  类型   |   默认值 | 可选值 |                 说明 |
+| 名称             |  类型   |   默认值 | 可选值 |                 描述 |
 | ---------------- | :-----: | -------: | -----: | -------------------: |
 | type             | string  | password |      - |       代表是密码类型 |
 | visibilityToggle | boolean |     true |      - | 是否展示显示明文icon |
 
 ### textarea props
 
-| 名称            |  类型   | 默认值 |                           可选值 |                                     说明 |
+| 名称            |  类型   | 默认值 |                           可选值 |                                     描述 |
 | --------------- | :-----: | -----: | -------------------------------: | ---------------------------------------: |
 | rows            | number  |      2 |                                - |                               输入框行数 |
 | minRows         | number  |      1 |                                - |                                 最小行数 |
@@ -76,16 +76,16 @@ const form = reactive({
 | show-word-limit | boolean |  false |                                - |                     是否显示输入字数统计 |
 | clearable       | boolean |   true |                                - |                               是否可清空 |
 
-### Slots 参数说明
+### Slots 参数描述
 
-| name   |      说明      | 回调参数 |
+| name   |      描述      | 回调参数 |
 | ------ | :------------: | -------- |
 | prefix | 输入框头部内容 | -        |
 | suffix | 输入框尾部内容 | -        |
 
-### Events 参数说明
+### Events 参数描述
 
-| 事件   |                    说明                     | 回调参数       |
+| 事件   |                    描述                     | 回调参数       |
 | ------ | :-----------------------------------------: | -------------- |
 | blur   |           在 Input 失去焦点时触发           | (event: Event) |
 | focus  |           在 Input 获得焦点时触发           | (event: Event) |
@@ -93,9 +93,9 @@ const form = reactive({
 | input  |            在 Input 值改变时触发            | (value: string | number) |
 | clear  | 在点击由 clearable 属性生成的清空按钮时触发 | -              |
 
-### Methods 参数说明
+### Methods 参数描述
 
-| 事件  |       说明        | 回调参数 |
+| 事件  |       描述        | 回调参数 |
 | ----- | :---------------: | -------: |
 | focus | 使 input 获取焦点 |        - |
 | blur  | 使 input 失去焦点 |        - |

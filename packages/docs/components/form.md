@@ -81,7 +81,7 @@ When an `cl-form-item` is nested in another `cl-form-item`, its label width will
 
 ## Form Attributes
 
-| Name                      | Description                                                                             | Type                                                    | Default             |
+| 属性                      | 描述                                                                             | 类型                                                    | 默认值             |
 | ------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------------- |
 | model                     | 表单数据对象                                                                            | object `Record<string, any>`                            | —                   |
 | rules                     | 表单验证规则.                                                                           | object `FormRules`                                      | —                   |
@@ -100,19 +100,19 @@ When an `cl-form-item` is nested in another `cl-form-item`, its label width will
 
 ## Form Events
 
-| Name     | Description            | Type                                                                       |
+| 属性     | 描述            | 类型                                                                       |
 | -------- | ---------------------- | -------------------------------------------------------------------------- |
 | validate | 任一表单项被校验后触发 | Function `(prop: FormItemProp, isValid: boolean, message: string) => void` |
 
 ## Form Slots
 
-| Name    | Description    | Subtags  |
+| 属性    | 描述    | Subtags  |
 | ------- | -------------- | -------- |
 | default | 自定义默认内容 | FormItem |
 
 ## Form Exposes
 
-| Name                                                              | Description                                                   | Type                                                                                                                            |
+| 属性                                                              | 描述                                                   | 类型                                                                                                                            |
 | ----------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | validate                                                          | 对整个表单的内容进行验证。 接收一个回调函数，或返回 Promise。 | Function `(callback?: FormValidateCallback) => Promise<void>`                                                                   |
 | validateField                                                     | 验证具体的某个字段。                                          | Function `(props?: Arrayable<FormItemProp> \| undefined, callback?: FormValidateCallback \| undefined) => FormValidationResult` |
@@ -124,7 +124,7 @@ When an `cl-form-item` is nested in another `cl-form-item`, its label width will
 
 ## FormItem Attributes
 
-| Name         | Description                                                                                                                | Type                                         | Default                                           |
+| 属性         | 描述                                                                                                                | 类型                                         | 默认值                                           |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ------------------------------------------------- | --- | --- |
 | prop         | model 的键名。 它可以是一个属性的值(如 a.b.0 或 ['a', 'b', '0'])。 在使用了 validate、resetFields 的方法时，该属性是必填的 | string / string&#91;&#93;                    | —                                                 |
 | label        | 标签文本                                                                                                                   | string                                       | —                                                 |
@@ -138,7 +138,7 @@ When an `cl-form-item` is nested in another `cl-form-item`, its label width will
 
 ### FormItemRule
 
-| Name    | Description        | Type                      | Default |
+| 属性    | 描述        | 类型                      | 默认值 |
 | ------- | ------------------ | ------------------------- | ------- |
 | trigger | 验证逻辑的触发方式 | enum `'blur' \| 'change'` | —       |
 
@@ -150,7 +150,7 @@ When an `cl-form-item` is nested in another `cl-form-item`, its label width will
 
 ## FormItem Slots
 
-| Name    | Description            | Type                       |
+| 属性    | 描述            | 类型                       |
 | ------- | ---------------------- | -------------------------- |
 | default | 表单的内容。           | —                          |
 | label   | 标签位置显示的内容     | object `{ label: string }` |
@@ -158,7 +158,7 @@ When an `cl-form-item` is nested in another `cl-form-item`, its label width will
 
 ## FormItem Exposes
 
-| Name            | Description                                          | Type                                                                                               |
+| 属性            | 描述                                          | 类型                                                                                               |
 | --------------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | size            | 表单项大小                                           | object `ComputedRef<'' \| 'large' \| 'default' \| 'small'>`                                        |
 | validateMessage | 校验消息                                             | object `Ref<string>`                                                                               |

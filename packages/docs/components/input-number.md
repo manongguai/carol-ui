@@ -10,7 +10,7 @@ input-number用来做金额/比例的增长输入框
 
 ### input props
 
-| 名称        |  类型   |                       默认值 |               可选值 |                   说明 |
+| 名称        |  类型   |                       默认值 |               可选值 |                   描述 |
 | ----------- | :-----: | ---------------------------: | -------------------: | ---------------------: |
 | v-model     | string  |                            - |                    - |
 | min         | number  |                     Infinity |                    - | 设置计数器允许的最小值 |
@@ -25,9 +25,9 @@ input-number用来做金额/比例的增长输入框
 | inputWidth  | number  |                          240 |                    - |            input的宽度 |
 | size        | string  | 'small'｜ 'medium'｜ 'large' |             'medium' |         输入框尺寸变化 |
 
-### Events 参数说明
+### Events 参数描述
 
-| 事件   |                    说明                     | 回调参数       |
+| 事件   |                    描述                     | 回调参数       |
 | ------ | :-----------------------------------------: | -------------- |
 | blur   |           在 Input 失去焦点时触发           | (event: Event) |
 | focus  |           在 Input 获得焦点时触发           | (event: Event) |
@@ -35,9 +35,9 @@ input-number用来做金额/比例的增长输入框
 | input  |            在 Input 值改变时触发            | (value: string | number) |
 | clear  | 在点击由 clearable 属性生成的清空按钮时触发 | -              |
 
-### Methods 参数说明
+### Methods 参数描述
 
-| 事件  |       说明        | 回调参数 |
+| 事件  |       描述        | 回调参数 |
 | ----- | :---------------: | -------: |
 | focus | 使 input 获取焦点 |        - |
 | blur  | 使 input 失去焦点 |        - |

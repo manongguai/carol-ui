@@ -26,7 +26,7 @@ import { ref } from 'vue'
 ## API
 
 Title Props
-| 名称 | 说明 | 类型 | 默认值 |
+| 名称 | 描述 | 类型 | 默认值 |
 | -------------|:-------------:| -----:| -----:|
 | mode | 标题模式，横向、纵向。col,row | string | col |
 | title | 标题文本 | string | - |

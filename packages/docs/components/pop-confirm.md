@@ -14,9 +14,9 @@ import { ref } from 'vue'
 
 <preview path="./demos/pop-confirm/pop-confirm-demo2.vue" title="自定义内容：" description="传入content插槽，自定义内容,title:自定义标题"></preview>
 
-### popConfirm 参数说明
+### popConfirm 参数描述
 
-| 参数        |       说明       |    类型 | 可选值 |          默认值 |
+| 参数        |       描述       |    类型 | 可选值 |          默认值 |
 | ----------- | :--------------: | ------: | -----: | --------------: |
 | title       |       标题       |  string |      - |               - |
 | content     |       内容       |  string |      - |               - |
@@ -31,7 +31,7 @@ import { ref } from 'vue'
 
 如下参数：参考 popup
 
-| 参数                       |                  说明                  |                                                    类型 |             可选值 |     默认值 |
+| 参数                       |                  描述                  |                                                    类型 |             可选值 |     默认值 |
 | -------------------------- | :------------------------------------: | ------------------------------------------------------: | -----------------: | ---------: |
 | v-model / modelValue       |            默认状态是否可见            |                                                 Boolean |                  - |      false |
 | disabled                   |              pop 是否可用              |                                                 Boolean |                  - |      false |
@@ -50,7 +50,7 @@ import { ref } from 'vue'
 
 ### popConfirm 插槽
 
-| 参数      |            说明             |
+| 参数      |            描述             |
 | --------- | :-------------------------: |
 | title     |            标题             |
 | content   |            内容             |
@@ -59,7 +59,7 @@ import { ref } from 'vue'
 
 ### popConfirm 事件
 
-| 事件名称 |        说明        | 回调参数 |
+| 事件名称 |        描述        | 回调参数 |
 | -------- | :----------------: | -------: |
 | confirm  | 点击确认按钮时触发 |        - |
 | cancel   | 点击取消按钮时触发 |        - |

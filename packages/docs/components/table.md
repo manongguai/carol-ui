@@ -22,3 +22,29 @@
 
 <preview path="./demos/table/scroll-table.vue" title="使用带斑马纹的表格，可以更容易区分出不同行的数据。" description="stripe 可以创建带斑马纹的表格。 如果 true, 表格将会带有斑马纹。"></preview>
 
+
+## Table API
+
+## Table Attributes
+
+| 属性              | 描述           | 类型            | 默认值    |
+| ----------------- | -------------- | --------------- | --------- |
+| data              | 表格数据       | array           | []        |
+| tableLayout       | 表格布局       | string          | fixed     |
+| showHeader        | 是否显示表头   | boolean         | true      |
+| stripe            | 是否显示斑马纹 | boolean         | false     |
+| width             | 表格宽度       | string / number | undefined |
+| height            | 表格高度       | string / number | undefined |
+| maxHeight         | 表格最大高度   | string / number | undefined |
+| scrollbarAlwaysOn | 总是显示滚动条 | boolean         | false     |
+
+
+## Table Column Attributes
+
+| 属性     | 描述               | 类型            | 默认值 |
+| -------- | ------------------ | --------------- | ------ |
+| prop     | 对应列内容的字段名 | string          | —      |
+| label    | 显示的列名         | string          | —      |
+| type     | 列的类型           | string          | —      |
+| width    | 列的宽度           | number / string | —      |
+| minWidth | 列的最小宽度       | number / string | —      |

@@ -27,7 +27,7 @@ import { ref } from 'vue'
 ## API
 
 Button Props
-| 名称 | 类型 | 默认值 | 说明 |
+| 名称 | 类型 | 默认值 | 描述 |
 | ------------- | :----------- | :---- | ---- |
 | type | 'default'｜'primary'｜ 'secondary'｜ 'minor'｜ 'dashed'｜ 'link'｜ 'text'｜ 'underlined' | 'default'， 按钮默认的属性 | 按钮类型 |
 | size | 'small'｜ 'medium'｜ 'large' | 'medium' | 按钮高度变化 |
@@ -41,21 +41,21 @@ Button Props
 | iconColor | string | | 按钮上的icon的填充颜色 |
 
 ButtonGroup Props
-| 名称 | 类型 | 默认值 | 说明 |
+| 名称 | 类型 | 默认值 | 描述 |
 | ------------- | :----------- | :---- | ---- |
 | size | 'small'｜ 'medium'｜ 'large' | 'medium' | 按钮高度变化 |
 
 Button Slots
-| 名称 | 参数 | 说明 |
+| 名称 | 参数 | 描述 |
 | ------------- | :----------- | ---- |
 | default | () | 按钮内容 |
 
 Button Group Slots
-| 名称 | 参数 | 说明 |
+| 名称 | 参数 | 描述 |
 | ------------- | :----------- | ---- |
 | default | () | 按钮组内容 |
 
 Button Event
-| 名称 | 参数 | 说明 |
+| 名称 | 参数 | 描述 |
 | ------------- | :----------- | ---- |
 | click | | 按钮点击事件 |

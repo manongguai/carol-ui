@@ -17,7 +17,7 @@ import { ref } from 'vue'
 ## API
 
 Icon Props
-| 名称 | 类型 | 默认值 | 说明 |
+| 名称 | 类型 | 默认值 | 描述 |
 | ------------- | :----------- | :---- | ---- |
-| iconName | string | | icon的名字
+| icon属性 | string | | icon的名字
 | color | string | | 自定义icon的颜色（支持形如 #FFF， #FFFFFF， yellow，rgb(0, 0, 0) 的颜色） |

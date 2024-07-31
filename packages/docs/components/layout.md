@@ -40,7 +40,7 @@ Layout
 
 ### Row 属性
 
-| Name    | Description               | Type                                                                                       | Default |
+| 属性    | 描述               | 类型                                                                                       | 默认值 |
 | ------- | ------------------------- | ------------------------------------------------------------------------------------------ | ------- |
 | gutter  | 栅格间隔                  | number                                                                                     | 0       |
 | justify | flex 布局下的水平排列方式 | enum `'start' \| 'end' \| 'center' \| 'space-around' \| 'space-between' \| 'space-evenly'` | start   |
@@ -49,7 +49,7 @@ Layout
 
 ### Row 插槽
 
-| Name    | Description    | Subtags |
+| 属性    | 描述    | Subtags |
 | ------- | -------------- | ------- |
 | default | 自定义默认内容 | Col     |
 
@@ -57,7 +57,7 @@ Layout
 
 ### Col 属性
 
-| Name   | Description                            | Type                                                                             | Default |
+| 属性   | 描述                            | 类型                                                                             | 默认值 |
 | ------ | -------------------------------------- | -------------------------------------------------------------------------------- | ------- |
 | span   | 栅格占据的列数                         | number                                                                           | 24      |
 | offset | 栅格左侧的间隔格数                     | number                                                                           | 0       |
@@ -72,7 +72,7 @@ Layout
 
 ### Col 插槽
 
-| Name    | Description               |
+| 属性    | 描述               |
 | ------- | ------------------------- |
 | default | customize default content |
 
