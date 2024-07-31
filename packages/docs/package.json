@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@kirkw/tsconfig": "workspace:*",
+    "postcss": "^8.4.33",
     "vitepress": "^1.2.3"
   }
 }

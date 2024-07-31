@@ -1,5 +1,5 @@
 <template>
-  <cl-table :data="tableData" style="width: 100%">
+  <cl-table class="vp-raw" :data="tableData" style="width: 100%">
     <cl-table-column prop="date" label="Date" width="180" />
     <cl-table-column prop="name" label="Name" width="180" />
     <cl-table-column prop="address" label="Address" />
@@ -30,3 +30,11 @@ const tableData = [
   }
 ];
 </script>
+<style>
+.vp-doc table {
+  display: table;
+  border-collapse: collapse;
+  margin: 0;
+  overflow-x: auto;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <cl-table :data="tableData" stripe style="width: 100%">
+  <cl-table class="vp-raw" :data="tableData" stripe style="width: 100%">
     <cl-table-column prop="date" label="Date" width="180" />
     <cl-table-column prop="name" label="Name" width="180" />
     <cl-table-column prop="address" label="Address" />

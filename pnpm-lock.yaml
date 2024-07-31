@@ -224,6 +224,9 @@ importers:
       '@kirkw/tsconfig':
         specifier: workspace:*
         version: link:../tsconfig
+      postcss:
+        specifier: ^8.4.33
+        version: 8.4.38
       vitepress:
         specifier: ^1.2.3
         version: 1.2.3(@algolia/client-search@4.24.0)(@types/node@18.19.39)(postcss@8.4.38)(search-insights@2.14.0)(typescript@5.5.2)
