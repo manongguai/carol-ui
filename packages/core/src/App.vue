@@ -1,51 +1,71 @@
 <template>
-  <cl-table stripe class="vp-raw" :data="tableData" style="width: 100%">
-    <cl-table-column prop="date" label="Date" width="180" />
-    <cl-table-column prop="name" label="Name" width="180" />
-    <cl-table-column prop="address" label="Address" />
+  <cl-table class="vp-raw" :data="tableData" stripe width="700px" maxHeight="200px">
+    <cl-table-column fixed prop="date" label="Date" width="150" />
+    <cl-table-column prop="name" label="Name" width="120" />
+    <cl-table-column prop="state" label="State" width="120" />
+    <cl-table-column prop="city" label="City" width="320" />
+    <cl-table-column prop="address" label="Address" width="600" />
+    <cl-table-column prop="zip" label="Zip" />
   </cl-table>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
-
-const tableData = ref([
+const tableData = [
   {
     date: '2016-05-03',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+    zip: 'CA 90036'
   },
   {
     date: '2016-05-02',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+    zip: 'CA 90036'
   },
   {
     date: '2016-05-04',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+    zip: 'CA 90036'
   },
   {
     date: '2016-05-01',
     name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+    zip: 'CA 90036'
+  },
+  {
+    date: '2016-05-08',
+    name: 'Tom',
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+    zip: 'CA 90036'
+  },
+  {
+    date: '2016-05-06',
+    name: 'Tom',
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+    zip: 'CA 90036'
+  },
+  {
+    date: '2016-05-07',
+    name: 'Tom',
+    state: 'California',
+    city: 'Los Angeles',
+    address: 'No. 189, Grove St, Los Angeles',
+    zip: 'CA 90036'
   }
-])
-onMounted(() => {
-  setTimeout(() => {
-    tableData.value.push({
-      date: '2016-05-01',
-      name: 'Tom222',
-      address: 'No. 189, Grove St, Los Angeles'
-    })
-  }, 1000)
-})
+]
 </script>
-<style>
-.vp-doc table {
-  display: table;
-  border-collapse: collapse;
-  margin: 0;
-  overflow-x: auto;
-}
-</style>

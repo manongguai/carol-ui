@@ -10,3 +10,7 @@ export function addUnit(value?: string | number, defaultUnit = "px") {
   }
   debugWarn("utils/dom/style", "binding value must be a string or number");
 }
+
+export function getSizeByNumberOrString(size: string | number) {
+  return !Number.isNaN(Number(size)) ? `${size}px` : size;
+}

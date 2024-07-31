@@ -1,67 +1,57 @@
 <template>
-  <div class="cl-table" :style="cssVars">
-    <slot></slot>
-    <div
-      ref="headerWrapperRef"
-      class="cl-table__header-wrapper"
-      @mousewheel="handleHeaderFooterWheel"
-      v-if="showHeader && tableLayout === 'fixed'"
-    >
-      <table
-        cellspacing="0"
-        cellpadding="0"
-        border="0"
-        ref="tableHeader"
-        class="cl-table__header"
-        :style="tableBodyStyles"
-      >
-        <hColgroup :columns="columns" :tableLayout="tableLayout"></hColgroup>
-        <table-header></table-header>
-      </table>
-    </div>
-    <div ref="bodyWrapperRef" class="cl-table__body-wrapper">
-      <cl-scrollbar
-        ref="scrollBarRef"
-        :view-style="{ display: 'inline-block', verticalAlign: 'middle' }"
-        :wrap-style="{ height: '100%' }"
-        :always="true"
-        @scroll="handleBodyScroll"
+  <div class="cl-table" ref="tableWrapperRef" :style="cssVars">
+    <div class="cl-table__inner-wrapper" :style="tableInnerStyle">
+      <slot></slot>
+      <div
+        ref="headerWrapperRef"
+        class="cl-table__header-wrapper"
+        @mousewheel="handleHeaderFooterWheel"
+        v-if="showHeader && tableLayout === 'fixed'"
       >
         <table
           cellspacing="0"
           cellpadding="0"
           border="0"
-          ref="bodyRef"
-          class="cl-table__body"
+          ref="tableHeader"
+          class="cl-table__header"
           :style="tableBodyStyles"
         >
           <hColgroup :columns="columns" :tableLayout="tableLayout"></hColgroup>
-          <table-header v-if="showHeader && tableLayout === 'auto'" ref="tableHeaderRef" />
-          <table-body></table-body>
+          <table-header></table-header>
         </table>
-      </cl-scrollbar>
-    </div>
-    <div class="cl-table__footer-wrapper">
-      <table-footer></table-footer>
+      </div>
+      <div ref="bodyWrapperRef" class="cl-table__body-wrapper">
+        <cl-scrollbar
+          ref="scrollBarRef"
+          :view-style="{ display: 'inline-block', verticalAlign: 'middle' }"
+          :wrap-style="scrollbarStyle"
+          :always="scrollbarAlwaysOn"
+          @scroll="handleBodyScroll"
+        >
+          <table
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+            ref="bodyRef"
+            class="cl-table__body"
+            :style="tableBodyStyles"
+          >
+            <hColgroup :columns="columns" :tableLayout="tableLayout"></hColgroup>
+            <table-header v-if="showHeader && tableLayout === 'auto'" ref="tableHeaderRef" />
+            <table-body></table-body>
+          </table>
+        </cl-scrollbar>
+      </div>
+      <div class="cl-table__footer-wrapper" ref="footerWrapperRef">
+        <table-footer></table-footer>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {
-  type CSSProperties,
-  computed,
-  defineComponent,
-  ref,
-  type Ref,
-  getCurrentInstance,
-  provide,
-  reactive,
-  toRefs
-} from 'vue'
-import { tableEmits, tableProps, type TableInjection } from './table'
-import useTheme from '@/hooks/use-theme'
-import { tableLight } from '../styles/light'
+import { computed, defineComponent, ref, type Ref, provide } from 'vue'
+import { tableEmits, tableProps } from './table'
 import TableBody from './table-body.vue'
 import TableHeader from './table-header.vue'
 import TableFooter from './table-footer.vue'
@@ -70,6 +60,7 @@ import { tableInjectionKey } from './context'
 import { hColgroup } from './h-helper'
 import ClScrollbar from '@/components/scrollbar'
 import { useScroll } from './hooks/useScroll'
+import { useStyle } from './hooks/useStyle'
 export default defineComponent({
   name: 'ClTable',
   props: tableProps,
@@ -82,20 +73,13 @@ export default defineComponent({
     hColgroup
   },
   setup(props, { emit }) {
-    const themeRef = useTheme('table', tableLight)
     const bodyRef = ref<HTMLTableElement | undefined>()
     const bodyWrapperRef = ref<HTMLDivElement | undefined>()
+    const tableWrapperRef = ref<HTMLDivElement | undefined>()
+    const tableHeaderRef = ref<HTMLDivElement | undefined>()
     const tableHeader = ref<HTMLTableElement | undefined>()
-    const cssVarsRef = computed<CSSProperties>(() => {
-      const theme = themeRef.value
-      const { self } = theme
-      const colorProps = {
-        '--cl-table-row-striped-background-color': self.stripedBackgroundColor
-      }
-      return {
-        ...colorProps
-      }
-    })
+    const footerWrapperRef = ref<HTMLDivElement | undefined>()
+    const { cssVarsRef, tableInnerStyle, scrollbarStyle, tableBodyStyles } = useStyle(props)
     const store = useStore()
     const columns = computed(() => {
       return store.columns
@@ -104,12 +88,7 @@ export default defineComponent({
       ...props,
       store
     })
-    const tableBodyStyles = computed(() => {
-      return {
-        'table-layout': props.tableLayout,
-        width: '100%'
-      }
-    })
+
     const { scrollBarRef, headerWrapperRef, handleBodyScroll, handleHeaderFooterWheel } =
       useScroll()
     return {
@@ -123,7 +102,12 @@ export default defineComponent({
       tableHeader,
       headerWrapperRef,
       bodyWrapperRef,
-      scrollBarRef
+      tableHeaderRef,
+      tableWrapperRef,
+      footerWrapperRef,
+      scrollBarRef,
+      tableInnerStyle,
+      scrollbarStyle
     }
   }
 })

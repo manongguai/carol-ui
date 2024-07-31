@@ -16,7 +16,20 @@ export const tableProps = {
     type: Boolean,
     default: () => true
   },
-  stripe: {
+  stripe: Boolean,
+  width: {
+    type: [String, Number] as PropType<string | number>,
+    default: undefined
+  },
+  height: {
+    type: [String, Number] as PropType<string | number>,
+    default: undefined
+  },
+  maxHeight: {
+    type: [String, Number] as PropType<string | number>,
+    default: undefined
+  },
+  scrollbarAlwaysOn: {
     type: Boolean,
     default: false
   }

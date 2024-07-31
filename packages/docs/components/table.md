@@ -2,7 +2,9 @@
 
 用于展示多条结构类似的数据， 可对数据进行排序、筛选、对比或其他自定义操作。
 
-
+::: warning
+全力开发中
+:::
 
 ## 基础表格
 
@@ -13,4 +15,10 @@
 ## 带斑马纹表格
 
 <preview path="./demos/table/stripe-table.vue" title="使用带斑马纹的表格，可以更容易区分出不同行的数据。" description="stripe 可以创建带斑马纹的表格。 如果 true, 表格将会带有斑马纹。"></preview>
+
+
+
+## 超出滚动
+
+<preview path="./demos/table/scroll-table.vue" title="使用带斑马纹的表格，可以更容易区分出不同行的数据。" description="stripe 可以创建带斑马纹的表格。 如果 true, 表格将会带有斑马纹。"></preview>
 
