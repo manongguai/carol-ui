@@ -1,5 +1,5 @@
 <template>
-  <div class="cl-table">
+  <div class="cl-table" :style="cssVars">
     <slot></slot>
     <div
       ref="headerWrapperRef"
@@ -55,9 +55,11 @@ import {
   ref,
   type Ref,
   getCurrentInstance,
-  provide
+  provide,
+  reactive,
+  toRefs
 } from 'vue'
-import { tableEmits, tableProps } from './table'
+import { tableEmits, tableProps, type TableInjection } from './table'
 import useTheme from '@/hooks/use-theme'
 import { tableLight } from '../styles/light'
 import TableBody from './table-body.vue'
@@ -87,15 +89,20 @@ export default defineComponent({
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
       const { self } = theme
-      return {}
+      const colorProps = {
+        '--cl-table-row-striped-background-color': self.stripedBackgroundColor
+      }
+      return {
+        ...colorProps
+      }
     })
     const store = useStore()
     const columns = computed(() => {
       return store.columns
     })
     provide(tableInjectionKey, {
-      store: store,
-      data: props.data || []
+      ...props,
+      store
     })
     const tableBodyStyles = computed(() => {
       return {

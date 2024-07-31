@@ -1,4 +1,4 @@
-import type { ComponentInternalInstance, PropType } from 'vue'
+import type { ComponentInternalInstance, ExtractPropTypes, PropType } from 'vue'
 import { useStore } from './store'
 import type { TableLayout } from '@/constants/table'
 
@@ -15,11 +15,14 @@ export const tableProps = {
   showHeader: {
     type: Boolean,
     default: () => true
+  },
+  stripe: {
+    type: Boolean,
+    default: false
   }
 }
 export const tableEmits = {}
-
-export type TableInjection = {
+export type TableProps = ExtractPropTypes<typeof tableProps>
+export type TableInjection = TableProps & {
   store: ReturnType<typeof useStore>
-  data: DefaultRow[]
 }

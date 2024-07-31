@@ -1,6 +1,8 @@
 @use '../../../styles/mixins/utils' as *;
+@use '../../../styles/mixins/config' as *;
+@use '../../../styles/mixins/function' as *;
 
-.cl-table {
+@include b(table) {
   &__header-wrapper {
     width: 100%;
     overflow: hidden;
@@ -8,17 +10,23 @@
   &__body-wrapper {
     height: 100%;
   }
-  &__body {
+  @include e(body) {
     color: #606266;
   }
   thead {
     color: #909399;
   }
 
-  &__row {
+  @include e(row) {
     background-color: #fff;
+    @include m(striped) {
+      tr,
+      td {
+        background: var(#{getCssVarName('table-row-striped-background-color')});
+      }
+    }
   }
-  &__cell {
+  @include e(cell) {
     border-bottom: 1px solid #ebeef5;
     transition: background-color 0.25s ease;
     padding: 8px 0;

@@ -1,129 +1,51 @@
 <template>
-  <div>
-    <cl-table style="width: 1000px; margin: 0 auto; height: 200px" :data="data">
-      <cl-table-column prop="name" label="Name"> </cl-table-column>
-      <cl-table-column prop="age" label="Age"> </cl-table-column>
-      <cl-table-column prop="name" label="Name"> </cl-table-column>
-      <cl-table-column prop="age" label="Age"> </cl-table-column>
-      <cl-table-column prop="name" label="Name"> </cl-table-column>
-      <cl-table-column prop="age" label="Age"> </cl-table-column>
-      <cl-table-column prop="name" label="Name"> </cl-table-column>
-      <cl-table-column prop="age" label="Age"> </cl-table-column>
-      <cl-table-column prop="name" label="Name"> </cl-table-column>
-      <cl-table-column prop="age" label="Age"> </cl-table-column>
-
-      <cl-table-column prop="name" label="Name"> </cl-table-column>
-      <cl-table-column prop="age" label="Age"> </cl-table-column>
-      <cl-table-column prop="name" label="Name"> </cl-table-column>
-      <cl-table-column prop="age" label="Age"> </cl-table-column>
-    </cl-table>
-
-    <!-- <cl-table style="width: 1000px; margin: 0 auto" :data="data">
-      <cl-table-column prop="name" label="Name"> </cl-table-column>
-    </cl-table> -->
-  </div>
+  <cl-table stripe class="vp-raw" :data="tableData" style="width: 100%">
+    <cl-table-column prop="date" label="Date" width="180" />
+    <cl-table-column prop="name" label="Name" width="180" />
+    <cl-table-column prop="address" label="Address" />
+  </cl-table>
 </template>
-<script setup lang="ts">
-import { ref, reactive } from 'vue'
-import ClTable from '../packages/components/table'
-const data = ref([
+
+<script lang="ts" setup>
+import { onMounted, ref } from 'vue'
+
+const tableData = ref([
   {
-    name: 'Alice',
-    age: 25
+    date: '2016-05-03',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
-    name: 'Bob',
-    age: 30
+    date: '2016-05-02',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
-    name: 'Bob',
-    age: 30
+    date: '2016-05-04',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles'
   },
   {
-    name: 'Alice',
-    age: 25
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Alice',
-    age: 25
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Alice',
-    age: 25
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Alice',
-    age: 25
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Alice',
-    age: 25
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Alice',
-    age: 25
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Alice',
-    age: 25
-  },
-  {
-    name: 'Bob',
-    age: 30
-  },
-  {
-    name: 'Bob',
-    age: 30
+    date: '2016-05-01',
+    name: 'Tom',
+    address: 'No. 189, Grove St, Los Angeles'
   }
 ])
+onMounted(() => {
+  setTimeout(() => {
+    tableData.value.push({
+      date: '2016-05-01',
+      name: 'Tom222',
+      address: 'No. 189, Grove St, Los Angeles'
+    })
+  }, 1000)
+})
 </script>
-
-<style></style>
+<style>
+.vp-doc table {
+  display: table;
+  border-collapse: collapse;
+  margin: 0;
+  overflow-x: auto;
+}
+</style>

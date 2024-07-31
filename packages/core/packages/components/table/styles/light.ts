@@ -3,7 +3,8 @@ import { commonLight, type ThemeCommonVars } from '@/styles'
 export const self = (vars: ThemeCommonVars) => {
   const { textColorBase } = vars
   return {
-    color: textColorBase
+    color: textColorBase,
+    stripedBackgroundColor: '#f5f7fa'
   }
 }
 
