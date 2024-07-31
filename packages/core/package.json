@@ -43,6 +43,7 @@
     "@vueuse/core": "^10.11.0",
     "async-validator": "^4.2.5",
     "consola": "^3.2.3",
+    "normalize-wheel-es": "^1.2.0",
     "seemly": "^0.3.6",
     "uppercamelcase": "^3.0.0",
     "vue": "3.3.2"

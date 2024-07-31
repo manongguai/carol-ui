@@ -2,8 +2,9 @@
   <div class="cl-table">
     <slot></slot>
     <div
-      ref="headerWrapper"
+      ref="headerWrapperRef"
       class="cl-table__header-wrapper"
+      @mousewheel="handleHeaderFooterWheel"
       v-if="showHeader && tableLayout === 'fixed'"
     >
       <table
@@ -18,7 +19,7 @@
         <table-header></table-header>
       </table>
     </div>
-    <div ref="bodyWrapper" class="cl-table__body-wrapper">
+    <div ref="bodyWrapperRef" class="cl-table__body-wrapper">
       <cl-scrollbar
         ref="scrollBarRef"
         :view-style="{ display: 'inline-block', verticalAlign: 'middle' }"
@@ -30,7 +31,7 @@
           cellspacing="0"
           cellpadding="0"
           border="0"
-          ref="tableBody"
+          ref="bodyRef"
           class="cl-table__body"
           :style="tableBodyStyles"
         >
@@ -66,6 +67,7 @@ import { useStore } from './store'
 import { tableInjectionKey } from './context'
 import { hColgroup } from './h-helper'
 import ClScrollbar from '@/components/scrollbar'
+import { useScroll } from './hooks/useScroll'
 export default defineComponent({
   name: 'ClTable',
   props: tableProps,
@@ -78,20 +80,15 @@ export default defineComponent({
     hColgroup
   },
   setup(props, { emit }) {
-    const tableRef: Ref<HTMLElement | undefined> = ref<HTMLElement | undefined>()
     const themeRef = useTheme('table', tableLight)
+    const bodyRef = ref<HTMLTableElement | undefined>()
+    const bodyWrapperRef = ref<HTMLDivElement | undefined>()
     const tableHeader = ref<HTMLTableElement | undefined>()
-    const headerWrapper = ref<HTMLTableElement | undefined>()
     const cssVarsRef = computed<CSSProperties>(() => {
       const theme = themeRef.value
       const { self } = theme
-
       return {}
     })
-    function handleBodyScroll({ scrollLeft }: { scrollLeft: number }) {
-      headerWrapper.value!.scrollLeft = scrollLeft
-    }
-
     const store = useStore()
     const columns = computed(() => {
       return store.columns
@@ -100,22 +97,26 @@ export default defineComponent({
       store: store,
       data: props.data || []
     })
-
     const tableBodyStyles = computed(() => {
       return {
         'table-layout': props.tableLayout,
         width: '100%'
       }
     })
+    const { scrollBarRef, headerWrapperRef, handleBodyScroll, handleHeaderFooterWheel } =
+      useScroll()
     return {
       cssVars: cssVarsRef,
-      tableRef,
+      bodyRef,
       store,
       columns,
       tableBodyStyles,
       handleBodyScroll,
+      handleHeaderFooterWheel,
       tableHeader,
-      headerWrapper
+      headerWrapperRef,
+      bodyWrapperRef,
+      scrollBarRef
     }
   }
 })
