@@ -5,7 +5,7 @@
     width: 100%;
     overflow: hidden;
   }
-  &__body-wrapper{
+  &__body-wrapper {
     height: 100%;
   }
   &__body {
@@ -29,5 +29,13 @@
     position: relative;
     text-align: left;
     z-index: var(--cl-table-index);
+  }
+  & .cell {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow-wrap: break-word;
+    line-height: 23px;
+    padding: 0 12px;
   }
 }

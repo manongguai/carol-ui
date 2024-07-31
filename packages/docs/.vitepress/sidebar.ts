@@ -34,6 +34,10 @@ export const dataInputComponents = [
 ];
 export const dataDisplayComponents = [
   {
+    text: "表格(Table)",
+    link: "/components/table"
+  },
+  {
     text: "标题(Title)",
     link: "/components/title"
   },
