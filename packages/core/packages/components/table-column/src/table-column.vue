@@ -8,7 +8,6 @@ import { tableColumnEmits, tableColumnProps } from './table-column'
 import useTheme from '@/hooks/use-theme'
 import { tableColumnLight } from '../styles/light'
 import { tableInjectionKey } from '@/components/table/src/context'
-import { addUnit } from '@kirkw/utils'
 
 export default defineComponent({
   name: 'ClTableColumn',

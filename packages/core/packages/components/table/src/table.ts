@@ -1,6 +1,7 @@
 import type { ComponentInternalInstance, ExtractPropTypes, PropType } from 'vue'
 import { useStore } from './store'
 import type { TableLayout } from '@/constants/table'
+import type { TextAlign } from '@/constants/common'
 
 export type DefaultRow = any
 export const tableProps = {
@@ -32,6 +33,25 @@ export const tableProps = {
   scrollbarAlwaysOn: {
     type: Boolean,
     default: false
+  },
+  align: {
+    type: String as PropType<TextAlign>
+  },
+  rowClassName: {
+    type: [String, Function] as PropType<string | ((row: DefaultRow, index: number) => string)>
+  },
+  cellClassName: {
+    type: [String, Function] as PropType<
+      string | ((row: DefaultRow, column: any, rowIndex: number, columnIndex: number) => string)
+    >
+  },
+  rowStyle: {
+    type: [String, Function] as PropType<string | ((row: DefaultRow, index: number) => string)>
+  },
+  cellStyle: {
+    type: [String, Function] as PropType<
+      string | ((row: DefaultRow, column: any, rowIndex: number, columnIndex: number) => string)
+    >
   }
 }
 export const tableEmits = {}
